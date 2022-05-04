@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 const Home: NextPage = () => {
   return (
     <Wrapper>
-      <Column>Hello world</Column>
+      <Text>Hello world</Text>
     </Wrapper>
   );
 };
@@ -12,6 +12,9 @@ const Home: NextPage = () => {
 const Wrapper = styled.section`
   padding: 20px;
 `;
-const Column = styled.div``;
+
+const Text = styled.div`
+  font-size: 20px;
+`;
 
 export default Home;
