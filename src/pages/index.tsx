@@ -1,16 +1,20 @@
 import type {NextPage} from 'next';
-
-import tw from 'twin.macro';
+import styled from '@emotion/styled';
 
 const Home: NextPage = () => {
   return (
     <Wrapper>
-      <Column>Hello world</Column>
+      <Text>Hello world</Text>
     </Wrapper>
   );
 };
 
-const Wrapper = tw.section`flex w-full`;
-const Column = tw.div`w-1/2`;
+const Wrapper = styled.section`
+  padding: 20px;
+`;
+
+const Text = styled.div`
+  font-size: 20px;
+`;
 
 export default Home;
