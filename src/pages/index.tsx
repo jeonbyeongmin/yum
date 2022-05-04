@@ -9,12 +9,8 @@ const Home: NextPage = () => {
   );
 };
 
-const Wrapper = styled.section`
-  padding: 20px;
-`;
+const Wrapper = styled.section``;
 
-const Text = styled.div`
-  font-size: 20px;
-`;
+const Text = styled.div``;
 
 export default Home;
