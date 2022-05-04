@@ -1,7 +1,7 @@
 import {Global} from '@emotion/react';
 import type {AppProps} from 'next/app';
 import Head from 'next/head';
-import reset from 'styles/reset';
+import globalStyles from 'styles/global-styles';
 
 function App({Component, pageProps}: AppProps) {
   return (
@@ -10,7 +10,7 @@ function App({Component, pageProps}: AppProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>boilerplate</title>
       </Head>
-      <Global styles={reset} />
+      <Global styles={globalStyles} />
       <Component {...pageProps} />
     </>
   );
