@@ -11,7 +11,7 @@ function Nav() {
         <Link href="/">
           <LinkText>레시피</LinkText>
         </Link>
-        <Link href="/">
+        <Link href="/Store">
           <LinkText>스토어</LinkText>
         </Link>
       </HStack>
