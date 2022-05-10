@@ -6,3 +6,9 @@ export const media = {
   tablet: useMediaQuery(768),
   mobile: useMediaQuery(576),
 };
+
+export const theme = {
+  colors: {
+    primary: 'orange',
+  },
+};

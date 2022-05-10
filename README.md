@@ -74,3 +74,42 @@ import Card from 'components/Card';
 2. Emotion
 3. recoil
 4. react-query
+
+<br/>
+
+### 📱 media-query 사용
+
+`theme.ts` 에 pc, tablet, mobile 세 가지로 나눠서 export 해두었음.
+
+```js
+// theme.ts
+
+const useMediaQuery = (maxWidth: number): string =>
+  `@media (max-width: ${maxWidth}px)`;
+
+export const media = {
+  pc: useMediaQuery(1440),
+  tablet: useMediaQuery(768),
+  mobile: useMediaQuery(576),
+};
+
+export const theme = {
+  colors: {
+    primary: 'orange',
+  },
+};
+```
+
+#### Usage
+
+아래와 같이 사용
+
+```js
+const Wrapper = styled.div`
+  ...
+  ${media.tablet} {
+    display: none;
+    ...
+  }
+`;
+```

@@ -12,6 +12,11 @@ const globalStyles = css`
   ::-webkit-scrollbar {
     display: none;
   }
+
+  a {
+    text-decoration: none;
+  }
+
   html {
     font-size: 11px;
     -webkit-text-size-adjust: none;
@@ -24,6 +29,7 @@ const globalStyles = css`
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+
   button {
     background: none;
     padding: 0;

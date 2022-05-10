@@ -1,15 +1,14 @@
 import type {NextPage} from 'next';
 import styled from '@emotion/styled';
+import Layout from 'components/Layout';
 
 const Home: NextPage = () => {
   return (
-    <Wrapper>
-      <Text>Hello world</Text>
-    </Wrapper>
+    <Layout>
+      <div>asdf</div>asdf
+    </Layout>
   );
 };
-
-const Wrapper = styled.section``;
 
 const Text = styled.div``;
 
