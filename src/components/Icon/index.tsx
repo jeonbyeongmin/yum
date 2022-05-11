@@ -15,5 +15,5 @@ export function PlusIcon() {
 }
 
 export function SearchIcon() {
-  return <IoSearchOutline size={20} color="#9f9f9f" />;
+  return <IoSearchOutline size={20} />;
 }
