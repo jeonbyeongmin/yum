@@ -1,20 +1,15 @@
 import type {NextPage} from 'next';
 import styled from '@emotion/styled';
+import Layout from 'components/Layout';
 
 const Home: NextPage = () => {
   return (
-    <Wrapper>
-      <Text>Hello world</Text>
-    </Wrapper>
+    <Layout>
+      <div>asdf</div>asdf
+    </Layout>
   );
 };
 
-const Wrapper = styled.section`
-  padding: 20px;
-`;
-
-const Text = styled.div`
-  font-size: 20px;
-`;
+const Text = styled.div``;
 
 export default Home;
