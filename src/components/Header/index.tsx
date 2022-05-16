@@ -47,7 +47,6 @@ const Wrapper = styled.header`
   line-height: 1.5;
   z-index: 1000;
   background: white;
-
   ${media.tablet} {
     font-size: 13px;
     height: 60px;
@@ -63,6 +62,7 @@ const Inner = styled.div`
   max-width: 1024px;
   padding: 20px;
   margin: 0 auto;
+  background-color: #fff;
 `;
 
 export default Header;
