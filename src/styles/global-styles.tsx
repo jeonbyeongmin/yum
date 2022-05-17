@@ -4,6 +4,7 @@ import {media} from './theme';
 
 const globalStyles = css`
   ${emotionReset}
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
 
   :focus {
     outline: none;
@@ -33,7 +34,7 @@ const globalStyles = css`
   html {
     font-size: 11px;
     -webkit-text-size-adjust: none;
-    font-family: Binggrae, -apple-system, BlinkMacSystemFont, helvetica,
+    font-family: -apple-system, Noto Sans KR, BlinkMacSystemFont, helvetica,
       Apple SD Gothic Neo, sans-serif;
     font-display: fallback;
     ${media.tablet} {

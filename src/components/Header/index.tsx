@@ -1,72 +1,105 @@
 import styled from '@emotion/styled';
+import {css} from '@emotion/react';
+
 import Image from 'next/image';
-import React from 'react';
+import React, {ReactNode} from 'react';
 import {media} from 'styles/theme';
-import logo from 'common/images/logo.png';
+import logo from '../../../public/logo.png';
 import Nav from 'components/Nav';
-import Button from 'components/Button';
 import SearchBar from 'components/SearchBar';
-import {CartIcon, UserIcon} from 'components/Icon';
-import HStack from 'components/HStack';
+import {CartIcon, UserIcon, SearchIcon} from 'components/Icon';
+import {
+  Box,
+  Button,
+  HStack,
+  Input,
+  IconButton,
+  InputLeftElement,
+  InputGroup,
+  Text,
+} from '@chakra-ui/react';
+import IconBtn from 'components/IconBtn';
+import Btn from 'components/Btn';
 
 function Header() {
   return (
     <Wrapper>
-      <Inner>
-        <HStack gap="80px">
-          <div>
-            <Image src={logo} width="70" height="30" />
-          </div>
-          <Nav />
-        </HStack>
-        <HStack gap="30px">
-          <SearchBar />
-          <HStack gap="10px">
-            <Button icon width="35px" height="35px">
-              <CartIcon />
-            </Button>
-            <Button icon width="35px" height="35px">
-              <UserIcon />
-            </Button>
-          </HStack>
-          <Button primary width={'100px'} height={'40px'} fw={700} br={'10px'}>
-            레시피 작성
-          </Button>
-        </HStack>
-      </Inner>
+      <HStack
+        spacing={5}
+        alignItems={'center'}
+        h={'100%'}
+        maxWidth="1024px"
+        m={'0 auto'}
+      >
+        <Logo fontSize={'4xl'} fontWeight="bold">
+          YUM
+        </Logo>
+        <Box flex={1} minWidth={'135px'}>
+          <NavItem
+            m={5}
+            fontSize="2xl"
+            color="#a5a5a5"
+            fontWeight={'bold'}
+            current={'true'}
+          >
+            레시피
+          </NavItem>
+          <NavItem m={5} fontSize="2xl" color="#a5a5a5" fontWeight={'bold'}>
+            스토어
+          </NavItem>
+        </Box>
+        <InputGroup maxWidth={'200px'} size="lg">
+          <InputLeftElement
+            pointerEvents="none"
+            children={<SearchIcon color="#CCCCCC" />}
+          />
+          <Input
+            type="text"
+            placeholder="레시피 검색"
+            borderColor={'#CCCCCC'}
+            _focus={{
+              boxShadow: `0 0 1px 2px #454545, 0 1px 1px rgba(0, 0, 0, .15)`,
+            }}
+          />
+        </InputGroup>
+        <Box flexDirection={'row'} minWidth="80px">
+          <IconBtn icon={<CartIcon />} label={'shpping basket'}></IconBtn>
+          <IconBtn icon={<UserIcon />} label={'mypage'}></IconBtn>
+        </Box>
+        <Box>
+          <Btn>레시피 작성</Btn>
+        </Box>
+      </HStack>
     </Wrapper>
   );
 }
-
-const Wrapper = styled.header`
-  box-sizing: border-box;
-  position: fixed;
-  width: 100%;
-  /* height: 80px; */
-  font-size: 15px;
-  text-align: center;
-  line-height: 1.5;
-  z-index: 1000;
-  background: white;
-  ${media.tablet} {
-    font-size: 13px;
-    /* height: 60px; */
-  }
+const Logo = styled(Box)`
+  font-family: Binggrae, -apple-system, BlinkMacSystemFont, helvetica,
+    Apple SD Gothic Neo, sans-serif;
+`;
+const NavItem = styled(Text)`
+  display: inline-flex;
+  font-weight: 700;
+  cursor: pointer;
+  ${props =>
+    props.current &&
+    css`
+      color: #454545;
+      &:active {
+        opacity: 0.8;
+      }
+    `}
 `;
 
-const Inner = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
+const Wrapper = styled.header`
+  position: fixed;
   width: 100%;
-  box-sizing: border-box;
-  max-width: 1024px;
-  padding: 20px;
-  margin: 0 auto;
+  font-size: 15px;
+  color: #000;
   height: 80px;
   background-color: #fff;
   ${media.tablet} {
+    font-size: 13px;
     height: 60px;
   }
 `;
