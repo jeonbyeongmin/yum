@@ -39,9 +39,10 @@ function Header() {
 }
 
 const Wrapper = styled.header`
+  box-sizing: border-box;
   position: fixed;
   width: 100%;
-  height: 80px;
+  /* height: 80px; */
   font-size: 15px;
   text-align: center;
   line-height: 1.5;
@@ -49,7 +50,7 @@ const Wrapper = styled.header`
   background: white;
   ${media.tablet} {
     font-size: 13px;
-    height: 60px;
+    /* height: 60px; */
   }
 `;
 
@@ -59,10 +60,15 @@ const Inner = styled.div`
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  box-sizing: border-box;
   max-width: 1024px;
   padding: 20px;
   margin: 0 auto;
+  height: 80px;
   background-color: #fff;
+  ${media.tablet} {
+    height: 60px;
+  }
 `;
 
 export default Header;
