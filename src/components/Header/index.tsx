@@ -24,14 +24,13 @@ function Header() {
         h={'100%'}
         maxWidth="1024px"
         m={'0 auto'}
-        // spacing={'20px'}
-        paddingX={10}
+        paddingX={{base : 5,sm : 10}}
       >
-        <Logo fontSize={'4xl'} fontWeight="bold"  w={100}
+        <Logo fontSize={'4xl'} fontWeight="bold"  w={{base: '70px',sm : 100}}
         >
           YUM
         </Logo>
-        <HStack flex={1}  spacing={'25px'}>
+        <HStack flex={1}  spacing={{base : '5px',sm : '25px'}}>
           <NavItem
             fontSize="2xl"
             color="#a5a5a5"
@@ -51,7 +50,7 @@ function Header() {
           <SearchBar /> 
         </Box>
         <HStack flexDirection={'row'} minWidth="80px"  spacing={'5px'} >
-          <IconBtn icon={<SearchIcon />} label={'search'} type='mobile'></IconBtn>
+          <IconBtn icon={<SearchIcon size={25}/>} label={'search'} type='mobile'></IconBtn>
           <IconBtn icon={<CartIcon />} label={'shpping basket'}></IconBtn>
           <IconBtn icon={<UserIcon />} label={'mypage'}></IconBtn>
         </HStack>

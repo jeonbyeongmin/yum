@@ -17,7 +17,7 @@ function Btn({children, theme, ...rest}: IButton) {
     <Wrapper
       theme
       size="lg"
-      p={'20px'}
+      p={{base : '20px',md : '20px'}}
       _active={{
         opacity: 0.8
       }}

@@ -12,7 +12,7 @@ function SearchBar() {
 
   return (
     <Wrapper active={active}>
-      <SearchIcon />
+      <SearchIcon  />
       <Input
         placeholder="레시피를 입력해주세요"
         onFocus={handleFocusBlur}

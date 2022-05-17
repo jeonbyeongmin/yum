@@ -25,9 +25,7 @@ const IconBtn = ({icon, label, type,borderColor, bgColor, size}: IiconBtn) => {
         borderColor: borderColor ?? '#efefef',
       }}
       _focus={{
-        boxShadow: `0 0 1px 2px ${
-          borderColor ?? '#efefef'
-        }, 0 1px 1px rgba(0, 0, 0, .15)`,
+        boxShadow: 'none'
       }}
       width={size ?? '35px'}
       height={size ?? '35px'}
