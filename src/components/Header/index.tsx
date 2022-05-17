@@ -10,12 +10,7 @@ import SearchBar from 'components/SearchBar';
 import {CartIcon, UserIcon, SearchIcon} from 'components/Icon';
 import {
   Box,
-  Button,
   HStack,
-  Input,
-  IconButton,
-  InputLeftElement,
-  InputGroup,
   Text,
 } from '@chakra-ui/react';
 import IconBtn from 'components/IconBtn';
@@ -48,20 +43,7 @@ function Header() {
             스토어
           </NavItem>
         </Box>
-        <InputGroup maxWidth={'200px'} size="lg">
-          <InputLeftElement
-            pointerEvents="none"
-            children={<SearchIcon color="#CCCCCC" />}
-          />
-          <Input
-            type="text"
-            placeholder="레시피 검색"
-            borderColor={'#CCCCCC'}
-            _focus={{
-              boxShadow: `0 0 1px 2px #454545, 0 1px 1px rgba(0, 0, 0, .15)`,
-            }}
-          />
-        </InputGroup>
+      <SearchBar/>
         <Box flexDirection={'row'} minWidth="80px">
           <IconBtn icon={<CartIcon />} label={'shpping basket'}></IconBtn>
           <IconBtn icon={<UserIcon />} label={'mypage'}></IconBtn>
@@ -73,6 +55,7 @@ function Header() {
     </Wrapper>
   );
 }
+
 const Logo = styled(Box)`
   font-family: Binggrae, -apple-system, BlinkMacSystemFont, helvetica,
     Apple SD Gothic Neo, sans-serif;

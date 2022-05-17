@@ -10,22 +10,21 @@ interface IButton extends ButtonStyle {
 interface ButtonStyle {
   theme?: string;
   bgColor?: string;
-  borderColor?: string;
 }
 
 function Btn({children, theme, ...rest}: IButton) {
   return (
     <Wrapper
-      size="lg"
-      // _active={{
-      //   opacity: 0.8,
-      // }}
-      // _focus={{
-      //   opacity: 0.8,
-      //   boxShadow: `0 0 1px 2px #454545, 0 1px 1px rgba(0, 0, 0, .15)`,
-      // }}
-      {...rest}
       theme
+      size="lg"
+      p={'20px'}
+      _active={{
+        opacity: 0.8
+      }}
+      _focus={{
+        boxShadow: 'none',
+      }}
+      {...rest}
     >
       {children}
     </Wrapper>
@@ -37,58 +36,18 @@ const Wrapper = styled(Button)`
   justify-content: center;
   color: white;
   border-radius: 10px;
-  padding: 0px 20px;
-  background-color: orange;
-
-  &:active {
-    background-color: orange;
-    opacity: 0.5;
-  }
-  &:hover {
-    background-color: orange;
-  }
-  &:focus {
-    background-color: orange;
-    /* opacity: 0.8; */
-    box-shadow: none;
-  }
-
+  ${props =>
+    (props.theme || props.theme == 'orange') &&
+    css`
+      background-color: orange;
+      &:focus, &:active, &:hover {
+        background-color: orange;
+      }
+    `}
   ${props =>
     props.theme == 'white' &&
     css`
       background-color: #ffffff;
     `}
 `;
-// const Wrapper = styled.button<ButtonStyle>`
-//   width: ${props => props.width};
-//   height: ${props => props.height};
-//   font-weight: ${props => props.fw};
-//   border-radius: ${props => props.br};
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-
-//   ${props =>
-//     props.primary &&
-//     css`
-//       color: white;
-//       background: orange;
-
-//       &:active {
-//         opacity: 0.8;
-//       }
-//     `}
-
-//   ${props =>
-//     props.icon &&
-//     css`
-//       color: black;
-//       border-radius: 50%;
-
-//       &:active {
-//         background: #efefef;
-//       }
-//     `}
-// `;
-
 export default Btn;

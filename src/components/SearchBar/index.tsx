@@ -30,11 +30,12 @@ const Wrapper = styled.div<{active: boolean}>`
   padding: 10px 10px 10px 15px;
   border: 1px solid ${props => (props.active ? 'black' : '#b0b0b0')};
   color: ${props => (props.active ? 'black' : '#b0b0b0')};
+
 `;
 
 const Input = styled.input`
   width: 250px;
-  margin-left: 5px;
+  margin-left: 10px;
   padding: 0px;
   font-size: 14px;
   border: none;
