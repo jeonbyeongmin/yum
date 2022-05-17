@@ -16,11 +16,24 @@ const globalStyles = css`
   a {
     text-decoration: none;
   }
-
+  @font-face {
+    font-family: 'Binggrae';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/Binggrae-Bold.woff2')
+      format('woff2');
+    font-weight: bold;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Binggrae';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Binggrae.woff')
+      format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
   html {
     font-size: 11px;
     -webkit-text-size-adjust: none;
-    font-family: -apple-system, BlinkMacSystemFont, helvetica,
+    font-family: Binggrae, -apple-system, BlinkMacSystemFont, helvetica,
       Apple SD Gothic Neo, sans-serif;
     font-display: fallback;
     ${media.tablet} {
