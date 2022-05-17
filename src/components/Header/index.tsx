@@ -20,34 +20,41 @@ function Header() {
   return (
     <Wrapper>
       <HStack
-        spacing={5}
         alignItems={'center'}
         h={'100%'}
         maxWidth="1024px"
         m={'0 auto'}
+        // spacing={'20px'}
+        paddingX={10}
       >
-        <Logo fontSize={'4xl'} fontWeight="bold">
+        <Logo fontSize={'4xl'} fontWeight="bold"  w={100}
+        >
           YUM
         </Logo>
-        <Box flex={1} minWidth={'135px'}>
+        <HStack flex={1}  spacing={'25px'}>
           <NavItem
-            m={5}
             fontSize="2xl"
             color="#a5a5a5"
             fontWeight={'bold'}
             current={'true'}
+            minW={'50px'}
           >
             레시피
           </NavItem>
-          <NavItem m={5} fontSize="2xl" color="#a5a5a5" fontWeight={'bold'}>
+          <NavItem  fontSize="2xl" color="#a5a5a5" fontWeight={'bold'} 
+            minW={'50px'}
+          >
             스토어
           </NavItem>
+        </HStack>
+        <Box display={{base:'none', md:'block'}} >
+          <SearchBar /> 
         </Box>
-      <SearchBar/>
-        <Box flexDirection={'row'} minWidth="80px">
+        <HStack flexDirection={'row'} minWidth="80px"  spacing={'5px'} >
+          <IconBtn icon={<SearchIcon />} label={'search'} type='mobile'></IconBtn>
           <IconBtn icon={<CartIcon />} label={'shpping basket'}></IconBtn>
           <IconBtn icon={<UserIcon />} label={'mypage'}></IconBtn>
-        </Box>
+        </HStack>
         <Box>
           <Btn>레시피 작성</Btn>
         </Box>
@@ -55,7 +62,6 @@ function Header() {
     </Wrapper>
   );
 }
-
 const Logo = styled(Box)`
   font-family: Binggrae, -apple-system, BlinkMacSystemFont, helvetica,
     Apple SD Gothic Neo, sans-serif;
@@ -73,7 +79,6 @@ const NavItem = styled(Text)`
       }
     `}
 `;
-
 const Wrapper = styled.header`
   position: fixed;
   width: 100%;

@@ -1,6 +1,7 @@
 import React, {useRef, useState} from 'react';
 import styled from '@emotion/styled';
 import {SearchIcon} from 'components/Icon';
+import { media } from 'styles/theme';
 
 function SearchBar() {
   const [active, setActive] = useState(false);
@@ -34,7 +35,8 @@ const Wrapper = styled.div<{active: boolean}>`
 `;
 
 const Input = styled.input`
-  width: 250px;
+  width: 210px; 
+  max-width: 250px;
   margin-left: 10px;
   padding: 0px;
   font-size: 14px;

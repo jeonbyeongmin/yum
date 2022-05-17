@@ -6,12 +6,14 @@ import React, {ReactNode} from 'react';
 interface IiconBtn {
   icon: JSX.Element;
   label: string;
+  type?: string;
   borderColor?: string;
   bgColor?: string;
   size?: string;
 }
 
-const IconBtn = ({icon, label, borderColor, bgColor, size}: IiconBtn) => {
+const IconBtn = ({icon, label, type,borderColor, bgColor, size}: IiconBtn) => {
+  const DisplayProps = type === 'mobile' ? {base:'inline-flex', md:'none'} : {base:'inline-flex'}
   return (
     <IconButton
       borderRadius={'50%'}
@@ -31,6 +33,7 @@ const IconBtn = ({icon, label, borderColor, bgColor, size}: IiconBtn) => {
       height={size ?? '35px'}
       icon={icon}
       aria-label={label}
+      display={DisplayProps}
     />
   );
 };
