@@ -13,7 +13,9 @@ const globalStyles = css`
   ::-webkit-scrollbar {
     display: none;
   }
-
+  * {
+    box-sizing: border-box;
+  }
   a {
     text-decoration: none;
   }
