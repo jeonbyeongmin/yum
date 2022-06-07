@@ -20,4 +20,11 @@ export interface ICookingInfo {
   time: string;
   category: string;
 }
-export interface IRecipeInfo extends ICookingInfo {}
+export interface IRecipeStep {
+  step: number;
+  content: string;
+  img: string;
+}
+export interface IRecipeInfo extends ICookingInfo {
+  steps: IRecipeStep[];
+}

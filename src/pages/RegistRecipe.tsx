@@ -5,7 +5,7 @@ import CookingInfo from 'components/CookingInfo';
 import IngredientList from 'components/IngredientList';
 import RecipeStep from 'components/RecipeStep';
 import Btn from 'components/Btn';
-import {IRecipeInfo} from 'types/recipe';
+import {IRecipeInfo, IRecipeStep} from 'types/recipe';
 
 interface IRecistRecipe {}
 const initInfo = {
@@ -15,6 +15,13 @@ const initInfo = {
   servings: 0,
   time: '',
   category: '',
+  steps: [
+    {
+      step: 0,
+      content: '',
+      img: '',
+    },
+  ],
 };
 function RegistRecipe({}: IRecistRecipe) {
   const [info, setInfo] = useState<IRecipeInfo>(initInfo);
@@ -28,12 +35,22 @@ function RegistRecipe({}: IRecistRecipe) {
     console.log('change', name, value, newInfo);
     setInfo(newInfo);
   };
+
+  const handleRecipeStepChange = (newStep: IRecipeStep[]) =>
+    setInfo({
+      ...info,
+      steps: newStep,
+    });
+
   return (
     <Layout>
       <Container maxW="1024px">
         <CookingInfo handleTextChange={handleTextChange} />
         <IngredientList />
-        <RecipeStep></RecipeStep>
+        <RecipeStep
+          info={info}
+          handleStepChange={handleRecipeStepChange}
+        ></RecipeStep>
         <Box margin="50px auto 0">
           <Btn>레시피 등록</Btn>
         </Box>
