@@ -5,6 +5,7 @@ import React, {ReactNode} from 'react';
 
 interface IButton extends ButtonStyle {
   children: ReactNode;
+  handleClick?: any;
 }
 
 interface ButtonStyle {
@@ -12,14 +13,15 @@ interface ButtonStyle {
   bgColor?: string;
 }
 
-function Btn({children, theme, ...rest}: IButton) {
+function Btn({children, theme, handleClick, ...rest}: IButton) {
   return (
     <Wrapper
+      onClick={handleClick}
       theme
       size="lg"
-      p={{base : '20px',md : '20px'}}
+      p={{base: '20px', md: '20px'}}
       _active={{
-        opacity: 0.8
+        opacity: 0.8,
       }}
       _focus={{
         boxShadow: 'none',
@@ -40,7 +42,9 @@ const Wrapper = styled(Button)`
     (props.theme || props.theme == 'orange') &&
     css`
       background-color: orange;
-      &:focus, &:active, &:hover {
+      &:focus,
+      &:active,
+      &:hover {
         background-color: orange;
       }
     `}
