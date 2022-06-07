@@ -8,11 +8,7 @@ import logo from '../../../public/logo.png';
 import Nav from 'components/Nav';
 import SearchBar from 'components/SearchBar';
 import {CartIcon, UserIcon, SearchIcon} from 'components/Icon';
-import {
-  Box,
-  HStack,
-  Text,
-} from '@chakra-ui/react';
+import {Box, HStack, Text} from '@chakra-ui/react';
 import IconBtn from 'components/IconBtn';
 import Btn from 'components/Btn';
 
@@ -24,13 +20,12 @@ function Header() {
         h={'100%'}
         maxWidth="1024px"
         m={'0 auto'}
-        paddingX={{base : 5,sm : 10}}
+        paddingX={{base: 5, sm: 10}}
       >
-        <Logo fontSize={'4xl'} fontWeight="bold"  w={{base: '70px',sm : 100}}
-        >
+        <Logo fontSize={'4xl'} fontWeight="bold" w={{base: '70px', sm: 100}}>
           YUM
         </Logo>
-        <HStack flex={1}  spacing={{base : '5px',sm : '25px'}}>
+        <HStack flex={1} spacing={{base: '5px', sm: '25px'}}>
           <NavItem
             fontSize="2xl"
             color="#a5a5a5"
@@ -40,17 +35,24 @@ function Header() {
           >
             레시피
           </NavItem>
-          <NavItem  fontSize="2xl" color="#a5a5a5" fontWeight={'bold'} 
+          <NavItem
+            fontSize="2xl"
+            color="#a5a5a5"
+            fontWeight={'bold'}
             minW={'50px'}
           >
             스토어
           </NavItem>
         </HStack>
-        <Box display={{base:'none', md:'block'}} >
-          <SearchBar /> 
+        <Box display={{base: 'none', md: 'block'}}>
+          <SearchBar />
         </Box>
-        <HStack flexDirection={'row'} minWidth="80px"  spacing={'5px'} >
-          <IconBtn icon={<SearchIcon size={25}/>} label={'search'} type='mobile'></IconBtn>
+        <HStack flexDirection={'row'} minWidth="80px" spacing={'5px'}>
+          <IconBtn
+            icon={<SearchIcon size={25} />}
+            label={'search'}
+            type="mobile"
+          ></IconBtn>
           <IconBtn icon={<CartIcon />} label={'shpping basket'}></IconBtn>
           <IconBtn icon={<UserIcon />} label={'mypage'}></IconBtn>
         </HStack>
@@ -85,6 +87,7 @@ const Wrapper = styled.header`
   color: #000;
   height: 80px;
   background-color: #fff;
+  z-index: 100;
   ${media.tablet} {
     font-size: 13px;
     height: 60px;
