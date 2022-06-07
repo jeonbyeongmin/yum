@@ -10,11 +10,16 @@ import {
 } from '@chakra-ui/react';
 import styled from '@emotion/styled';
 import {CloseIcon, MinusIcon, PlusOutLineIcon} from 'components/Icon';
+import {IProductItem} from 'pages/ShoppingBasket';
 import React from 'react';
 
-type Props = {};
-
-function BasketItem() {
+interface IBasketItem {
+  data: IProductItem;
+}
+const getCommaFormatting = (str: string) => {
+  return str.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',');
+};
+function BasketItem({data}: IBasketItem) {
   return (
     <HStack
       alignItems={'center'}
@@ -23,6 +28,7 @@ function BasketItem() {
       borderRadius={10}
       justifyContent="space-between"
       p={8}
+      flexWrap="nowrap"
     >
       <HStack gap={5}>
         <Checkbox size="lg" colorScheme="orange" defaultChecked></Checkbox>
@@ -31,37 +37,44 @@ function BasketItem() {
           width={'60px'}
           height={'60px'}
           objectFit={'cover'}
-          alt="Dan Abramov"
+          alt="장바구니 이미지"
           borderRadius={5}
         />
-        <VStack alignItems={'flex-start'}>
+        <VStack alignItems={'flex-start'} minW="fit-content">
           <Name fontSize={'2xl'} marginBottom="2">
-            충주 유기농 사과 10개입
+            {data.name}
           </Name>
           <Text fontSize={'lg'} color="#8E8E8E">
-            배송비 무료
+            배송비 {data.delivery ? data.delivery + '원' : '무료'}
           </Text>
         </VStack>
       </HStack>
       <Counter />
-      <Text fontSize={'2xl'} fontWeight="700" color="#000000">
-        5,000원
+      <Text
+        fontSize={'2xl'}
+        fontWeight="700"
+        color="#000000"
+        whiteSpace={'nowrap'}
+      >
+        {getCommaFormatting(data.price + '')}원
       </Text>
-      <CloseIcon />
+      <Box>
+        <CloseIcon />
+      </Box>
     </HStack>
   );
 }
 function Counter() {
   return (
-    <HStack border={'1px solid #B9B9B9'} borderRadius={5}>
+    <HStack border={'1px solid #B9B9B9'} borderRadius={7}>
       <Button colorScheme={'whiteAlpha'} color="#000" size="md">
-        <MinusIcon size={10} />
+        <MinusIcon size={12} />
       </Button>
       <Text fontSize={'lg'} color="#000000">
         1
       </Text>
       <Button colorScheme={'whiteAlpha'} color="#000" size="md">
-        <PlusOutLineIcon size={10} />
+        <PlusOutLineIcon size={12} />
       </Button>
     </HStack>
   );

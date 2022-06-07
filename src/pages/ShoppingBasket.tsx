@@ -12,25 +12,61 @@ import styled from '@emotion/styled';
 import BasketItem from 'components/BasketItem';
 import Layout from 'components/Layout';
 import React from 'react';
+import {media} from 'styles/theme';
 type Props = {};
-
+export interface IProductItem {
+  name: string;
+  delivery: number | undefined;
+  count: number;
+  checked: boolean;
+  price: number;
+}
+const initData: IProductItem[] = [
+  {
+    name: ' 충주 유기농 사과 10개입',
+    delivery: undefined,
+    count: 1,
+    checked: false,
+    price: 5000,
+  },
+  {
+    name: ' 충주 유기농 사과 10개입',
+    delivery: undefined,
+    count: 1,
+    checked: false,
+    price: 5000,
+  },
+  {
+    name: ' 충주 유기농 사과 10개입',
+    delivery: undefined,
+    count: 1,
+    checked: false,
+    price: 5000,
+  },
+];
 function ShoppingBasket({}: Props) {
   return (
     <Layout>
-      <Checkbox size="lg" colorScheme="orange" defaultChecked>
+      <Checkbox size="lg" colorScheme="orange" defaultChecked marginX={5}>
         모두 선택
       </Checkbox>
-      <Flex>
-        <VStack flex={1} alignItems="stretch" gap={3} marginY={5}>
-          <BasketItem />
-          <BasketItem />
-          <BasketItem />
+      <Container>
+        <VStack flex={1} alignItems="stretch" gap={3} margin={5}>
+          {initData.map(data => (
+            <BasketItem data={data} />
+          ))}
         </VStack>
         <ResultBox />
-      </Flex>
+      </Container>
     </Layout>
   );
 }
+const Container = styled(Flex)`
+  flex-direction: row;
+  ${media.tablet} {
+    flex-direction: column;
+  }
+`;
 function ResultBox() {
   return (
     <VStack m={5} minW={'250px'} height="fit-content" alignItems={'stretch'}>
@@ -66,6 +102,6 @@ function ResultBox() {
   );
 }
 const BigText = styled(Text)`
-  font-size: 1.4rem;
+  font-size: 1.5rem;
 `;
 export default ShoppingBasket;
