@@ -13,9 +13,9 @@ import styled from '@emotion/styled';
 import {ICookingInfo, IRecipeInfo} from 'types/recipe';
 import {useState} from 'react';
 interface ICookingInfoPage {
-  handleTextChange: (event: any) => void;
+  handleChange: (event: any) => void;
 }
-export default function CookingInfo({handleTextChange}: ICookingInfoPage) {
+export default function CookingInfo({handleChange}: ICookingInfoPage) {
   return (
     <Box marginY="10">
       <Heading size="lg" marginY="5">
@@ -31,7 +31,7 @@ export default function CookingInfo({handleTextChange}: ICookingInfoPage) {
           placeholder="요리의 이름을 입력해주세요."
           p={5}
           name={'name'}
-          onChange={handleTextChange}
+          onChange={handleChange}
         />
         <CookingDesc
           placeholder="요리에 대해 설명해주세요.."
@@ -39,7 +39,7 @@ export default function CookingInfo({handleTextChange}: ICookingInfoPage) {
           p={5}
           // value{}
           name={'desc'}
-          onChange={handleTextChange}
+          onChange={handleChange}
         />
       </Flex>
       <ImageFileContainer />
@@ -56,7 +56,7 @@ export default function CookingInfo({handleTextChange}: ICookingInfoPage) {
             w="200px"
             borderColor={'#b9b9b9'}
             name={'servings'}
-            onChange={handleTextChange}
+            onChange={handleChange}
           />
         </Flex>
         <Flex>
@@ -70,7 +70,7 @@ export default function CookingInfo({handleTextChange}: ICookingInfoPage) {
             w="200px"
             borderColor={'#b9b9b9'}
             name={'time'}
-            onChange={handleTextChange}
+            onChange={handleChange}
           />
         </Flex>
         <Flex>
@@ -84,7 +84,7 @@ export default function CookingInfo({handleTextChange}: ICookingInfoPage) {
             borderColor={'#b9b9b9'}
             placeholder="Select category"
             name={'category'}
-            onChange={handleTextChange}
+            onChange={handleChange}
           >
             <option value="option1">Option 1</option>
             <option value="option2">Option 2</option>
