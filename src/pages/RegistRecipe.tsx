@@ -25,6 +25,9 @@ function RegistRecipe({}: IRecistRecipe) {
     setInfo(newInfo);
   };
 
+  const handleSubmit = () => {
+    console.log('submit btn click : ', info);
+  };
   return (
     <Layout>
       <Container maxW="1024px">
@@ -32,7 +35,7 @@ function RegistRecipe({}: IRecistRecipe) {
         <IngredientList />
         <RecipeStep></RecipeStep>
         <Center>
-          <Btn>레시피 등록</Btn>
+          <Btn handleClick={handleSubmit}>레시피 등록</Btn>
         </Center>
       </Container>
     </Layout>
