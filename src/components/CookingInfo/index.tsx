@@ -10,22 +10,36 @@ import {
 } from '@chakra-ui/react';
 import {PlusOutLineIcon} from 'components/Icon';
 import styled from '@emotion/styled';
-
-export default function CookingInfo() {
+import {ICookingInfo, IRecipeInfo} from 'types/recipe';
+import {useState} from 'react';
+interface ICookingInfoPage {
+  handleTextChange: (event: any) => void;
+}
+export default function CookingInfo({handleTextChange}: ICookingInfoPage) {
   return (
     <Box marginY="10">
-      <Heading size="lg" marginY="5">요리정보 </Heading>
+      <Heading size="lg" marginY="5">
+        요리정보
+      </Heading>
       <Flex
         flexDirection={'column'}
         border="1px solid #b9b9b9"
         borderRadius={'5px'}
         minH="200px"
       >
-        <InfoInput placeholder="요리의 이름을 입력해주세요." p={5} />
+        <InfoInput
+          placeholder="요리의 이름을 입력해주세요."
+          p={5}
+          name={'name'}
+          onChange={handleTextChange}
+        />
         <CookingDesc
           placeholder="요리에 대해 설명해주세요.."
           resize={'none'}
           p={5}
+          // value{}
+          name={'desc'}
+          onChange={handleTextChange}
         />
       </Flex>
       <ImageFileContainer />
@@ -41,6 +55,8 @@ export default function CookingInfo() {
             type={'number'}
             w="200px"
             borderColor={'#b9b9b9'}
+            name={'servings'}
+            onChange={handleTextChange}
           />
         </Flex>
         <Flex>
@@ -53,6 +69,8 @@ export default function CookingInfo() {
             type={'text'}
             w="200px"
             borderColor={'#b9b9b9'}
+            name={'time'}
+            onChange={handleTextChange}
           />
         </Flex>
         <Flex>
@@ -65,6 +83,8 @@ export default function CookingInfo() {
             w="200px"
             borderColor={'#b9b9b9'}
             placeholder="Select category"
+            name={'category'}
+            onChange={handleTextChange}
           >
             <option value="option1">Option 1</option>
             <option value="option2">Option 2</option>
