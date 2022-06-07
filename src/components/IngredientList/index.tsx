@@ -3,10 +3,12 @@ import styled from '@emotion/styled';
 import {PlusOutLineIcon} from 'components/Icon';
 import Ingredient from 'components/Ingredient';
 
-export function IngredientList() {
+export default function IngredientList() {
   return (
     <Box marginY="10">
-      <Heading marginY="5">재료 </Heading>
+      <Heading size="lg" marginY="5">
+        재료{' '}
+      </Heading>
       <Flex gap={4}>
         <Ingredient
           name="사과"
@@ -22,7 +24,7 @@ export function IngredientList() {
           name="사과"
           amount="1개"
           img="https://img.lovepik.com/element/40162/3354.png_860.png"
-        ></Ingredient>{' '}
+        ></Ingredient>
         <Input type={'file'} id={`ingredientFileInput`} hidden />
         <IngredientInputLabel htmlFor={`ingredientFileInput`}>
           <PlusOutLineIcon />
