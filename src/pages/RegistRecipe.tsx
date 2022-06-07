@@ -1,4 +1,4 @@
-import {Box, Button, Container} from '@chakra-ui/react';
+import {Box, Button, Center, Container} from '@chakra-ui/react';
 import Layout from 'components/Layout';
 import React, {useState} from 'react';
 import CookingInfo from 'components/CookingInfo';
@@ -31,9 +31,9 @@ function RegistRecipe({}: IRecistRecipe) {
         <CookingInfo handleChange={handleTextChange} />
         <IngredientList />
         <RecipeStep></RecipeStep>
-        <Box margin="50px auto 0">
+        <Center>
           <Btn>레시피 등록</Btn>
-        </Box>
+        </Center>
       </Container>
     </Layout>
   );
