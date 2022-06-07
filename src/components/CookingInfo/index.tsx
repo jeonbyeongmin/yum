@@ -1,11 +1,20 @@
-import {Box, Heading, Flex, Image, Input, Textarea} from '@chakra-ui/react';
+import {
+  Box,
+  Heading,
+  Flex,
+  Image,
+  Input,
+  Textarea,
+  Text,
+  Select,
+} from '@chakra-ui/react';
 import {PlusOutLineIcon} from 'components/Icon';
 import styled from '@emotion/styled';
 
 export default function CookingInfo() {
   return (
     <Box marginY="10">
-      <Heading marginY="5">요리정보 </Heading>
+      <Heading size="lg" marginY="5">요리정보 </Heading>
       <Flex
         flexDirection={'column'}
         border="1px solid #b9b9b9"
@@ -20,6 +29,49 @@ export default function CookingInfo() {
         />
       </Flex>
       <ImageFileContainer />
+
+      <Flex flexDirection={'column'} gap={3} marginY={16}>
+        <Flex>
+          <Text fontSize="1.6rem" minW={'120px'} lineHeight="35px">
+            n인분
+          </Text>
+          <Input
+            placeholder="Select serving"
+            h={'35px'}
+            type={'number'}
+            w="200px"
+            borderColor={'#b9b9b9'}
+          />
+        </Flex>
+        <Flex>
+          <Text fontSize="1.6rem" minW={'120px'} lineHeight="35px">
+            조리시간
+          </Text>
+          <Input
+            placeholder="Select cooking time"
+            h={'35px'}
+            type={'text'}
+            w="200px"
+            borderColor={'#b9b9b9'}
+          />
+        </Flex>
+        <Flex>
+          <Text fontSize="1.6rem" minW={'120px'} lineHeight="35px">
+            카테고리
+          </Text>
+          <Select
+            h={'35px'}
+            type={'text'}
+            w="200px"
+            borderColor={'#b9b9b9'}
+            placeholder="Select category"
+          >
+            <option value="option1">Option 1</option>
+            <option value="option2">Option 2</option>
+            <option value="option3">Option 3</option>
+          </Select>
+        </Flex>
+      </Flex>
     </Box>
   );
 }
