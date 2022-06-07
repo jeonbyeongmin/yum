@@ -6,25 +6,14 @@ import IngredientList from 'components/IngredientList';
 import RecipeStep from 'components/RecipeStep';
 import Btn from 'components/Btn';
 import {IRecipeInfo, IRecipeStep} from 'types/recipe';
+import {useRecoilState} from 'recoil';
+import {recipeRegistState} from 'recoil/recipeRegist';
 
 interface IRecistRecipe {}
-const initInfo = {
-  name: '',
-  desc: '',
-  imgs: [],
-  servings: 0,
-  time: '',
-  category: '',
-  steps: [
-    {
-      step: 0,
-      content: '',
-      img: '',
-    },
-  ],
-};
+
 function RegistRecipe({}: IRecistRecipe) {
-  const [info, setInfo] = useState<IRecipeInfo>(initInfo);
+  // const [info, setInfo] = useState<IRecipeInfo>(initInfo);
+  const [info, setInfo] = useRecoilState(recipeRegistState);
 
   const handleTextChange = (event: any) => {
     const newInfo: IRecipeInfo = {...info};
@@ -36,21 +25,12 @@ function RegistRecipe({}: IRecistRecipe) {
     setInfo(newInfo);
   };
 
-  const handleRecipeStepChange = (newStep: IRecipeStep[]) =>
-    setInfo({
-      ...info,
-      steps: newStep,
-    });
-
   return (
     <Layout>
       <Container maxW="1024px">
-        <CookingInfo handleTextChange={handleTextChange} />
+        <CookingInfo handleChange={handleTextChange} />
         <IngredientList />
-        <RecipeStep
-          info={info}
-          handleStepChange={handleRecipeStepChange}
-        ></RecipeStep>
+        <RecipeStep></RecipeStep>
         <Box margin="50px auto 0">
           <Btn>레시피 등록</Btn>
         </Box>

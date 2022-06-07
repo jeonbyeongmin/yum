@@ -1,23 +1,18 @@
-import {
-  Flex,
-  Heading,
-  Button,
-  Box,
-  Textarea,
-  Input,
-  Text,
-} from '@chakra-ui/react';
+import {Flex, Heading, Button, Box, Textarea, Input} from '@chakra-ui/react';
 import Btn from 'components/Btn';
 import styled from '@emotion/styled';
 import {useEffect, useState} from 'react';
 import {IRecipeInfo, IRecipeStep} from 'types/recipe';
+import {useRecoilState} from 'recoil';
+import {recipeRegistState} from 'recoil/recipeRegist';
 interface ICookingInfoPage {
   handleStepChange: (newStep: IRecipeStep[]) => void;
   info: IRecipeInfo;
 }
-export default function RecipeStep({handleStepChange, info}: ICookingInfoPage) {
+export default function RecipeStep() {
+  const [info, setInfo] = useRecoilState(recipeRegistState);
   useEffect(() => {
-    console.log('info', info);
+    console.log('info : ', info);
   }, [info]);
 
   const handlePlusBtnClick = () => {
@@ -29,7 +24,10 @@ export default function RecipeStep({handleStepChange, info}: ICookingInfoPage) {
         img: '',
       },
     ];
-    handleStepChange(_steps);
+    setInfo({
+      ...info,
+      steps: _steps,
+    });
   };
 
   const handleStepTextChange = (e: any, step: number) => {
@@ -38,7 +36,10 @@ export default function RecipeStep({handleStepChange, info}: ICookingInfoPage) {
       ...newSteps[step],
       content: e.target.value,
     };
-    handleStepChange(newSteps);
+    setInfo({
+      ...info,
+      steps: newSteps,
+    });
   };
 
   return (
@@ -54,7 +55,7 @@ export default function RecipeStep({handleStepChange, info}: ICookingInfoPage) {
           handleStepTextChange={e => handleStepTextChange(e, stepInfo.step)}
         ></RecipeStepItem>
       ))}
-      
+
       <Button
         borderRadius={'50%'}
         w={'50px'}
@@ -82,7 +83,7 @@ function RecipeStepItem({
   return (
     <>
       <Heading color={'#EA900B'} size="md">
-        Step{step}
+        Step{step + 1}
       </Heading>
       <Flex h="150px">
         <Box
