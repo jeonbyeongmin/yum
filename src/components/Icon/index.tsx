@@ -1,8 +1,9 @@
 import React from 'react';
 import {IoCartOutline, IoPersonOutline, IoSearchOutline} from 'react-icons/io5';
-import {AiFillPlusCircle} from 'react-icons/ai';
+import {AiFillPlusCircle, AiOutlinePlus} from 'react-icons/ai';
 interface Iicon {
-  size? : number;
+  size?: number;
+  color?: string;
 }
 export function CartIcon() {
   return <IoCartOutline size={25} />;
@@ -15,7 +16,10 @@ export function UserIcon() {
 export function PlusIcon() {
   return <AiFillPlusCircle size={50} />;
 }
+export function PlusOutLineIcon({size = 30, color = '#000'}: Iicon) {
+  return <AiOutlinePlus size={size} color={color} />;
+}
 
-export function SearchIcon({size} :Iicon) {
+export function SearchIcon({size}: Iicon) {
   return <IoSearchOutline size={size ?? 20} />;
 }
