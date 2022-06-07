@@ -51,6 +51,7 @@ function RecipeStepItem({step}: {step: number}) {
             h="100%"
             border={'none'}
             resize="none"
+            p={5}
           ></Textarea>
         </Box>
         <Box width={'200px'} border="1px solid #b9b9b9" borderRightRadius={5}>
@@ -77,7 +78,7 @@ const RecipeImgInputLabel = styled.label`
   align-items: center;
   gap: 10px;
   &::before {
-    content: '완성된 요리 사진을 등록해 주세요.';
+    content: '요리 사진을 등록해 주세요.';
   }
 `;
 const InfoInput = styled(Input)`
@@ -85,10 +86,5 @@ const InfoInput = styled(Input)`
   width: 100%;
   height: 100%;
   padding: 20px;
-  border-radius: 0;
-  border-left: 1px solid #b9b9b9;
-  border-top: 1px solid #b9b9b9;
-  border-right: 0;
-  border-bottom: 0;
   border-top-left-radius: 5px;
 `;
