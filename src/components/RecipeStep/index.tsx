@@ -1,61 +1,33 @@
 import {Flex, Heading, Button, Box, Textarea, Input} from '@chakra-ui/react';
 import Btn from 'components/Btn';
 import styled from '@emotion/styled';
-import {useEffect, useState} from 'react';
-import {IRecipeInfo, IRecipeStep} from 'types/recipe';
-import {useRecoilState} from 'recoil';
-import {recipeRegistState} from 'recoil/recipeRegist';
+import {IRecipeStep} from 'types/recipe';
+
 interface ICookingInfoPage {
-  handleStepChange: (newStep: IRecipeStep[]) => void;
-  info: IRecipeInfo;
+  steps: IRecipeStep[];
+  handleStepChange: (value: string, step: number) => void;
+  handlePlusBtnClick: () => void;
 }
-export default function RecipeStep() {
-  const [info, setInfo] = useRecoilState(recipeRegistState);
-  useEffect(() => {
-    console.log('info : ', info);
-  }, [info]);
-
-  const handlePlusBtnClick = () => {
-    const _steps = [
-      ...info.steps,
-      {
-        step: info.steps.length,
-        content: '',
-        img: '',
-      },
-    ];
-    setInfo({
-      ...info,
-      steps: _steps,
-    });
-  };
-
-  const handleStepTextChange = (e: any, step: number) => {
-    const newSteps = [...info.steps];
-    newSteps[step] = {
-      ...newSteps[step],
-      content: e.target.value,
-    };
-    setInfo({
-      ...info,
-      steps: newSteps,
-    });
-  };
-
+export default function RecipeStep({
+  steps,
+  handleStepChange,
+  handlePlusBtnClick,
+}: ICookingInfoPage) {
   return (
     <Flex flexDirection={'column'} gap={10} marginY="10">
       <Heading size="lg" marginY="5">
         레시피 순서
       </Heading>
-      {info.steps.map((stepInfo: IRecipeStep) => (
+      {steps.map((stepInfo: IRecipeStep) => (
         <RecipeStepItem
           key={stepInfo.step}
           step={stepInfo.step}
           value={stepInfo.content}
-          handleStepTextChange={e => handleStepTextChange(e, stepInfo.step)}
+          handleStepTextChange={e =>
+            handleStepChange(e.target.value, stepInfo.step)
+          }
         ></RecipeStepItem>
       ))}
-
       <Button
         borderRadius={'50%'}
         w={'50px'}
@@ -71,6 +43,7 @@ export default function RecipeStep() {
     </Flex>
   );
 }
+
 function RecipeStepItem({
   step,
   value,
