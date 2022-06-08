@@ -24,9 +24,11 @@ function RegistRecipe({}: IRecistRecipe) {
   useEffect(() => {
     console.log('cookingInfo : ', cookingInfo);
   }, [cookingInfo]);
+
   useEffect(() => {
     console.log('info : ', recipeSteps);
   }, [recipeSteps]);
+
   const handleTextChange = useCallback(
     (event: React.FormEvent<HTMLInputElement>) => {
       const newInfo: ICookingInfo = {...cookingInfo};
