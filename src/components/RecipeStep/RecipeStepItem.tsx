@@ -1,4 +1,5 @@
-import {Heading, Flex, Box, Textarea} from '@chakra-ui/react';
+import {Heading, Flex, Box, Textarea, Input} from '@chakra-ui/react';
+import styled from '@emotion/styled';
 import Btn from 'components/Btn';
 import React from 'react';
 
@@ -68,6 +69,5 @@ const InfoInput = styled(Input)`
   padding: 20px;
   border-top-left-radius: 5px;
 `;
-
 
 export default RecipeStepItem;
