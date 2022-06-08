@@ -1,5 +1,4 @@
-import {Heading, Flex, Box, Textarea, Input} from '@chakra-ui/react';
-import styled from '@emotion/styled';
+import {Heading, Flex, Box, Textarea} from '@chakra-ui/react';
 import React from 'react';
 import ImageFileInput from './ImageFileInput';
 interface RecipeStepItem {

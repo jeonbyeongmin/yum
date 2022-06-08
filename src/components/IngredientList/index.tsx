@@ -7,7 +7,7 @@ export default function IngredientList() {
   return (
     <Box marginY="10">
       <Heading size="lg" marginY="5">
-        재료{' '}
+        재료
       </Heading>
       <Flex gap={4}>
         <Ingredient

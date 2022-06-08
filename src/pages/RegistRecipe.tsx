@@ -1,4 +1,4 @@
-import {Box, Button, Center, Container} from '@chakra-ui/react';
+import {Center, Container} from '@chakra-ui/react';
 import Layout from 'components/Layout';
 import React, {useCallback, useState} from 'react';
 import CookingInfo from 'components/CookingInfo';
@@ -7,7 +7,6 @@ import RecipeStep from 'components/RecipeStep';
 import Btn from 'components/Btn';
 import {ICookingInfo, IRecipeStep} from 'types/recipe';
 
-interface IRecistRecipe {}
 const initCookingInfo = {
   name: '',
   desc: '',
@@ -16,9 +15,8 @@ const initCookingInfo = {
   time: '',
   category: '',
 };
-import {useEffect} from 'react';
 
-function RegistRecipe({}: IRecistRecipe) {
+function RegistRecipe() {
   const [cookingInfo, setCookingInfo] = useState<ICookingInfo>(initCookingInfo);
   const [recipeSteps, setRecipeSteps] = useState<IRecipeStep[]>([
     {
@@ -41,7 +39,7 @@ function RegistRecipe({}: IRecistRecipe) {
       newInfo[name] = value;
       setCookingInfo(newInfo);
     },
-    [cookingInfo, setCookingInfo],
+    [cookingInfo],
   );
 
   const handlePlusBtnClick = useCallback(() => {
@@ -51,7 +49,7 @@ function RegistRecipe({}: IRecistRecipe) {
       img: '',
     };
     setRecipeSteps([...recipeSteps, newSteps]);
-  }, [recipeSteps, setRecipeSteps]);
+  }, [recipeSteps]);
 
   const handleStepTextChange = useCallback(
     (value: string, step: number) => {
@@ -62,7 +60,7 @@ function RegistRecipe({}: IRecistRecipe) {
       };
       setRecipeSteps(newSteps);
     },
-    [recipeSteps, setRecipeSteps],
+    [recipeSteps],
   );
 
   const handleSubmit = () => {

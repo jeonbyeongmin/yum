@@ -1,6 +1,4 @@
-import {Flex, Heading, Button, Box, Textarea, Input} from '@chakra-ui/react';
-import Btn from 'components/Btn';
-import styled from '@emotion/styled';
+import {Flex, Heading, Button} from '@chakra-ui/react';
 import {IRecipeStep} from 'types/recipe';
 import RecipeStepItem from './RecipeStepItem';
 
