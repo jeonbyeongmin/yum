@@ -32,7 +32,7 @@ function RecipeStepItem({
             p={5}
             // value={value}
             onChange={handleStepTextChange}
-          ></Textarea>
+          />
         </Box>
         <Box width={'200px'} border="1px solid #b9b9b9" borderRightRadius={5}>
           <FileInput step={step} />

@@ -14,17 +14,17 @@ export default function IngredientList() {
           name="사과"
           amount="1개"
           img="https://img.lovepik.com/element/40162/3354.png_860.png"
-        ></Ingredient>
+        />
         <Ingredient
           name="사과"
           amount="1개"
           img="https://img.lovepik.com/element/40162/3354.png_860.png"
-        ></Ingredient>
+        />
         <Ingredient
           name="사과"
           amount="1개"
           img="https://img.lovepik.com/element/40162/3354.png_860.png"
-        ></Ingredient>
+        />
         <Input type={'file'} id={`ingredientFileInput`} hidden />
         <IngredientInputLabel htmlFor={`ingredientFileInput`}>
           <PlusOutLineIcon />

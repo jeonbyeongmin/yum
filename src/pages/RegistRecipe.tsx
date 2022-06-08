@@ -78,7 +78,7 @@ function RegistRecipe({}: IRecistRecipe) {
           steps={recipeSteps}
           handleStepChange={handleStepTextChange}
           handlePlusBtnClick={handlePlusBtnClick}
-        ></RecipeStep>
+        />
         <Center>
           <Btn handleClick={handleSubmit}>레시피 등록</Btn>
         </Center>
