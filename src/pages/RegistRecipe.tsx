@@ -5,29 +5,33 @@ import CookingInfo from 'components/CookingInfo';
 import IngredientList from 'components/IngredientList';
 import RecipeStep from 'components/RecipeStep';
 import Btn from 'components/Btn';
-import {IRecipeInfo, IRecipeStep} from 'types/recipe';
-import {useRecoilState} from 'recoil';
-import {recipeRegistState} from 'recoil/recipeRegist';
+import {ICookingInfo, IRecipeStep} from 'types/recipe';
 
 interface IRecistRecipe {}
-
+const initCookingInfo = {
+  name: '',
+  desc: '',
+  imgs: [],
+  servings: 0,
+  time: '',
+  category: '',
+};
 function RegistRecipe({}: IRecistRecipe) {
-  // const [info, setInfo] = useState<IRecipeInfo>(initInfo);
-  const [info, setInfo] = useRecoilState(recipeRegistState);
-
+  const [cookingInfo, setCookingInfo] = useState<ICookingInfo>(initCookingInfo);
+  const [recipeSteps, setRecipeSteps] = useState<IRecipeStep[]>();
   const handleTextChange = (event: any) => {
-    const newInfo: IRecipeInfo = {...info};
+    const newInfo: ICookingInfo = {...cookingInfo};
     const {
       currentTarget: {value, name},
     } = event;
     newInfo[name] = value;
-    console.log('change', name, value, newInfo);
-    setInfo(newInfo);
+    setCookingInfo(newInfo);
   };
 
   const handleSubmit = () => {
-    console.log('submit btn click : ', info);
+    console.log('submit btn click : ', cookingInfo, recipeSteps);
   };
+
   return (
     <Layout>
       <Container maxW="1024px">
