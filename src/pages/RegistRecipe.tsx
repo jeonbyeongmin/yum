@@ -20,7 +20,13 @@ import {useEffect} from 'react';
 
 function RegistRecipe({}: IRecistRecipe) {
   const [cookingInfo, setCookingInfo] = useState<ICookingInfo>(initCookingInfo);
-  const [recipeSteps, setRecipeSteps] = useState<IRecipeStep[]>([]);
+  const [recipeSteps, setRecipeSteps] = useState<IRecipeStep[]>([
+    {
+      step: 0,
+      content: '',
+      img: '',
+    },
+  ]);
   useEffect(() => {
     console.log('cookingInfo : ', cookingInfo);
   }, [cookingInfo]);
