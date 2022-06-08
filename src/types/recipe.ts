@@ -25,6 +25,6 @@ export interface IRecipeStep {
   content: string;
   img: string;
 }
-export interface IRecipeInfo extends ICookingInfo {
-  steps: IRecipeStep[];
-}
+// export interface IRecipeInfo extends ICookingInfo {
+//   steps: IRecipeStep[];
+// }

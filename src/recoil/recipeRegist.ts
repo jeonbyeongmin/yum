@@ -16,7 +16,6 @@ const initInfo = {
     },
   ],
 };
-
 const recipeRegistState = atom<IRecipeInfo>({
   key: 'nameState',
   default: initInfo,

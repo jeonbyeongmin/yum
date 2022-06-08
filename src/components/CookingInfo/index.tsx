@@ -10,11 +10,11 @@ import {
 } from '@chakra-ui/react';
 import {PlusOutLineIcon} from 'components/Icon';
 import styled from '@emotion/styled';
-import {ICookingInfo, IRecipeInfo} from 'types/recipe';
-import {useState} from 'react';
+
 interface ICookingInfoPage {
   handleChange: (event: any) => void;
 }
+
 export default function CookingInfo({handleChange}: ICookingInfoPage) {
   return (
     <Box marginY="10">
@@ -37,7 +37,6 @@ export default function CookingInfo({handleChange}: ICookingInfoPage) {
           placeholder="요리에 대해 설명해주세요.."
           resize={'none'}
           p={5}
-          // value{}
           name={'desc'}
           onChange={handleChange}
         />
@@ -79,7 +78,6 @@ export default function CookingInfo({handleChange}: ICookingInfoPage) {
           </Text>
           <Select
             h={'35px'}
-            type={'text'}
             w="200px"
             borderColor={'#b9b9b9'}
             placeholder="Select category"
@@ -95,11 +93,11 @@ export default function CookingInfo({handleChange}: ICookingInfoPage) {
     </Box>
   );
 }
+
 function ImageFileContainer() {
   return (
     <Flex marginY={3} gap={2}>
       <ImageFile key={1}></ImageFile>
-
       <ImageFileInputWrapper>
         <Input type={'file'} id={`fileInput`} hidden />
         <label htmlFor={`fileInput`}>
