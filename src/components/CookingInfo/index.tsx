@@ -9,7 +9,6 @@ import {
 } from '@chakra-ui/react';
 import styled from '@emotion/styled';
 import ImageFileContainer from 'components/ImageFileBox';
-import {ChangeEventHandler} from 'react';
 
 interface ICookingInfoPage {
   handleChange: (
