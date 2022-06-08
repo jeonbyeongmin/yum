@@ -7,12 +7,16 @@ import {
   Text,
   Select,
 } from '@chakra-ui/react';
-import {PlusOutLineIcon} from 'components/Icon';
 import styled from '@emotion/styled';
 import ImageFileContainer from 'components/ImageFileBox';
+import {ChangeEventHandler} from 'react';
 
 interface ICookingInfoPage {
-  handleChange: (event: any) => void;
+  handleChange: (
+    event: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
+  ) => void;
 }
 
 export default function CookingInfo({handleChange}: ICookingInfoPage) {
@@ -38,7 +42,7 @@ export default function CookingInfo({handleChange}: ICookingInfoPage) {
           resize={'none'}
           p={5}
           name={'desc'}
-          onChange={handleChange}
+          onChange={e => handleChange(e)}
         />
       </Flex>
       <ImageFileContainer />

@@ -27,16 +27,13 @@ function RegistRecipe({}: IRecistRecipe) {
       img: '',
     },
   ]);
-  useEffect(() => {
-    console.log('cookingInfo : ', cookingInfo);
-  }, [cookingInfo]);
-
-  useEffect(() => {
-    console.log('info : ', recipeSteps);
-  }, [recipeSteps]);
 
   const handleTextChange = useCallback(
-    (event: React.FormEvent<HTMLInputElement>) => {
+    (
+      event: React.ChangeEvent<
+        HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+      >,
+    ) => {
       const newInfo: ICookingInfo = {...cookingInfo};
       const {
         currentTarget: {value, name},
@@ -47,23 +44,26 @@ function RegistRecipe({}: IRecistRecipe) {
     [cookingInfo, setCookingInfo],
   );
 
-  const handlePlusBtnClick = () => {
+  const handlePlusBtnClick = useCallback(() => {
     const newSteps = {
       step: recipeSteps.length,
       content: '',
       img: '',
     };
     setRecipeSteps([...recipeSteps, newSteps]);
-  };
+  }, [recipeSteps, setRecipeSteps]);
 
-  const handleStepTextChange = (value: string, step: number) => {
-    const newSteps = [...recipeSteps];
-    newSteps[step] = {
-      ...newSteps[step],
-      content: value,
-    };
-    setRecipeSteps(newSteps);
-  };
+  const handleStepTextChange = useCallback(
+    (value: string, step: number) => {
+      const newSteps = [...recipeSteps];
+      newSteps[step] = {
+        ...newSteps[step],
+        content: value,
+      };
+      setRecipeSteps(newSteps);
+    },
+    [recipeSteps, setRecipeSteps],
+  );
 
   const handleSubmit = () => {
     console.log('submit btn click : ', cookingInfo, recipeSteps);
