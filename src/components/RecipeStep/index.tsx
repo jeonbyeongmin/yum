@@ -27,7 +27,7 @@ export default function RecipeStep({
           handleStepTextChange={e =>
             handleStepChange(e.target.value, stepInfo.step)
           }
-        ></RecipeStepItem>
+        />
       ))}
       <Button
         borderRadius={'50%'}
