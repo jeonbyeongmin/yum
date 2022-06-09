@@ -1,11 +1,7 @@
 import styled from '@emotion/styled';
 import {css} from '@emotion/react';
-
-import Image from 'next/image';
-import React, {ReactNode} from 'react';
+import React from 'react';
 import {media} from 'styles/theme';
-import logo from '../../../public/logo.png';
-import Nav from 'components/Nav';
 import SearchBar from 'components/SearchBar';
 import {CartIcon, UserIcon, SearchIcon} from 'components/Icon';
 import {Box, HStack, Text} from '@chakra-ui/react';
