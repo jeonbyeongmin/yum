@@ -23,20 +23,21 @@ function ResultBox() {
           </HStack>
         </Box>
       </Box>
-      <Button
+      <SubmitBtn
         w={'100%'}
         colorScheme="orange"
-        marginTop={0}
         borderTopRadius="0"
         h={'50px'}
         fontSize="xl"
       >
         주문하기
-      </Button>
+      </SubmitBtn>
     </VStack>
   );
 }
-
+const SubmitBtn = styled(Button)`
+  margin-top: 0px !important;
+`;
 const BigText = styled(Text)`
   font-size: 1.5rem;
 `;
