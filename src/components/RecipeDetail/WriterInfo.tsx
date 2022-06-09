@@ -3,7 +3,7 @@ import Btn from 'components/Btn';
 
 function WriterInfo() {
   return (
-    <HStack w="100%" gap={5}>
+    <HStack w="100%" gap={5} paddingY={5}>
       <Avatar
         src="https://recipe1.ezmember.co.kr/cache/recipe/2020/08/18/32775e06923a4bef0cb6093ff84d28ef1.jpg"
         size={'xl'}
