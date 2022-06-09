@@ -1,4 +1,4 @@
-import {Center, Container} from '@chakra-ui/react';
+import {Box, Center, Container} from '@chakra-ui/react';
 import Layout from 'components/Layout';
 import React, {useCallback, useState} from 'react';
 import CookingInfo from 'components/CookingInfo';
@@ -6,6 +6,8 @@ import IngredientList from 'components/IngredientList';
 import RecipeStep from 'components/RecipeStep';
 import Btn from 'components/Btn';
 import {ICookingInfo, IRecipeStep} from 'types/recipe';
+import CookingContent from 'components/CookingContent';
+import ImageFileContainer from 'components/ImageFileBox';
 
 const initCookingInfo = {
   name: '',
@@ -18,6 +20,9 @@ const initCookingInfo = {
 
 function RegistRecipe() {
   const [cookingInfo, setCookingInfo] = useState<ICookingInfo>(initCookingInfo);
+
+  // 최적화 문제로 cookingInfo에서 images 분리
+  const [cookingImages, setCookingImages] = useState<string[]>([]);
   const [recipeSteps, setRecipeSteps] = useState<IRecipeStep[]>([
     {
       step: 0,
@@ -70,7 +75,15 @@ function RegistRecipe() {
   return (
     <Layout>
       <Container maxW="1024px">
-        <CookingInfo handleChange={handleTextChange} />
+        <Box marginY="10">
+          <CookingContent handleChange={handleTextChange} />
+          <ImageFileContainer
+            images={cookingImages}
+            setImages={setCookingImages}
+          />
+          <CookingInfo handleChange={handleTextChange} />
+        </Box>
+
         <IngredientList />
         <RecipeStep
           steps={recipeSteps}
