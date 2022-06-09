@@ -17,6 +17,7 @@ function Header() {
         maxWidth="1024px"
         m={'0 auto'}
         paddingX={{base: 5, sm: 10}}
+        borderBottom="1px solid #e0e0e0"
       >
         <Logo fontSize={'4xl'} fontWeight="bold" w={{base: '70px', sm: 100}}>
           YUM
