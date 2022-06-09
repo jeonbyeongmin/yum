@@ -5,7 +5,7 @@ import CookingInfo from './CookingInfo';
 
 const RecipeInfo = () => {
   return (
-    <VStack flex={1} alignItems=" flex-start">
+    <>
       <Box borderRadius={5} overflow="hidden">
         <Image
           src="https://recipe1.ezmember.co.kr/cache/recipe/2020/08/18/32775e06923a4bef0cb6093ff84d28ef1.jpg"
@@ -27,7 +27,7 @@ const RecipeInfo = () => {
       <WriterInfo />
       {/* 이거 이름 겹치는데 어떻게 하는게 좋을까여 components/CookingInfo에 있어요*/}
       <CookingInfo />
-    </VStack>
+    </>
   );
 };
 
