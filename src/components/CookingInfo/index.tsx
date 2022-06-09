@@ -40,8 +40,9 @@ export default function CookingInfo({handleChange}: ICookingInfoPage) {
           placeholder="요리에 대해 설명해주세요.."
           resize={'none'}
           p={5}
+          // value{}
           name={'desc'}
-          onChange={e => handleChange(e)}
+          onChange={handleChange}
         />
       </Flex>
       <ImageFileContainer />
@@ -96,7 +97,6 @@ export default function CookingInfo({handleChange}: ICookingInfoPage) {
     </Box>
   );
 }
-
 const CookingDesc = styled(Textarea)`
   border: none;
   border-top: 1px solid #b9b9b9;

@@ -12,24 +12,20 @@ function Layout({children}: ILayout) {
   return (
     <>
       <Header />
-      <Body>
-        <HeaderArea></HeaderArea>
-        {children}
-      </Body>
+      <Body>{children}</Body>
       <Footer />
     </>
   );
 }
-const HeaderArea = styled.div`
-  height: 80px;
-  ${media.tablet} {
-    height: 60px;
-  }
-`;
+
 const Body = styled.div`
   min-height: 100vh;
   max-width: 1024px;
   margin: 0 auto;
+  padding-top: 85px;
+  ${media.tablet} {
+    padding-top: 60px;
+  }
 `;
 
 export default Layout;
