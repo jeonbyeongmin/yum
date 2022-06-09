@@ -1,17 +1,17 @@
-import styled from '@emotion/styled';
-import HStack from 'components/HStack';
-import Link from 'next/link';
-import React from 'react';
-import {media} from 'styles/theme';
+import styled from "@emotion/styled";
+import HStack from "components/HStack";
+import Link from "next/link";
+import React from "react";
+import { media } from "styles/theme";
 
 function Nav() {
   return (
     <Wrapper>
       <HStack gap="30px">
-        <Link href="/">
+        <Link href="/" passHref>
           <LinkText>레시피</LinkText>
         </Link>
-        <Link href="/Store">
+        <Link href="/Store" passHref>
           <LinkText>스토어</LinkText>
         </Link>
       </HStack>
