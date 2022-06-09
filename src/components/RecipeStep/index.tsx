@@ -1,61 +1,32 @@
-import {Flex, Heading, Button, Box, Textarea, Input} from '@chakra-ui/react';
-import Btn from 'components/Btn';
-import styled from '@emotion/styled';
-import {useEffect, useState} from 'react';
-import {IRecipeInfo, IRecipeStep} from 'types/recipe';
-import {useRecoilState} from 'recoil';
-import {recipeRegistState} from 'recoil/recipeRegist';
+import {Flex, Heading, Button} from '@chakra-ui/react';
+import {IRecipeStep} from 'types/recipe';
+import RecipeStepItem from './RecipeStepItem';
+
 interface ICookingInfoPage {
-  handleStepChange: (newStep: IRecipeStep[]) => void;
-  info: IRecipeInfo;
+  steps: IRecipeStep[];
+  handleStepChange: (value: string, step: number) => void;
+  handlePlusBtnClick: () => void;
 }
-export default function RecipeStep() {
-  const [info, setInfo] = useRecoilState(recipeRegistState);
-  useEffect(() => {
-    console.log('info : ', info);
-  }, [info]);
-
-  const handlePlusBtnClick = () => {
-    const _steps = [
-      ...info.steps,
-      {
-        step: info.steps.length,
-        content: '',
-        img: '',
-      },
-    ];
-    setInfo({
-      ...info,
-      steps: _steps,
-    });
-  };
-
-  const handleStepTextChange = (e: any, step: number) => {
-    const newSteps = [...info.steps];
-    newSteps[step] = {
-      ...newSteps[step],
-      content: e.target.value,
-    };
-    setInfo({
-      ...info,
-      steps: newSteps,
-    });
-  };
-
+export default function RecipeStep({
+  steps,
+  handleStepChange,
+  handlePlusBtnClick,
+}: ICookingInfoPage) {
   return (
     <Flex flexDirection={'column'} gap={10} marginY="10">
       <Heading size="lg" marginY="5">
         레시피 순서
       </Heading>
-      {info.steps.map((stepInfo: IRecipeStep) => (
+      {steps.map((stepInfo: IRecipeStep) => (
         <RecipeStepItem
           key={stepInfo.step}
           step={stepInfo.step}
           value={stepInfo.content}
-          handleStepTextChange={e => handleStepTextChange(e, stepInfo.step)}
-        ></RecipeStepItem>
+          handleStepTextChange={e =>
+            handleStepChange(e.target.value, stepInfo.step)
+          }
+        />
       ))}
-
       <Button
         borderRadius={'50%'}
         w={'50px'}
@@ -71,68 +42,3 @@ export default function RecipeStep() {
     </Flex>
   );
 }
-function RecipeStepItem({
-  step,
-  value,
-  handleStepTextChange,
-}: {
-  step: number;
-  value: string;
-  handleStepTextChange: any;
-}) {
-  return (
-    <>
-      <Heading color={'#EA900B'} size="md">
-        Step{step + 1}
-      </Heading>
-      <Flex h="150px">
-        <Box
-          flex={1}
-          border="1px solid #b9b9b9"
-          borderRight={'none'}
-          borderLeftRadius={5}
-        >
-          <Textarea
-            w={'100%'}
-            h="100%"
-            border={'none'}
-            resize="none"
-            p={5}
-            // value={value}
-            onChange={handleStepTextChange}
-          ></Textarea>
-        </Box>
-        <Box width={'200px'} border="1px solid #b9b9b9" borderRightRadius={5}>
-          <FileInput step={step} />
-        </Box>
-      </Flex>
-    </>
-  );
-}
-function FileInput({step}: {step: number}) {
-  return (
-    <Flex flexDirection={'column'} justifyContent="center" w="100%" h="100%">
-      <InfoInput type={'file'} id={`recipeImgInput${step}`} hidden />
-      <RecipeImgInputLabel htmlFor={`recipeImgInput${step}`}>
-        <Btn>사진 업로드</Btn>
-      </RecipeImgInputLabel>
-    </Flex>
-  );
-}
-const RecipeImgInputLabel = styled.label`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  &::before {
-    content: '요리 사진을 등록해 주세요.';
-  }
-`;
-const InfoInput = styled(Input)`
-  font-size: 1.1rem;
-  width: 100%;
-  height: 100%;
-  padding: 20px;
-  border-top-left-radius: 5px;
-`;

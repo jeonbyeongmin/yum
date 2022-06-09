@@ -2,19 +2,22 @@ import {
   Box,
   Heading,
   Flex,
-  Image,
   Input,
   Textarea,
   Text,
   Select,
 } from '@chakra-ui/react';
-import {PlusOutLineIcon} from 'components/Icon';
 import styled from '@emotion/styled';
-import {ICookingInfo, IRecipeInfo} from 'types/recipe';
-import {useState} from 'react';
+import ImageFileContainer from 'components/ImageFileBox';
+
 interface ICookingInfoPage {
-  handleChange: (event: any) => void;
+  handleChange: (
+    event: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
+  ) => void;
 }
+
 export default function CookingInfo({handleChange}: ICookingInfoPage) {
   return (
     <Box marginY="10">
@@ -79,7 +82,6 @@ export default function CookingInfo({handleChange}: ICookingInfoPage) {
           </Text>
           <Select
             h={'35px'}
-            type={'text'}
             w="200px"
             borderColor={'#b9b9b9'}
             placeholder="Select category"
@@ -95,43 +97,6 @@ export default function CookingInfo({handleChange}: ICookingInfoPage) {
     </Box>
   );
 }
-function ImageFileContainer() {
-  return (
-    <Flex marginY={3} gap={2}>
-      <ImageFile key={1}></ImageFile>
-
-      <ImageFileInputWrapper>
-        <Input type={'file'} id={`fileInput`} hidden />
-        <label htmlFor={`fileInput`}>
-          <PlusOutLineIcon />
-        </label>
-      </ImageFileInputWrapper>
-    </Flex>
-  );
-}
-function ImageFile() {
-  return (
-    <ImageFileInputWrapper>
-      <Image
-        src="https://img.lovepik.com/element/40162/3354.png_860.png"
-        alt="Dan Abramov"
-        w={'100%'}
-        h={'100%'}
-      />
-    </ImageFileInputWrapper>
-  );
-}
-
-const ImageFileInputWrapper = styled(Box)`
-  border: 1px solid #b9b9b9;
-  width: 70px;
-  height: 70px;
-  border-radius: 3px;
-  display: inline-flex;
-  align-items: center;
-  border: 1px solid #b9b9b9;
-  justify-content: center;
-`;
 const CookingDesc = styled(Textarea)`
   border: none;
   border-top: 1px solid #b9b9b9;

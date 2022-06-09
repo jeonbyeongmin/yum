@@ -7,24 +7,24 @@ export default function IngredientList() {
   return (
     <Box marginY="10">
       <Heading size="lg" marginY="5">
-        재료{' '}
+        재료
       </Heading>
       <Flex gap={4}>
         <Ingredient
           name="사과"
           amount="1개"
           img="https://img.lovepik.com/element/40162/3354.png_860.png"
-        ></Ingredient>
+        />
         <Ingredient
           name="사과"
           amount="1개"
           img="https://img.lovepik.com/element/40162/3354.png_860.png"
-        ></Ingredient>
+        />
         <Ingredient
           name="사과"
           amount="1개"
           img="https://img.lovepik.com/element/40162/3354.png_860.png"
-        ></Ingredient>
+        />
         <Input type={'file'} id={`ingredientFileInput`} hidden />
         <IngredientInputLabel htmlFor={`ingredientFileInput`}>
           <PlusOutLineIcon />
