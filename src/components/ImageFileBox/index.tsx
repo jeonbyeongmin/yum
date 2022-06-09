@@ -1,16 +1,27 @@
-import React from 'react';
-import {Box, Flex, Image, Input} from '@chakra-ui/react';
+import React, {Dispatch, SetStateAction} from 'react';
+import {Box, Flex} from '@chakra-ui/react';
 import {PlusOutLineIcon} from 'components/Icon';
 import ImageFile from 'components/ImageFile';
 import styled from '@emotion/styled';
+import useImageUpload from 'common/hooks/useImageUpload';
 
-function ImageFileContainer() {
+interface IImageFileContainer {
+  images: string[];
+  setImages: Dispatch<SetStateAction<string[]>>;
+}
+
+function ImageFileContainer({images, setImages}: IImageFileContainer) {
+  const {onChange} = useImageUpload(images, setImages);
+
   return (
     <Flex marginY={3} gap={2}>
-      <ImageFile key={1}></ImageFile>
+      {images?.map((item, index) => {
+        const key = item + index;
+        return <ImageFile imageUrl={item} key={key} />;
+      })}
       <ImageFileInputWrapper>
-        <Input type={'file'} id={`fileInput`} hidden />
-        <label htmlFor={`fileInput`}>
+        <input type="file" id="fileInput" onChange={onChange} hidden />
+        <label htmlFor="fileInput">
           <PlusOutLineIcon />
         </label>
       </ImageFileInputWrapper>
@@ -28,4 +39,5 @@ const ImageFileInputWrapper = styled(Box)`
   border: 1px solid #b9b9b9;
   justify-content: center;
 `;
+
 export default ImageFileContainer;

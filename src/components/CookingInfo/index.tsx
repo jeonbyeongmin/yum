@@ -1,16 +1,6 @@
-import {
-  Box,
-  Heading,
-  Flex,
-  Input,
-  Textarea,
-  Text,
-  Select,
-} from '@chakra-ui/react';
-import styled from '@emotion/styled';
-import ImageFileContainer from 'components/ImageFileBox';
+import {Flex, Input, Text, Select} from '@chakra-ui/react';
 
-interface ICookingInfoPage {
+interface ICookingInfo {
   handleChange: (
     event: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
@@ -18,35 +8,9 @@ interface ICookingInfoPage {
   ) => void;
 }
 
-export default function CookingInfo({handleChange}: ICookingInfoPage) {
+export default function CookingInfo({handleChange}: ICookingInfo) {
   return (
-    <Box marginY="10">
-      <Heading size="lg" marginY="5">
-        요리정보
-      </Heading>
-      <Flex
-        flexDirection={'column'}
-        border="1px solid #b9b9b9"
-        borderRadius={'5px'}
-        minH="200px"
-      >
-        <InfoInput
-          placeholder="요리의 이름을 입력해주세요."
-          p={5}
-          name={'name'}
-          onChange={handleChange}
-        />
-        <CookingDesc
-          placeholder="요리에 대해 설명해주세요.."
-          resize={'none'}
-          p={5}
-          // value{}
-          name={'desc'}
-          onChange={handleChange}
-        />
-      </Flex>
-      <ImageFileContainer />
-
+    <>
       <Flex flexDirection={'column'} gap={3} marginY={16}>
         <Flex>
           <Text fontSize="1.6rem" minW={'120px'} lineHeight="35px">
@@ -94,18 +58,6 @@ export default function CookingInfo({handleChange}: ICookingInfoPage) {
           </Select>
         </Flex>
       </Flex>
-    </Box>
+    </>
   );
 }
-const CookingDesc = styled(Textarea)`
-  border: none;
-  border-top: 1px solid #b9b9b9;
-  flex: 1;
-  border-radius: 0;
-`;
-
-const InfoInput = styled(Input)`
-  border: none;
-  border-radius: 0;
-  min-height: 50px;
-`;
