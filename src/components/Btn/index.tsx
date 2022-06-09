@@ -17,7 +17,7 @@ function Btn({children, theme, handleClick, ...rest}: IButton) {
   return (
     <Wrapper
       onClick={handleClick}
-      theme
+      theme={theme}
       size="lg"
       p={{base: '20px', md: '20px'}}
       _active={{
@@ -46,6 +46,19 @@ const Wrapper = styled(Button)`
       &:active,
       &:hover {
         background-color: orange;
+      }
+    `}
+  ${props =>
+    props.theme == 'orange--outline' &&
+    css`
+      border: 1px solid orange;
+      color: orange;
+      background-color: #ffffff;
+      &:focus,
+      &:active,
+      &:hover {
+        background-color: orange;
+        color: white;
       }
     `}
   ${props =>

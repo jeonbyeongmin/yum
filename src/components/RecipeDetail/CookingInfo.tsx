@@ -12,15 +12,15 @@ function CookingInfo() {
       >
         <HStack>
           <UserIcon />
-          <Text>1인분</Text>
+          <Text fontSize={'lg'}>1인분</Text>
         </HStack>
         <HStack>
           <UserIcon />
-          <Text>10분</Text>
+          <Text fontSize={'lg'}>10분</Text>
         </HStack>
         <HStack>
           <UserIcon />
-          <Text>샌드위치</Text>
+          <Text fontSize={'lg'}>샌드위치</Text>
         </HStack>
       </HStack>
       <SimpleGrid

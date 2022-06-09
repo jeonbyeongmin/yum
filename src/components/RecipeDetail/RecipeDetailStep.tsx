@@ -2,9 +2,7 @@ import {Heading, VStack} from '@chakra-ui/react';
 import React from 'react';
 import StepItem from './StepItem';
 
-type Props = {};
-
-function RecipeDetailStep({}: Props) {
+function RecipeDetailStep() {
   return (
     <>
       <Heading>레시피</Heading>
