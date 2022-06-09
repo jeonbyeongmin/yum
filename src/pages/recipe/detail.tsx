@@ -1,27 +1,19 @@
-import {Box, Flex, Image, VStack, Text, HStack, Avatar} from '@chakra-ui/react';
-import Btn from 'components/Btn';
+import {Flex, VStack} from '@chakra-ui/react';
 import Layout from 'components/Layout';
-import RecipeDetailStep from 'components/RecipeDetailStep';
-import RecipeInfo from 'components/RecipeInfo';
+import IngredientCart from 'components/RecipeDetail/IngredientCart';
+import RecipeDetailStep from 'components/RecipeDetail/RecipeDetailStep';
+import RecipeInfo from 'components/RecipeDetail/RecipeInfo';
 import React from 'react';
 
 function Detail() {
   return (
     <Layout>
-      <Flex gap={5} p={5}>
+      <Flex gap={10} p={5}>
         <VStack flex={1} alignItems=" flex-start">
           <RecipeInfo />
           <RecipeDetailStep />
         </VStack>
-        <VStack
-          w={'320px'}
-          border="1px solid #D6D6D6"
-          borderRadius={5}
-          height={'fit-content'}
-          minHeight={'400px'}
-        >
-          sad
-        </VStack>
+        <IngredientCart />
       </Flex>
     </Layout>
   );

@@ -7,10 +7,12 @@ interface IIngredientInfo {
 }
 function IngredientInfo({name, content, img}: IIngredientInfo) {
   return (
-    <HStack>
-      {img && <Avatar></Avatar>}
-      <Text minWidth={'100px'}>{name}</Text>
-      <Text>{content}</Text>
+    <HStack gap={5}>
+      {img && <Avatar src={img}></Avatar>}
+      <Text fontSize={'xl'} minWidth={'80px'}>
+        {name}
+      </Text>
+      <Text fontSize={'xl'}>{content}</Text>
     </HStack>
   );
 }
