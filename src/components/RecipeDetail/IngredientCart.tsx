@@ -3,8 +3,6 @@ import Btn from 'components/Btn';
 import IngredientInfo from 'components/IngredientInfo';
 import React from 'react';
 
-type Props = {};
-
 const IngredientCart = () => {
   return (
     <VStack

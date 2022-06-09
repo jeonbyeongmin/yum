@@ -4,7 +4,12 @@ import IngredientInfo from 'components/IngredientInfo';
 
 function CookingInfo() {
   return (
-    <Box p={5} backgroundColor="#F6F6F6" width={'100%'} borderRadius={10}>
+    <Box
+      paddingY={5}
+      backgroundColor="#F6F6F6"
+      width={'100%'}
+      borderRadius={10}
+    >
       <HStack
         justifyContent={'space-between'}
         p={'10px 10%'}
