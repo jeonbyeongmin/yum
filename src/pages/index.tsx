@@ -2,12 +2,14 @@ import type { NextPage } from "next";
 import styled from "@emotion/styled";
 import Layout from "components/Layout";
 import RecipeItemList from "components/RecipeItemList";
+import PopularRecipeItemList from "components/PopularRecipeList";
 
 const Home: NextPage = () => {
   return (
     <Layout>
       <RecipeItemList title={"내가 팔로잉한 유저들의 레시피"} />
       <RecipeItemList title={"최근 레시피"} />
+      <PopularRecipeItemList title={"인기 레시피"} />
     </Layout>
   );
 };

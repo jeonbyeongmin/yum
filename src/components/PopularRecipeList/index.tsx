@@ -1,5 +1,16 @@
-import { Box, Container, Flex, Heading, HStack } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Center,
+  Container,
+  Flex,
+  Heading,
+  HStack,
+  Wrap,
+  WrapItem,
+} from "@chakra-ui/react";
 import styled from "@emotion/styled";
+import Btn from "components/Btn";
 import { LeftArrowIcon, RightArrowIcon } from "components/Icon";
 import Layout from "components/Layout";
 import RecipeItem from "components/RecipeItem";
@@ -22,9 +33,9 @@ export interface IRecipeItem {
 const initData: IRecipeItem[] = [
   {
     id: 1,
-    name: "수제 베이컨 치즈 버거",
-    desc: "군침이 뚝뚝 떨어지는 수제 베이컨 치즈 버거입니다.",
-    img: "https://images.unsplash.com/photo-1550317138-10000687a72b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2440&q=80",
+    name: "숯불 바베큐 꼬치",
+    desc: "숯불로 구운 바베큐 꼬치입니다.",
+    img: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80",
     userName: "정균이",
     userImg: "",
     likeCount: 3,
@@ -44,9 +55,9 @@ const initData: IRecipeItem[] = [
   },
   {
     id: 3,
-    name: "수제 베이컨 치즈 버거",
-    desc: "군침이 뚝뚝 떨어지는 수제 베이컨 치즈 버거입니다.",
-    img: "https://images.unsplash.com/photo-1550317138-10000687a72b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2440&q=80",
+    name: "숯불 바베큐 꼬치",
+    desc: "숯불로 구운 바베큐 꼬치입니다.",
+    img: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80",
     userName: "정균이",
     userImg: "",
     likeCount: 3,
@@ -64,36 +75,72 @@ const initData: IRecipeItem[] = [
     liked: false,
     bookmarked: false,
   },
+  {
+    id: 5,
+    name: "숯불 바베큐 꼬치",
+    desc: "숯불로 구운 바베큐 꼬치입니다.",
+    img: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80",
+    userName: "정균이",
+    userImg: "",
+    likeCount: 3,
+    liked: false,
+    bookmarked: false,
+  },
+  {
+    id: 6,
+    name: "수제 베이컨 치즈 버거",
+    desc: "군침이 뚝뚝 떨어지는 수제 베이컨 치즈 버거입니다.",
+    img: "https://images.unsplash.com/photo-1550317138-10000687a72b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2440&q=80",
+    userName: "정균이",
+    userImg: "",
+    likeCount: 3,
+    liked: false,
+    bookmarked: false,
+  },
+  {
+    id: 7,
+    name: "숯불 바베큐 꼬치",
+    desc: "숯불로 구운 바베큐 꼬치입니다.",
+    img: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80",
+    userName: "정균이",
+    userImg: "",
+    likeCount: 3,
+    liked: false,
+    bookmarked: false,
+  },
+  {
+    id: 8,
+    name: "수제 베이컨 치즈 버거",
+    desc: "군침이 뚝뚝 떨어지는 수제 베이컨 치즈 버거입니다.",
+    img: "https://images.unsplash.com/photo-1550317138-10000687a72b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2440&q=80",
+    userName: "정균이",
+    userImg: "",
+    likeCount: 3,
+    liked: false,
+    bookmarked: false,
+  },
 ];
 
 function PopularRecipeItemList({ title }: IRecipeItemList) {
   return (
     <Box pos="relative" mb={20}>
-      <Heading size="xl" marginY="10" fontWeight="black" minH="600px">
+      <Heading size="xl" marginY="10" fontWeight="black">
         {title}
       </Heading>
-      <HStack gap={5}>
+      <Wrap spacingX={7} spacingY={14}>
         {initData.map((data) => (
-          <RecipeItem key={data.id} data={data} />
+          <WrapItem key={data.id}>
+            <RecipeItem data={data} />
+          </WrapItem>
         ))}
-      </HStack>
-      <Flex>
-        <Box pos="absolute" top="35%" left={-8}>
-          <LeftArrowIcon />
-        </Box>
-        <Box pos="absolute" top="35%" right={-8}>
-          <RightArrowIcon />
-        </Box>
-      </Flex>
+      </Wrap>
+      <Center my={20}>
+        <Button size="lg" height="45px" width="150px">
+          더 보기
+        </Button>
+      </Center>
     </Box>
   );
 }
-
-// const ArrowContainer = styled(Box)`
-//   /* position: absolute; */
-//   z-index: 2;
-//   /* width: 100%; */
-//   /* right: 0; */
-// `;
 
 export default PopularRecipeItemList;
