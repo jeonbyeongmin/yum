@@ -14,6 +14,4 @@ const Home: NextPage = () => {
   );
 };
 
-const Text = styled.div``;
-
 export default Home;
