@@ -1,18 +1,4 @@
-import {
-  Box,
-  Button,
-  Center,
-  Container,
-  Flex,
-  Heading,
-  HStack,
-  Wrap,
-  WrapItem,
-} from "@chakra-ui/react";
-import styled from "@emotion/styled";
-import Btn from "components/Btn";
-import { LeftArrowIcon, RightArrowIcon } from "components/Icon";
-import Layout from "components/Layout";
+import { Box, Button, Center, Heading, Wrap, WrapItem } from "@chakra-ui/react";
 import RecipeItem from "components/RecipeItem";
 
 interface IRecipeItemList {

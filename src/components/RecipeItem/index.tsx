@@ -1,14 +1,4 @@
-import {
-  Box,
-  Heading,
-  HStack,
-  Image,
-  Text,
-  VStack,
-  Flex,
-  Avatar,
-} from "@chakra-ui/react";
-import styled from "@emotion/styled";
+import { Box, Image, Text, VStack, Flex, Avatar } from "@chakra-ui/react";
 import { BookmarkIcon, LikeIcon } from "components/Icon";
 import { IRecipeItem } from "components/RecipeItemList";
 
