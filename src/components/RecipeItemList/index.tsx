@@ -26,7 +26,7 @@ const initData: IRecipeItem[] = [
     userName: "정균이",
     userImg: "",
     likeCount: 5,
-    liked: false,
+    liked: true,
     bookmarked: false,
   },
   {
@@ -38,7 +38,7 @@ const initData: IRecipeItem[] = [
     userImg: "",
     likeCount: 3,
     liked: false,
-    bookmarked: false,
+    bookmarked: true,
   },
   {
     id: 3,
@@ -59,8 +59,8 @@ const initData: IRecipeItem[] = [
     userName: "정균이",
     userImg: "",
     likeCount: 3,
-    liked: false,
-    bookmarked: false,
+    liked: true,
+    bookmarked: true,
   },
 ];
 
@@ -86,12 +86,5 @@ function RecipeItemList({ title }: IRecipeItemList) {
     </Box>
   );
 }
-
-// const ArrowContainer = styled(Box)`
-//   /* position: absolute; */
-//   z-index: 2;
-//   /* width: 100%; */
-//   /* right: 0; */
-// `;
 
 export default RecipeItemList;

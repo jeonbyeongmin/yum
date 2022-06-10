@@ -18,12 +18,16 @@ function RecipeItem({ data }: IRecipeData) {
       <Box p={3} width={"240px"}>
         <Flex justifyContent="space-between">
           <Flex alignItems="center">
-            <LikeIcon />
+            <Box cursor={"pointer"}>
+              <LikeIcon activate={data.liked} />
+            </Box>
             <Text fontSize="xl" color="gray.500" ml={2}>
               {data.likeCount}
             </Text>
           </Flex>
-          <BookmarkIcon />
+          <Box cursor={"pointer"}>
+            <BookmarkIcon activate={data.bookmarked} />
+          </Box>
         </Flex>
         <Text mt="5" fontWeight="semibold" fontSize="2xl" lineHeight="tight">
           {data.name}

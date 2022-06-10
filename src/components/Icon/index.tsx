@@ -4,7 +4,9 @@ import {
   IoPersonOutline,
   IoSearchOutline,
   IoBookmarkOutline,
+  IoBookmark,
   IoHeartOutline,
+  IoHeart,
 } from "react-icons/io5";
 import {
   AiFillPlusCircle,
@@ -21,6 +23,7 @@ import styled from "@emotion/styled";
 interface Iicon {
   size?: number;
   color?: string;
+  activate?: boolean;
 }
 export function CartIcon() {
   return <IoCartOutline size={25} />;
@@ -47,12 +50,28 @@ export function SearchIcon({ size }: Iicon) {
   return <IoSearchOutline size={size ?? 20} />;
 }
 
-export function LikeIcon({ size = 25, color = "gray" }: Iicon) {
-  return <IoHeartOutline size={size} color={color} />;
+export function LikeIcon({ size = 25, activate = false }: Iicon) {
+  return (
+    <>
+      {activate ? (
+        <IoHeart size={size} color="red" />
+      ) : (
+        <IoHeartOutline size={size} color="gray" />
+      )}
+    </>
+  );
 }
 
-export function BookmarkIcon({ size = 25, color = "gray" }: Iicon) {
-  return <IoBookmarkOutline size={size} color={color} />;
+export function BookmarkIcon({ size = 25, activate = false }: Iicon) {
+  return (
+    <>
+      {activate ? (
+        <IoBookmark size={size} color="orange" />
+      ) : (
+        <IoBookmarkOutline size={size} color="gray" />
+      )}
+    </>
+  );
 }
 
 export function RightArrowIcon({ size = 25 }: Iicon) {
@@ -74,7 +93,11 @@ export function LeftArrowIcon({ size = 25 }: Iicon) {
 const ArrowCircle = styled.div`
   padding: 7px;
   border-radius: 50%;
-  border: 0.5px solid lightgray;
-  box-shadow: 0 3px 5px gray;
+  box-shadow: 0 4px 5px lightgray;
   background-color: white;
+  cursor: pointer;
+  transition: all 0.2s;
+  &:hover {
+    background-color: lightgray;
+  }
 `;
