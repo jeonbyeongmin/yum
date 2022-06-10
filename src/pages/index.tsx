@@ -6,7 +6,8 @@ import RecipeItemList from "components/RecipeItemList";
 const Home: NextPage = () => {
   return (
     <Layout>
-      <RecipeItemList title={"추천 레시피"} />
+      <RecipeItemList title={"내가 팔로잉한 유저들의 레시피"} />
+      <RecipeItemList title={"최근 레시피"} />
     </Layout>
   );
 };
