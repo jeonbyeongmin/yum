@@ -17,7 +17,7 @@ interface IRecipeData {
 }
 function RecipeItem({ data }: IRecipeData) {
   return (
-    <VStack>
+    <VStack width={"240px"}>
       <Image
         src={data.img}
         width={"240px"}
@@ -25,7 +25,7 @@ function RecipeItem({ data }: IRecipeData) {
         borderRadius={5}
         objectFit={"cover"}
       />
-      <Box p={3}>
+      <Box p={3} width={"240px"}>
         <Flex justifyContent="space-between">
           <Flex alignItems="center">
             <LikeIcon />
@@ -38,7 +38,7 @@ function RecipeItem({ data }: IRecipeData) {
         <Text mt="5" fontWeight="semibold" fontSize="2xl" lineHeight="tight">
           {data.name}
         </Text>
-        <Text mt="5" color="gray.500" fontSize="xl">
+        <Text mt="5" color="gray.500" fontSize="xl" minH="25px">
           {data.desc}
         </Text>
 
