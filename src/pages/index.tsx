@@ -1,11 +1,12 @@
-import type {NextPage} from 'next';
-import styled from '@emotion/styled';
-import Layout from 'components/Layout';
+import type { NextPage } from "next";
+import styled from "@emotion/styled";
+import Layout from "components/Layout";
+import RecipeItemList from "components/RecipeItemList";
 
 const Home: NextPage = () => {
   return (
     <Layout>
-      <div>Home</div>
+      <RecipeItemList title={"추천 레시피"} />
     </Layout>
   );
 };
