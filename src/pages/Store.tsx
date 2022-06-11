@@ -1,8 +1,13 @@
-import Layout from 'components/Layout';
-import React from 'react';
+import Layout from "components/Layout";
+import StoreItemList from "components/StoreItemList";
+import React from "react";
 
 function Store() {
-  return <Layout>Store</Layout>;
+  return (
+    <Layout>
+      <StoreItemList />
+    </Layout>
+  );
 }
 
 export default Store;
