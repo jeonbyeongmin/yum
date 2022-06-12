@@ -6,12 +6,18 @@ interface ICookingInfoPage {
   steps: IRecipeStep[];
   handleStepChange: (value: string, step: number) => void;
   handlePlusBtnClick: () => void;
+  handleStepImageChange: any;
+  // recipeStepImages: any;
+  // setRecipeStepImages: any;
 }
 export default function RecipeStep({
   steps,
   handleStepChange,
   handlePlusBtnClick,
-}: ICookingInfoPage) {
+  handleStepImageChange,
+}: // recipeStepImages,
+// setRecipeStepImages,
+ICookingInfoPage) {
   return (
     <Flex flexDirection={'column'} gap={10} marginY="10">
       <Heading size="lg" marginY="5">
@@ -22,6 +28,7 @@ export default function RecipeStep({
           key={stepInfo.step}
           step={stepInfo.step}
           value={stepInfo.content}
+          handleStepImageChange={handleStepImageChange}
           handleStepTextChange={e =>
             handleStepChange(e.target.value, stepInfo.step)
           }

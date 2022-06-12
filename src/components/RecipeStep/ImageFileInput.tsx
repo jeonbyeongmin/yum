@@ -3,13 +3,29 @@ import styled from '@emotion/styled';
 import Btn from 'components/Btn';
 import React from 'react';
 
-function ImageFileInput({step}: {step: number}) {
+function ImageFileInput({
+  step,
+  handleStepImageChange,
+}: {
+  step: number;
+  handleStepImageChange: any;
+}) {
+  const handleChange = e => {
+    handleStepImageChange(e, step);
+    console.log(e, step);
+  };
   return (
     <Flex flexDirection={'column'} justifyContent="center" w="100%" h="100%">
-      <InfoInput type={'file'} id={`recipeImgInput${step}`} hidden />
-      <RecipeImgInputLabel htmlFor={`recipeImgInput${step}`}>
-        <Btn>사진 업로드</Btn>
-      </RecipeImgInputLabel>
+      <InfoInput
+        type="file"
+        id={`recipeImgInput${step}`}
+        onChange={e => handleStepImageChange(e, step)}
+        hidden
+      />
+      <label htmlFor={`recipeImgInput${step}`}>
+        {/* <Btn>사진 업로드</Btn> */}
+        사진 업로드
+      </label>
     </Flex>
   );
 }

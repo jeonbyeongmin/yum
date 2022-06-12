@@ -23,7 +23,7 @@ export interface ICookingInfo {
 export interface IRecipeStep {
   step: number;
   content: string;
-  img: string;
+  img: any;
 }
 // export interface IRecipeInfo extends ICookingInfo {
 //   steps: IRecipeStep[];

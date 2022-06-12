@@ -5,8 +5,14 @@ interface RecipeStepItem {
   step: number;
   value: string;
   handleStepTextChange: React.ChangeEventHandler<HTMLTextAreaElement>;
+  handleStepImageChange: any;
 }
-function RecipeStepItem({step, value, handleStepTextChange}: RecipeStepItem) {
+function RecipeStepItem({
+  step,
+  value,
+  handleStepTextChange,
+  handleStepImageChange,
+}: RecipeStepItem) {
   return (
     <>
       <Heading color={'#EA900B'} size="md">
@@ -30,7 +36,10 @@ function RecipeStepItem({step, value, handleStepTextChange}: RecipeStepItem) {
           />
         </Box>
         <Box width={'200px'} border="1px solid #b9b9b9" borderRightRadius={5}>
-          <ImageFileInput step={step} />
+          <ImageFileInput
+            handleStepImageChange={handleStepImageChange}
+            step={step}
+          />
         </Box>
       </Flex>
     </>
