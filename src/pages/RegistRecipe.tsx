@@ -8,6 +8,7 @@ import Btn from 'components/Btn';
 import {ICookingInfo, IRecipeStep} from 'types/recipe';
 import CookingContent from 'components/CookingContent';
 import ImageFileContainer from 'components/ImageFileBox';
+import {addRecipe} from 'api/recipeRegist';
 
 const initCookingInfo = {
   name: '',
@@ -23,6 +24,7 @@ function RegistRecipe() {
 
   // 최적화 문제로 cookingInfo에서 images 분리
   const [cookingImages, setCookingImages] = useState<string[]>([]);
+  const [ingredients, setIngredients] = useState([1, 2]);
   const [recipeSteps, setRecipeSteps] = useState<IRecipeStep[]>([
     {
       step: 0,
@@ -69,7 +71,14 @@ function RegistRecipe() {
   );
 
   const handleSubmit = () => {
-    console.log('submit btn click : ', cookingInfo, recipeSteps);
+    const data = {
+      ...cookingInfo,
+      cookingImgs: [...cookingImages],
+      infredients: [...ingredients],
+      steps: [...recipeSteps],
+    };
+    console.log('submit btn click : ', data);
+    addRecipe(data);
   };
 
   useEffect(() => {
