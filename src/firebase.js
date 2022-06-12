@@ -1,6 +1,8 @@
 import 'firebase/compat/firestore';
-import {initializeApp} from 'firebase/app';
+import {initializeApp, getApp} from 'firebase/app';
 import {getFirestore} from 'firebase/firestore';
+import {getStorage} from 'firebase/storage';
+
 const firebaseConfig = {
   apiKey: process.env.FIREBASE_API_KEY,
   authDomain: 'yum-84499.firebaseapp.com',
@@ -11,4 +13,8 @@ const firebaseConfig = {
 };
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-export {db};
+// const firebaseApp = getApp();
+// const storage = getStorage(firebaseApp, 'gs://my-custom-bucket');
+const storage = getStorage(app);
+
+export {db, storage};

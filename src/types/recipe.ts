@@ -15,7 +15,7 @@ export interface ICookingInfo {
   [index: string]: any;
   name: string;
   desc: string;
-  imgs: string[];
+  // imgs: string[];
   servings: number; //인분
   time: string;
   category: string;
