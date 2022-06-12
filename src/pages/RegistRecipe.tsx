@@ -1,6 +1,6 @@
 import {Box, Center, Container} from '@chakra-ui/react';
 import Layout from 'components/Layout';
-import React, {useCallback, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import CookingInfo from 'components/CookingInfo';
 import IngredientList from 'components/IngredientList';
 import RecipeStep from 'components/RecipeStep';
@@ -71,6 +71,10 @@ function RegistRecipe() {
   const handleSubmit = () => {
     console.log('submit btn click : ', cookingInfo, recipeSteps);
   };
+
+  useEffect(() => {
+    console.log(cookingImages);
+  }, [cookingImages]);
 
   return (
     <Layout>

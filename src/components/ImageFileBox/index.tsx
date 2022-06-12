@@ -12,12 +12,23 @@ interface IImageFileContainer {
 
 function ImageFileContainer({images, setImages}: IImageFileContainer) {
   const {onChange} = useImageUpload(images, setImages);
-
+  const handleImageDelete = (index: number) => {
+    const current = [...images];
+    current.splice(index, 1);
+    setImages(current);
+  };
   return (
     <Flex marginY={3} gap={2}>
       {images?.map((item, index) => {
         const key = item + index;
-        return <ImageFile imageUrl={item} key={key} />;
+        return (
+          <ImageFile
+            imageUrl={item}
+            key={key}
+            index={index}
+            handleDelete={handleImageDelete}
+          />
+        );
       })}
       <ImageFileInputWrapper>
         <input type="file" id="fileInput" onChange={onChange} hidden />

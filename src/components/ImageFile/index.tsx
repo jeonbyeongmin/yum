@@ -1,19 +1,32 @@
 import styled from '@emotion/styled';
 import React from 'react';
-import {Box, Image} from '@chakra-ui/react';
+import {Box, CloseButton, Image} from '@chakra-ui/react';
 
 interface IImageFile {
   imageUrl: string;
+  index: number;
+  handleDelete: (arg0: number) => void;
 }
 
-function ImageFile({imageUrl}: IImageFile) {
+function ImageFile({imageUrl, index, handleDelete}: IImageFile) {
   return (
     <ImageFileInputWrapper>
       <Image src={imageUrl} alt="Dan Abramov" w={'100%'} h={'100%'} />
+      <DeleteBtn onClick={() => handleDelete(index)} />
     </ImageFileInputWrapper>
   );
 }
-
+const DeleteBtn = styled(CloseButton)`
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background-color: orange;
+  color: #fff;
+  border-radius: 50%;
+  font-size: 8px;
+  width: 18px;
+  height: 18px;
+`;
 const ImageFileInputWrapper = styled(Box)`
   border: 1px solid #b9b9b9;
   width: 70px;
@@ -23,6 +36,7 @@ const ImageFileInputWrapper = styled(Box)`
   align-items: center;
   border: 1px solid #b9b9b9;
   justify-content: center;
+  position: relative;
 `;
 
 export default ImageFile;
