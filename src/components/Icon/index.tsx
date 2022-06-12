@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   IoCartOutline,
   IoPersonOutline,
@@ -7,24 +7,27 @@ import {
   IoBookmark,
   IoHeartOutline,
   IoHeart,
-} from "react-icons/io5";
+} from 'react-icons/io5';
 import {
   AiFillPlusCircle,
   AiOutlineClose,
   AiOutlineMinus,
   AiOutlinePlus,
-} from "react-icons/ai";
-import {
-  MdOutlineArrowForwardIos,
-  MdOutlineArrowBackIos,
-} from "react-icons/md";
-import styled from "@emotion/styled";
+} from 'react-icons/ai';
+import {MdOutlineArrowForwardIos, MdOutlineArrowBackIos} from 'react-icons/md';
+import {FcGoogle} from 'react-icons/fc';
+import styled from '@emotion/styled';
 
 interface Iicon {
   size?: number;
   color?: string;
   activate?: boolean;
 }
+
+export function GoogleIcon() {
+  return <FcGoogle size={25} />;
+}
+
 export function CartIcon() {
   return <IoCartOutline size={25} />;
 }
@@ -36,21 +39,21 @@ export function UserIcon() {
 export function PlusIcon() {
   return <AiFillPlusCircle size={50} />;
 }
-export function PlusOutLineIcon({ size = 30, color = "#000" }: Iicon) {
+export function PlusOutLineIcon({size = 30, color = '#000'}: Iicon) {
   return <AiOutlinePlus size={size} color={color} />;
 }
-export function MinusIcon({ size = 30, color = "#000" }: Iicon) {
+export function MinusIcon({size = 30, color = '#000'}: Iicon) {
   return <AiOutlineMinus size={size} color={color} />;
 }
-export function CloseIcon({ size = 20, color = "#000" }: Iicon) {
+export function CloseIcon({size = 20, color = '#000'}: Iicon) {
   return <AiOutlineClose size={size} color={color} />;
 }
 
-export function SearchIcon({ size }: Iicon) {
+export function SearchIcon({size}: Iicon) {
   return <IoSearchOutline size={size ?? 20} />;
 }
 
-export function LikeIcon({ size = 25, activate = false }: Iicon) {
+export function LikeIcon({size = 25, activate = false}: Iicon) {
   return (
     <>
       {activate ? (
@@ -62,7 +65,7 @@ export function LikeIcon({ size = 25, activate = false }: Iicon) {
   );
 }
 
-export function BookmarkIcon({ size = 25, activate = false }: Iicon) {
+export function BookmarkIcon({size = 25, activate = false}: Iicon) {
   return (
     <>
       {activate ? (
@@ -74,7 +77,7 @@ export function BookmarkIcon({ size = 25, activate = false }: Iicon) {
   );
 }
 
-export function RightArrowIcon({ size = 25 }: Iicon) {
+export function RightArrowIcon({size = 25}: Iicon) {
   return (
     <ArrowCircle>
       <MdOutlineArrowForwardIos size={size} />
@@ -82,7 +85,7 @@ export function RightArrowIcon({ size = 25 }: Iicon) {
   );
 }
 
-export function LeftArrowIcon({ size = 25 }: Iicon) {
+export function LeftArrowIcon({size = 25}: Iicon) {
   return (
     <ArrowCircle>
       <MdOutlineArrowBackIos size={size} />
