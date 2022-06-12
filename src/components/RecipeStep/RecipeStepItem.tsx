@@ -49,7 +49,7 @@ function RecipeStepItem({
         </Box>
         <Box width={'200px'} border="1px solid #b9b9b9" borderRightRadius={5}>
           {img ? (
-            <Box position={'relative'} flex={1}>
+            <Box position={'relative'} flex={1} height="100%">
               <Image src={img} alt="img" w={'100%'} h={'100%'} />
               <DeleteBtn onClick={() => handleImgDelete(step)} />
             </Box>

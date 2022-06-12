@@ -30,6 +30,7 @@ const RecipeImgInputLabel = styled.label`
   align-items: center;
   border-radius: 10px;
   gap: 10px;
+  cursor: pointer;
   &::before {
     content: '요리 사진을 등록해 주세요.';
   }

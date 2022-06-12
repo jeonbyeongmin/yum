@@ -32,7 +32,6 @@ function RegistRecipe() {
       img: '',
     },
   ]);
-  // const [recipeStepImages, setRecipeStepImages] = useState<string[]>([]);
 
   const handleTextChange = useCallback(
     (
@@ -78,6 +77,7 @@ function RegistRecipe() {
     const file = event.target.files[0];
     const reader = new FileReader();
 
+    reader.readAsDataURL(file);
     reader.onloadend = finishedEvent => {
       const {
         currentTarget: {result},
@@ -89,8 +89,6 @@ function RegistRecipe() {
       };
       // event.target.value = '';
     };
-    reader.readAsDataURL(file);
-    console.log('newSteps', newSteps);
     setRecipeSteps(newSteps);
   };
 
@@ -104,6 +102,7 @@ function RegistRecipe() {
     console.log('submit btn click : ', data);
     addRecipe(data);
   };
+
   const handleStepImgDelete = (step: number) => {
     const newSteps = [...recipeSteps];
     newSteps[step] = {

@@ -3,7 +3,6 @@
 import {collection, addDoc} from 'firebase/firestore';
 import {getDownloadURL, ref, uploadString} from 'firebase/storage';
 import {db, storage} from '../firebase';
-// const storage = firebase.storage();
 
 export async function addRecipe(data: any) {
   try {
@@ -16,7 +15,6 @@ export async function addRecipe(data: any) {
         'data_url',
       );
       const fileURL = await getDownloadURL(res.ref);
-      // console.log(imgIndex, fileURL);
       imgPaths.push(fileURL);
     }
     const newStep = [...data.steps];
@@ -39,7 +37,8 @@ export async function addRecipe(data: any) {
     };
     console.log(newData);
     const docRef = await addDoc(collection(db, 'recipe'), newData);
-    console.log('Document written with ID: ', docRef.id);
+    // console.log('Document written with ID: ', docRef.id);
+    return docRef;
   } catch (e) {
     console.error('Error adding document: ', e);
   }
