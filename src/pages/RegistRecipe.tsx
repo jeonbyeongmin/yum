@@ -100,7 +100,9 @@ function RegistRecipe() {
       steps: [...recipeSteps],
     };
     console.log('submit btn click : ', data);
-    addRecipe(data);
+    addRecipe(data).then(res => {
+      console.log(res);
+    });
   };
 
   const handleStepImgDelete = (step: number) => {

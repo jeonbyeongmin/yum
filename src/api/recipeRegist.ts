@@ -37,7 +37,7 @@ export async function addRecipe(data: any) {
     };
     console.log(newData);
     const docRef = await addDoc(collection(db, 'recipe'), newData);
-    // console.log('Document written with ID: ', docRef.id);
+    console.log('Document written with ID: ', docRef.id);
     return docRef;
   } catch (e) {
     console.error('Error adding document: ', e);
