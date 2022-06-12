@@ -7,8 +7,9 @@ import {CartIcon, UserIcon, SearchIcon} from 'components/Icon';
 import {Box, HStack, Text} from '@chakra-ui/react';
 import IconBtn from 'components/IconBtn';
 import Btn from 'components/Btn';
-
+import {useRouter} from 'next/router';
 function Header() {
+  const router = useRouter();
   return (
     <Wrapper>
       <HStack
@@ -49,12 +50,14 @@ function Header() {
             icon={<SearchIcon size={25} />}
             label={'search'}
             type="mobile"
-          ></IconBtn>
+          />
           <IconBtn icon={<CartIcon />} label={'shpping basket'}></IconBtn>
           <IconBtn icon={<UserIcon />} label={'mypage'}></IconBtn>
         </HStack>
         <Box>
-          <Btn>레시피 작성</Btn>
+          <Btn handleClick={() => router.push('/RegistRecipe')}>
+            레시피 작성
+          </Btn>
         </Box>
       </HStack>
     </Wrapper>
