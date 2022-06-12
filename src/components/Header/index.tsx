@@ -7,7 +7,10 @@ import {CartIcon, UserIcon, SearchIcon} from 'components/Icon';
 import {Box, HStack, Text} from '@chakra-ui/react';
 import IconBtn from 'components/IconBtn';
 import Btn from 'components/Btn';
-import {useRouter} from 'next/router';
+
+
+import Link from 'next/link';
+
 function Header() {
   const router = useRouter();
   return (
@@ -20,27 +23,33 @@ function Header() {
         paddingX={{base: 5, sm: 10}}
         borderBottom="1px solid #e0e0e0"
       >
-        <Logo fontSize={'4xl'} fontWeight="bold" w={{base: '70px', sm: 100}}>
-          YUM
-        </Logo>
+        <Link href="/" passHref>
+          <Logo fontSize={'4xl'} fontWeight="bold" w={{base: '70px', sm: 100}}>
+            YUM
+          </Logo>
+        </Link>
         <HStack flex={1} spacing={{base: '5px', sm: '25px'}}>
-          <NavItem
-            fontSize="2xl"
-            color="#a5a5a5"
-            fontWeight={'bold'}
-            current={'true'}
-            minW={'50px'}
-          >
-            레시피
-          </NavItem>
-          <NavItem
-            fontSize="2xl"
-            color="#a5a5a5"
-            fontWeight={'bold'}
-            minW={'50px'}
-          >
-            스토어
-          </NavItem>
+          <Link href="/" passHref>
+            <NavItem
+              fontSize="2xl"
+              color="#a5a5a5"
+              fontWeight={'bold'}
+              current={'true'}
+              minW={'50px'}
+            >
+              레시피
+            </NavItem>
+          </Link>
+          <Link href="/Store" passHref>
+            <NavItem
+              fontSize="2xl"
+              color="#a5a5a5"
+              fontWeight={'bold'}
+              minW={'50px'}
+            >
+              스토어
+            </NavItem>
+          </Link>
         </HStack>
         <Box display={{base: 'none', md: 'block'}}>
           <SearchBar />
@@ -51,22 +60,32 @@ function Header() {
             label={'search'}
             type="mobile"
           />
-          <IconBtn icon={<CartIcon />} label={'shpping basket'}></IconBtn>
-          <IconBtn icon={<UserIcon />} label={'mypage'}></IconBtn>
+          <Link href="/ShoppingBasket" passHref>
+            <a>
+              <IconBtn icon={<CartIcon />} label={'shpping basket'} />
+            </a>
+          </Link>
+          <Link href="/MyPage" passHref>
+            <a>
+              <IconBtn icon={<UserIcon />} label={'mypage'} />
+            </a>
+          </Link>
         </HStack>
-        <Box>
-          <Btn handleClick={() => router.push('/RegistRecipe')}>
-            레시피 작성
-          </Btn>
-        </Box>
+        <Link href="/RegistRecipe" passHref>
+          <Btn>레시피 작성</Btn>
+        </Link>
+
       </HStack>
     </Wrapper>
   );
 }
+
 const Logo = styled(Box)`
   font-family: Binggrae, -apple-system, BlinkMacSystemFont, helvetica,
     Apple SD Gothic Neo, sans-serif;
+  cursor: pointer;
 `;
+
 const NavItem = styled(Text)`
   display: inline-flex;
   font-weight: 700;
@@ -80,6 +99,7 @@ const NavItem = styled(Text)`
       }
     `}
 `;
+
 const Wrapper = styled.header`
   position: fixed;
   width: 100%;
