@@ -1,4 +1,5 @@
 import {Flex, Heading, Button} from '@chakra-ui/react';
+import {ChangeEvent} from 'react';
 import {IRecipeStep} from 'types/recipe';
 import RecipeStepItem from './RecipeStepItem';
 
@@ -6,18 +7,16 @@ interface ICookingInfoPage {
   steps: IRecipeStep[];
   handleStepChange: (value: string, step: number) => void;
   handlePlusBtnClick: () => void;
-  handleStepImageChange: any;
-  // recipeStepImages: any;
-  // setRecipeStepImages: any;
+  handleStepImageChange: (e: ChangeEvent, step: number) => void;
+  handleStepImgDelete: (step: number) => void;
 }
 export default function RecipeStep({
   steps,
   handleStepChange,
   handlePlusBtnClick,
   handleStepImageChange,
-}: // recipeStepImages,
-// setRecipeStepImages,
-ICookingInfoPage) {
+  handleStepImgDelete,
+}: ICookingInfoPage) {
   return (
     <Flex flexDirection={'column'} gap={10} marginY="10">
       <Heading size="lg" marginY="5">
@@ -28,10 +27,12 @@ ICookingInfoPage) {
           key={stepInfo.step}
           step={stepInfo.step}
           value={stepInfo.content}
+          img={stepInfo.img}
           handleStepImageChange={handleStepImageChange}
           handleStepTextChange={e =>
             handleStepChange(e.target.value, stepInfo.step)
           }
+          handleImgDelete={handleStepImgDelete}
         />
       ))}
       <Button

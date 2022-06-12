@@ -1,19 +1,14 @@
 import {Flex, Input} from '@chakra-ui/react';
 import styled from '@emotion/styled';
-import Btn from 'components/Btn';
-import React from 'react';
+import React, {ChangeEvent} from 'react';
 
 function ImageFileInput({
   step,
   handleStepImageChange,
 }: {
   step: number;
-  handleStepImageChange: any;
+  handleStepImageChange: (e: ChangeEvent, step: number) => void;
 }) {
-  const handleChange = e => {
-    handleStepImageChange(e, step);
-    console.log(e, step);
-  };
   return (
     <Flex flexDirection={'column'} justifyContent="center" w="100%" h="100%">
       <InfoInput
@@ -22,10 +17,9 @@ function ImageFileInput({
         onChange={e => handleStepImageChange(e, step)}
         hidden
       />
-      <label htmlFor={`recipeImgInput${step}`}>
-        {/* <Btn>사진 업로드</Btn> */}
+      <RecipeImgInputLabel htmlFor={`recipeImgInput${step}`}>
         사진 업로드
-      </label>
+      </RecipeImgInputLabel>
     </Flex>
   );
 }
@@ -34,6 +28,7 @@ const RecipeImgInputLabel = styled.label`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border-radius: 10px;
   gap: 10px;
   &::before {
     content: '요리 사진을 등록해 주세요.';

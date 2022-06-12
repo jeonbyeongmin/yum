@@ -1,7 +1,7 @@
 // import {getDatabase, ref, set} from 'firebase/database';
 // const db = getDatabase().collection('recipe');
 import {collection, addDoc} from 'firebase/firestore';
-import {getDownloadURL, ref, uploadBytes, uploadString} from 'firebase/storage';
+import {getDownloadURL, ref, uploadString} from 'firebase/storage';
 import {db, storage} from '../firebase';
 // const storage = firebase.storage();
 

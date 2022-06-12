@@ -70,8 +70,9 @@ function RegistRecipe() {
     },
     [recipeSteps],
   );
+
   const handleStepImageChange = (event: any, step: number) => {
-    console.log('new', event.target.files[0], step);
+    // console.log('new', event.target.files[0], step);
 
     const newSteps = [...recipeSteps];
     const file = event.target.files[0];
@@ -86,12 +87,13 @@ function RegistRecipe() {
         ...newSteps[step],
         img: result,
       };
-      event.target.value = '';
+      // event.target.value = '';
     };
     reader.readAsDataURL(file);
     console.log('newSteps', newSteps);
     setRecipeSteps(newSteps);
   };
+
   const handleSubmit = () => {
     const data = {
       ...cookingInfo,
@@ -102,10 +104,14 @@ function RegistRecipe() {
     console.log('submit btn click : ', data);
     addRecipe(data);
   };
-  useEffect(() => {
-    console.log(recipeSteps);
-  }, [recipeSteps]);
-
+  const handleStepImgDelete = (step: number) => {
+    const newSteps = [...recipeSteps];
+    newSteps[step] = {
+      ...newSteps[step],
+      img: '',
+    };
+    setRecipeSteps(newSteps);
+  };
   return (
     <Layout>
       <Container maxW="1024px">
@@ -124,8 +130,7 @@ function RegistRecipe() {
           handleStepChange={handleStepTextChange}
           handlePlusBtnClick={handlePlusBtnClick}
           handleStepImageChange={handleStepImageChange}
-          // recipeStepImages={recipeStepImages}
-          // setRecipeStepImages={setRecipeStepImages}
+          handleStepImgDelete={handleStepImgDelete}
         />
         <Center>
           <Btn handleClick={handleSubmit}>레시피 등록</Btn>
