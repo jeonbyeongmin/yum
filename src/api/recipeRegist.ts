@@ -7,21 +7,25 @@ import {db, storage} from '../firebase';
 
 export async function addRecipe(data: any) {
   try {
-    console.log(storage);
-    console.log('data', data);
-    const storageRef = ref(storage, 'image/' + `${data.name}`);
-    const metadata = {
-      contentType: 'image/jpeg',
+    const imgPaths = [];
+    for (const imgIndex in data.cookingImgs) {
+      const storageRef = ref(storage, `image/${data.name}/${imgIndex}`);
+      const res = await uploadString(
+        storageRef,
+        data.cookingImgs[imgIndex],
+        'data_url',
+      );
+      const fileURL = await getDownloadURL(res.ref);
+      // console.log(imgIndex, fileURL);
+      imgPaths.push(fileURL);
+    }
+
+    const newData = {
+      ...data,
+      cookingImgs: imgPaths,
     };
-    const uploadTask = uploadBytes(storageRef, data.cookingImgs[0], metadata);
-    console.log(uploadTask);
-    // const docRef = await addDoc(collection(db, 'recipe'), data);
-    // console.log('Document written with ID: ', docRef.id);
-
-    const res = await uploadString(storageRef, data.cookingImgs[0], 'data_url');
-    const fileURL = await getDownloadURL(res.ref);
-
-    console.log(fileURL  );
+    const docRef = await addDoc(collection(db, 'recipe'), newData);
+    console.log('Document written with ID: ', docRef.id);
   } catch (e) {
     console.error('Error adding document: ', e);
   }

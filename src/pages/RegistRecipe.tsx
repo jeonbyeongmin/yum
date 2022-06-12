@@ -81,10 +81,6 @@ function RegistRecipe() {
     addRecipe(data);
   };
 
-  useEffect(() => {
-    console.log(cookingImages);
-  }, [cookingImages]);
-
   return (
     <Layout>
       <Container maxW="1024px">
