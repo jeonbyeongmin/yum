@@ -1,18 +1,8 @@
-import {
-  Box,
-  Button,
-  Center,
-  Divider,
-  Flex,
-  HStack,
-  Input,
-  Text,
-  VStack,
-} from '@chakra-ui/react';
+import {Box, Button, Flex, HStack, Input, Text, VStack} from '@chakra-ui/react';
 import Link from 'next/link';
 import React from 'react';
 
-function Login() {
+function Register() {
   return (
     <Flex
       justifyContent="center"
@@ -39,7 +29,7 @@ function Login() {
           YUM
         </Text>
         <Text paddingY="3rem" fontSize="4xl" fontWeight="extrabold">
-          로그인
+          회원가입
         </Text>
         <VStack spacing="5">
           <Input
@@ -57,7 +47,23 @@ function Login() {
             borderRadius="xl"
           />
           <Input
+            type="password"
             placeholder="비밀번호"
+            _placeholder={{
+              color: 'gray.300',
+              fontSize: '2xl',
+              fontWeight: 'medium',
+            }}
+            shadow="sm"
+            paddingLeft="10"
+            paddingY="12"
+            size="lg"
+            borderColor="gray.200"
+            borderRadius="xl"
+          />
+          <Input
+            type="password"
+            placeholder="비밀번호 확인"
             _placeholder={{
               color: 'gray.300',
               fontSize: '2xl',
@@ -82,20 +88,16 @@ function Login() {
           _focus={{border: 'none'}}
         >
           <Text fontSize="2xl" fontWeight="bold">
-            로그인
+            가입
           </Text>
         </Button>
-
-        <HStack alignContent="cetner" justifyContent="center">
-          <a>
-            <Text fontSize="xl">비밀번호 찾기</Text>
-          </a>
-          <Center height="14px">
-            <Divider orientation="vertical" marginX="3" />
-          </Center>
-          <Link href="/Register" passHref>
+        <HStack justifyContent="center">
+          <Text fontSize="xl">이미 계정이 있으신가요?</Text>
+          <Link href="/Login" passHref>
             <a>
-              <Text fontSize="xl">회원가입</Text>
+              <Text fontSize="xl" as="u">
+                로그인
+              </Text>
             </a>
           </Link>
         </HStack>
@@ -104,4 +106,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Register;
