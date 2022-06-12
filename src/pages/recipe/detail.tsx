@@ -34,7 +34,7 @@ function Detail() {
               <RecipeInfo />
               <WriterInfo />
               <CookingInfo />
-              <RecipeDetailStep />
+              <RecipeDetailStep steps={recipe.steps} />
             </VStack>
             <IngredientCart />
           </Flex>
