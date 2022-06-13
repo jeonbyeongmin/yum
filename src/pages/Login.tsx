@@ -16,8 +16,17 @@ import React from 'react';
 import {useForm} from 'react-hook-form';
 import * as yup from 'yup';
 import {yupResolver} from '@hookform/resolvers/yup';
+import {signIn} from 'api/auth';
+import {useRouter} from 'next/router';
+
+interface FormData {
+  email: string;
+  password: string;
+}
 
 function Login() {
+  const router = useRouter();
+
   const schema = yup.object().shape({
     email: yup.string().email().required(),
     password: yup.string().min(7).max(10).required(),
@@ -27,13 +36,24 @@ function Login() {
     handleSubmit,
     register,
     formState: {errors, isSubmitting},
-  } = useForm({
+  } = useForm<FormData>({
     resolver: yupResolver(schema),
   });
 
-  function onSubmit() {
-    console.log('submit');
-  }
+  const onSubmit = async (data: FormData) => {
+    try {
+      const {email, password} = data;
+      const res = await signIn(email, password);
+
+      if (res.statusCode === 200) {
+        router.push('/');
+      } else {
+        console.log(res.errorMessage);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <Flex
@@ -65,7 +85,7 @@ function Login() {
         </Text>
         <form onSubmit={handleSubmit(onSubmit)}>
           <VStack spacing="5">
-            <FormControl isInvalid={errors.email}>
+            <FormControl isInvalid={errors.email ? true : false}>
               <Input
                 fontSize="2xl"
                 placeholder="이메일"
@@ -86,7 +106,7 @@ function Login() {
                 {errors.email && errors.email.message}
               </FormErrorMessage>
             </FormControl>
-            <FormControl isInvalid={errors.password}>
+            <FormControl isInvalid={errors.password ? true : false}>
               <Input
                 fontSize="2xl"
                 type="password"
