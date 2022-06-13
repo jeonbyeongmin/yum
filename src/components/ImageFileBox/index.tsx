@@ -1,4 +1,4 @@
-import React, {Dispatch, SetStateAction} from 'react';
+import React, {Dispatch, SetStateAction, useCallback} from 'react';
 import {Box, Flex} from '@chakra-ui/react';
 import {PlusOutLineIcon} from 'components/Icon';
 import ImageFile from 'components/ImageFile';
@@ -13,11 +13,25 @@ interface IImageFileContainer {
 function ImageFileContainer({images, setImages}: IImageFileContainer) {
   const {onChange} = useImageUpload(images, setImages);
 
+  // TODO: 같은 이미지가 한번에 사라지는 문제 해결해야 함
+  const handleImageDelete = useCallback(
+    (url: string) => {
+      const newImages = images.filter(current => current !== url);
+      setImages(newImages);
+    },
+    [images, setImages],
+  );
+
   return (
     <Flex marginY={3} gap={2}>
       {images?.map((item, index) => {
-        const key = item + index;
-        return <ImageFile imageUrl={item} key={key} />;
+        return (
+          <ImageFile
+            imageUrl={item}
+            key={item + index}
+            handleDelete={() => handleImageDelete(item)}
+          />
+        );
       })}
       <ImageFileInputWrapper>
         <input type="file" id="fileInput" onChange={onChange} hidden />

@@ -4,8 +4,11 @@ import {
   Center,
   Divider,
   Flex,
+<<<<<<< HEAD
   FormControl,
   FormErrorMessage,
+=======
+>>>>>>> a3244245aef8699ea076256403641804942e253f
   HStack,
   Input,
   Text,
@@ -63,6 +66,7 @@ function Login() {
         <Text paddingY="3rem" fontSize="4xl" fontWeight="extrabold">
           로그인
         </Text>
+<<<<<<< HEAD
         <form onSubmit={handleSubmit(onSubmit)}>
           <VStack spacing="5">
             <FormControl isInvalid={errors.email}>
@@ -126,6 +130,52 @@ function Login() {
             </Text>
           </Button>
         </form>
+=======
+        <VStack spacing="5">
+          <Input
+            placeholder="이메일"
+            _placeholder={{
+              color: 'gray.300',
+              fontSize: '2xl',
+              fontWeight: 'medium',
+            }}
+            shadow="sm"
+            paddingLeft="10"
+            paddingY="12"
+            size="lg"
+            borderColor="gray.200"
+            borderRadius="xl"
+          />
+          <Input
+            placeholder="비밀번호"
+            _placeholder={{
+              color: 'gray.300',
+              fontSize: '2xl',
+              fontWeight: 'medium',
+            }}
+            shadow="sm"
+            paddingLeft="10"
+            paddingY="12"
+            size="lg"
+            borderColor="gray.200"
+            borderRadius="xl"
+          />
+        </VStack>
+
+        <Button
+          width="full"
+          marginY="10"
+          borderRadius="xl"
+          paddingY="12"
+          fontSize="xl"
+          colorScheme="orange"
+          _focus={{border: 'none'}}
+        >
+          <Text fontSize="2xl" fontWeight="bold">
+            로그인
+          </Text>
+        </Button>
+>>>>>>> a3244245aef8699ea076256403641804942e253f
 
         <HStack alignContent="cetner" justifyContent="center">
           <a>
