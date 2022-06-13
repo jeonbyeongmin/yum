@@ -66,7 +66,6 @@ function Register() {
         <Text paddingY="3rem" fontSize="4xl" fontWeight="extrabold">
           회원가입
         </Text>
-<<<<<<< HEAD
         <form onSubmit={handleSubmit(onSubmit)}>
           <VStack spacing="5">
             <FormControl isInvalid={errors.name}>
@@ -174,68 +173,6 @@ function Register() {
           </Button>
         </form>
 
-=======
-        <VStack spacing="5">
-          <Input
-            placeholder="이메일"
-            _placeholder={{
-              color: 'gray.300',
-              fontSize: '2xl',
-              fontWeight: 'medium',
-            }}
-            shadow="sm"
-            paddingLeft="10"
-            paddingY="12"
-            size="lg"
-            borderColor="gray.200"
-            borderRadius="xl"
-          />
-          <Input
-            type="password"
-            placeholder="비밀번호"
-            _placeholder={{
-              color: 'gray.300',
-              fontSize: '2xl',
-              fontWeight: 'medium',
-            }}
-            shadow="sm"
-            paddingLeft="10"
-            paddingY="12"
-            size="lg"
-            borderColor="gray.200"
-            borderRadius="xl"
-          />
-          <Input
-            type="password"
-            placeholder="비밀번호 확인"
-            _placeholder={{
-              color: 'gray.300',
-              fontSize: '2xl',
-              fontWeight: 'medium',
-            }}
-            shadow="sm"
-            paddingLeft="10"
-            paddingY="12"
-            size="lg"
-            borderColor="gray.200"
-            borderRadius="xl"
-          />
-        </VStack>
-
-        <Button
-          width="full"
-          marginY="10"
-          borderRadius="xl"
-          paddingY="12"
-          fontSize="xl"
-          colorScheme="orange"
-          _focus={{border: 'none'}}
-        >
-          <Text fontSize="2xl" fontWeight="bold">
-            가입
-          </Text>
-        </Button>
->>>>>>> a3244245aef8699ea076256403641804942e253f
         <HStack justifyContent="center">
           <Text fontSize="xl">이미 계정이 있으신가요?</Text>
           <Link href="/Login" passHref>
