@@ -14,8 +14,19 @@ import React from 'react';
 import {useForm} from 'react-hook-form';
 import * as yup from 'yup';
 import {yupResolver} from '@hookform/resolvers/yup';
+import {createUser} from 'api/auth';
+import {useRouter} from 'next/router';
+
+interface FormData {
+  name: string;
+  email: string;
+  password: string;
+  check: string;
+}
 
 function Register() {
+  const router = useRouter();
+
   const schema = yup.object().shape({
     name: yup.string().required(),
     email: yup.string().email().required(),
@@ -30,13 +41,24 @@ function Register() {
     handleSubmit,
     register,
     formState: {errors, isSubmitting},
-  } = useForm({
+  } = useForm<FormData>({
     resolver: yupResolver(schema),
   });
 
-  function onSubmit() {
-    console.log('submit');
-  }
+  const onSubmit = async (data: FormData) => {
+    try {
+      const {email, password, name} = data;
+      const res = await createUser(email, password, name);
+
+      if (res.statusCode === 200) {
+        router.push('/');
+      } else {
+        console.log(res.errorMessage);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <Flex
@@ -68,7 +90,7 @@ function Register() {
         </Text>
         <form onSubmit={handleSubmit(onSubmit)}>
           <VStack spacing="5">
-            <FormControl isInvalid={errors.name}>
+            <FormControl isInvalid={errors.name ? true : false}>
               <Input
                 fontSize="2xl"
                 placeholder="이름"
@@ -89,7 +111,7 @@ function Register() {
                 {errors.name && errors.name.message}
               </FormErrorMessage>
             </FormControl>
-            <FormControl isInvalid={errors.email}>
+            <FormControl isInvalid={errors.email ? true : false}>
               <Input
                 fontSize="2xl"
                 placeholder="이메일"
@@ -110,7 +132,7 @@ function Register() {
                 {errors.email && errors.email.message}
               </FormErrorMessage>
             </FormControl>
-            <FormControl isInvalid={errors.password}>
+            <FormControl isInvalid={errors.password ? true : false}>
               <Input
                 type="password"
                 fontSize="2xl"
@@ -132,7 +154,7 @@ function Register() {
                 {errors.password && errors.password.message}
               </FormErrorMessage>
             </FormControl>
-            <FormControl isInvalid={errors.check}>
+            <FormControl isInvalid={errors.check ? true : false}>
               <Input
                 type="password"
                 fontSize="2xl"
