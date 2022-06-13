@@ -4,15 +4,14 @@ import {Box, CloseButton, Image} from '@chakra-ui/react';
 
 interface IImageFile {
   imageUrl: string;
-  index: number;
-  handleDelete: (arg0: number) => void;
+  handleDelete: () => void;
 }
 
-function ImageFile({imageUrl, index, handleDelete}: IImageFile) {
+function ImageFile({imageUrl, handleDelete}: IImageFile) {
   return (
     <ImageFileInputWrapper>
       <Image src={imageUrl} alt="Dan Abramov" w={'100%'} h={'100%'} />
-      <DeleteBtn onClick={() => handleDelete(index)} />
+      <DeleteBtn onClick={handleDelete} />
     </ImageFileInputWrapper>
   );
 }

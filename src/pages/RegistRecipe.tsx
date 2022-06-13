@@ -70,27 +70,40 @@ function RegistRecipe() {
     [recipeSteps],
   );
 
-  const handleStepImageChange = (event: any, step: number) => {
-    // console.log('new', event.target.files[0], step);
+  const handleStepImageChange = useCallback(
+    (event: any, step: number) => {
+      const newSteps = [...recipeSteps];
+      const file = event.target.files[0];
+      const reader = new FileReader();
 
-    const newSteps = [...recipeSteps];
-    const file = event.target.files[0];
-    const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onloadend = finishedEvent => {
+        const {
+          currentTarget: {result},
+        } = finishedEvent;
 
-    reader.readAsDataURL(file);
-    reader.onloadend = finishedEvent => {
-      const {
-        currentTarget: {result},
-      } = finishedEvent;
+        newSteps[step] = {
+          ...newSteps[step],
+          img: result,
+        };
+        setRecipeSteps(newSteps);
+      };
+    },
+    [recipeSteps],
+  );
 
+  // TODO: 최적화 문제로 step에서 image 빼서 관리
+  const handleStepImgDelete = useCallback(
+    (step: number) => {
+      const newSteps = [...recipeSteps];
       newSteps[step] = {
         ...newSteps[step],
-        img: result,
+        img: '',
       };
-      // event.target.value = '';
       setRecipeSteps(newSteps);
-    };
-  };
+    },
+    [recipeSteps],
+  );
 
   const handleSubmit = () => {
     const data = {
@@ -103,14 +116,6 @@ function RegistRecipe() {
     addRecipe(data);
   };
 
-  const handleStepImgDelete = (step: number) => {
-    const newSteps = [...recipeSteps];
-    newSteps[step] = {
-      ...newSteps[step],
-      img: '',
-    };
-    setRecipeSteps(newSteps);
-  };
   return (
     <Layout>
       <Container maxW="1024px">
