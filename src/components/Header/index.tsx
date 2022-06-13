@@ -8,11 +8,9 @@ import {Box, HStack, Text} from '@chakra-ui/react';
 import IconBtn from 'components/IconBtn';
 import Btn from 'components/Btn';
 
-
 import Link from 'next/link';
 
 function Header() {
-  const router = useRouter();
   return (
     <Wrapper>
       <HStack
@@ -74,7 +72,6 @@ function Header() {
         <Link href="/RegistRecipe" passHref>
           <Btn>레시피 작성</Btn>
         </Link>
-
       </HStack>
     </Wrapper>
   );
