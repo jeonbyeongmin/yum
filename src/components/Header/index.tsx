@@ -9,8 +9,6 @@ import IconBtn from 'components/IconBtn';
 import Btn from 'components/Btn';
 import Link from 'next/link';
 
-import Link from 'next/link';
-
 function Header() {
   return (
     <Wrapper>
