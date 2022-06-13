@@ -67,6 +67,7 @@ function Login() {
           <VStack spacing="5">
             <FormControl isInvalid={errors.email}>
               <Input
+                fontSize="2xl"
                 placeholder="이메일"
                 _placeholder={{
                   color: 'gray.300',
@@ -87,6 +88,8 @@ function Login() {
             </FormControl>
             <FormControl isInvalid={errors.password}>
               <Input
+                fontSize="2xl"
+                type="password"
                 placeholder="비밀번호"
                 _placeholder={{
                   color: 'gray.300',
