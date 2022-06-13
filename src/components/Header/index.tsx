@@ -7,6 +7,7 @@ import {CartIcon, UserIcon, SearchIcon} from 'components/Icon';
 import {Box, HStack, Text} from '@chakra-ui/react';
 import IconBtn from 'components/IconBtn';
 import Btn from 'components/Btn';
+
 import Link from 'next/link';
 
 function Header() {
@@ -20,32 +21,42 @@ function Header() {
         paddingX={{base: 5, sm: 10}}
         borderBottom="1px solid #e0e0e0"
       >
-        <Link href="/" passHref>
-          <Logo fontSize={'4xl'} fontWeight="bold" w={{base: '70px', sm: 100}}>
-            YUM
-          </Logo>
+        <Link href="/">
+          <a>
+            <Logo
+              fontSize={'4xl'}
+              fontWeight="bold"
+              w={{base: '70px', sm: 100}}
+            >
+              YUM
+            </Logo>
+          </a>
         </Link>
         <HStack flex={1} spacing={{base: '5px', sm: '25px'}}>
-          <Link href="/" passHref>
-            <NavItem
-              fontSize="2xl"
-              color="#a5a5a5"
-              fontWeight={'bold'}
-              current={'true'}
-              minW={'50px'}
-            >
-              레시피
-            </NavItem>
+          <Link href="/">
+            <a>
+              <NavItem
+                fontSize="2xl"
+                color="#a5a5a5"
+                fontWeight={'bold'}
+                current={'true'}
+                minW={'50px'}
+              >
+                레시피
+              </NavItem>
+            </a>
           </Link>
-          <Link href="/Store" passHref>
-            <NavItem
-              fontSize="2xl"
-              color="#a5a5a5"
-              fontWeight={'bold'}
-              minW={'50px'}
-            >
-              스토어
-            </NavItem>
+          <Link href="/Store">
+            <a>
+              <NavItem
+                fontSize="2xl"
+                color="#a5a5a5"
+                fontWeight={'bold'}
+                minW={'50px'}
+              >
+                스토어
+              </NavItem>
+            </a>
           </Link>
         </HStack>
         <Box display={{base: 'none', md: 'block'}}>
@@ -57,19 +68,21 @@ function Header() {
             label={'search'}
             type="mobile"
           />
-          <Link href="/ShoppingBasket" passHref>
+          <Link href="/ShoppingBasket">
             <a>
               <IconBtn icon={<CartIcon />} label={'shpping basket'} />
             </a>
           </Link>
-          <Link href="/MyPage" passHref>
+          <Link href="/MyPage">
             <a>
               <IconBtn icon={<UserIcon />} label={'mypage'} />
             </a>
           </Link>
         </HStack>
-        <Link href="/RegistRecipe" passHref>
-          <Btn>레시피 작성</Btn>
+        <Link href="/RegistRecipe">
+          <a>
+            <Btn>레시피 작성</Btn>
+          </a>
         </Link>
       </HStack>
     </Wrapper>

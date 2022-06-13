@@ -1,6 +1,6 @@
 import {Box, Center, Container} from '@chakra-ui/react';
 import Layout from 'components/Layout';
-import React, {useCallback, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import CookingInfo from 'components/CookingInfo';
 import IngredientList from 'components/IngredientList';
 import RecipeStep from 'components/RecipeStep';
@@ -8,6 +8,7 @@ import Btn from 'components/Btn';
 import {ICookingInfo, IRecipeStep} from 'types/recipe';
 import CookingContent from 'components/CookingContent';
 import ImageFileContainer from 'components/ImageFileBox';
+import {addRecipe} from 'api/recipeRegist';
 
 const initCookingInfo = {
   name: '',
@@ -23,6 +24,7 @@ function RegistRecipe() {
 
   // 최적화 문제로 cookingInfo에서 images 분리
   const [cookingImages, setCookingImages] = useState<string[]>([]);
+  const [ingredients, setIngredients] = useState([1, 2]);
   const [recipeSteps, setRecipeSteps] = useState<IRecipeStep[]>([
     {
       step: 0,
@@ -68,8 +70,50 @@ function RegistRecipe() {
     [recipeSteps],
   );
 
+  const handleStepImageChange = useCallback(
+    (event: any, step: number) => {
+      const newSteps = [...recipeSteps];
+      const file = event.target.files[0];
+      const reader = new FileReader();
+
+      reader.readAsDataURL(file);
+      reader.onloadend = finishedEvent => {
+        const {
+          currentTarget: {result},
+        } = finishedEvent;
+
+        newSteps[step] = {
+          ...newSteps[step],
+          img: result,
+        };
+        setRecipeSteps(newSteps);
+      };
+    },
+    [recipeSteps],
+  );
+
+  // TODO: 최적화 문제로 step에서 image 빼서 관리
+  const handleStepImgDelete = useCallback(
+    (step: number) => {
+      const newSteps = [...recipeSteps];
+      newSteps[step] = {
+        ...newSteps[step],
+        img: '',
+      };
+      setRecipeSteps(newSteps);
+    },
+    [recipeSteps],
+  );
+
   const handleSubmit = () => {
-    console.log('submit btn click : ', cookingInfo, recipeSteps);
+    const data = {
+      ...cookingInfo,
+      cookingImgs: [...cookingImages],
+      infredients: [...ingredients],
+      steps: [...recipeSteps],
+    };
+    console.log('submit btn click : ', data);
+    addRecipe(data);
   };
 
   return (
@@ -89,6 +133,8 @@ function RegistRecipe() {
           steps={recipeSteps}
           handleStepChange={handleStepTextChange}
           handlePlusBtnClick={handlePlusBtnClick}
+          handleStepImageChange={handleStepImageChange}
+          handleStepImgDelete={handleStepImgDelete}
         />
         <Center>
           <Btn handleClick={handleSubmit}>레시피 등록</Btn>
