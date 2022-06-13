@@ -88,8 +88,8 @@ function RegistRecipe() {
         img: result,
       };
       // event.target.value = '';
+      setRecipeSteps(newSteps);
     };
-    setRecipeSteps(newSteps);
   };
 
   const handleSubmit = () => {
