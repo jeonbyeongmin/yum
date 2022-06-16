@@ -7,7 +7,6 @@ import {CartIcon, UserIcon, SearchIcon} from 'components/Icon';
 import {Box, HStack, Text} from '@chakra-ui/react';
 import IconBtn from 'components/IconBtn';
 import Btn from 'components/Btn';
-
 import Link from 'next/link';
 
 function Header() {

@@ -14,15 +14,18 @@
     "@emotion/react": "^11",
     "@emotion/server": "11.4.0",
     "@emotion/styled": "^11",
+    "@hookform/resolvers": "2.9.1",
     "emotion-reset": "3.0.1",
     "firebase": "^9.8.2",
     "framer-motion": "^6",
     "next": "12.1.5",
     "react": "18.1.0",
     "react-dom": "18.1.0",
+    "react-hook-form": "7.32.0",
     "react-icons": "4.3.1",
     "react-query": "3.38.1",
-    "recoil": "0.7.2"
+    "recoil": "0.7.2",
+    "yup": "0.32.11"
   },
   "devDependencies": {
     "@emotion/babel-plugin": "11.9.2",
