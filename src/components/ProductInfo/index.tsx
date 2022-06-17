@@ -17,7 +17,7 @@ interface IProductInfo {
 const productData: IProductInfo = {
   id: 1,
   name: "충주 유기농 사과 1박스",
-  desc: "충북 충주시에서 직접 수확한 유기농 사과입니다.충북 충주시에서 직접 수확한 유기농 사과입니다.충북 충주시에서 직접 수확한 유기농 사과입니다.충북 충주시에서 직접 수확한 유기농 사과입니다.",
+  desc: "충북 충주시에서 직접 수확한 유기농 사과입니다.",
   img: "https://images.unsplash.com/photo-1584306670957-acf935f5033c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=986&q=80",
   price: 12000,
   delivery: 3000,
@@ -55,7 +55,7 @@ function ProductInfo() {
               <BookmarkIcon activate={bookmarked} />
             </Box>
           </Flex>
-          <Text mt={8} fontSize="14px" color="gray.700">
+          <Text mt={3} fontSize="14px" color="gray.500">
             {productData.desc}
           </Text>
         </Box>
