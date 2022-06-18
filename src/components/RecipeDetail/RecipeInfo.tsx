@@ -1,26 +1,65 @@
-import {Box, Text, Image} from '@chakra-ui/react';
-import React from 'react';
-
-const RecipeInfo = () => {
+import {Box, Text, Image, HStack, SimpleGrid} from '@chakra-ui/react';
+import React, {ReactNode} from 'react';
+import IngredientInfo from 'components/IngredientInfo';
+import {UserIcon} from 'components/Icon';
+import {ICookingInfo} from 'types/recipe';
+interface IRecipeInfo {
+  children: ReactNode;
+  info: ICookingInfo;
+  imgs: string[];
+}
+const RecipeInfo = ({children, info, imgs}: IRecipeInfo) => {
   return (
     <>
       <Box borderRadius={5} overflow="hidden">
-        <Image
-          src="https://recipe1.ezmember.co.kr/cache/recipe/2020/08/18/32775e06923a4bef0cb6093ff84d28ef1.jpg"
-          alt=""
-        />
+        {/* TODO : loading이 많이 걸리는 문제가 있음 */}
+        <Image src={imgs[0]} alt="" />
       </Box>
       <Box>
         <Text fontSize={'2xl'} fontWeight="700" paddingY={5}>
-          백종원 에그 샌드위치
+          {info.name}
         </Text>
         <Text fontSize={'lg'} lineHeight="normal">
-          백종원 에그 샌드위치백종원 에그 샌드위치백종원 에그 샌드위치백종원
-          에그 샌드위치백종원 에그 샌드위치백종원 에그 샌드위치백종원 에그
-          샌드위치백종원 에그 샌드위치백종원 에그 샌드위치백종원 에그
-          샌드위치백종원 에그 샌드위치백종원 에그 샌드위치백종원 에그
-          샌드위치백종원 에그 샌드위치
+          {info.desc}
         </Text>
+      </Box>
+      {children}
+      <Box
+        paddingY={5}
+        backgroundColor="#F6F6F6"
+        width={'100%'}
+        borderRadius={10}
+      >
+        <HStack
+          justifyContent={'space-between'}
+          p={'10px 10%'}
+          borderBottom="1px solid #DBDBDB"
+        >
+          <HStack>
+            <UserIcon />
+            <Text fontSize={'lg'}>{info.servings}인분</Text>
+          </HStack>
+          <HStack>
+            <UserIcon />
+            <Text fontSize={'lg'}>{info.time}</Text>
+          </HStack>
+          <HStack>
+            <UserIcon />
+            <Text fontSize={'lg'}>{info.category}</Text>
+          </HStack>
+        </HStack>
+        <SimpleGrid
+          columns={2}
+          spacingY={10}
+          spacingX={5}
+          p={'20px 10%'}
+          justifyContent={'space-between'}
+        >
+          <IngredientInfo name="식빵" content="2조각" />
+          <IngredientInfo name="체다치즈" content="4개" />
+          <IngredientInfo name="달걀" content="3개" />
+          <IngredientInfo name="식빵" content="2조각" />
+        </SimpleGrid>
       </Box>
     </>
   );

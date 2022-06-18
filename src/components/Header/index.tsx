@@ -78,7 +78,7 @@ function Header() {
             </a>
           </Link>
         </HStack>
-        <Link href="/RegistRecipe">
+        <Link href="/recipe/regist">
           <a>
             <Btn>레시피 작성</Btn>
           </a>
