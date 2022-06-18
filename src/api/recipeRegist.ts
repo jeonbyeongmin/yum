@@ -44,7 +44,7 @@ export async function addRecipe(data: IRecipeRegist) {
       ...data,
       cookingImgs: imgPaths,
       steps: newStep,
-      uId: '', //TODO : USER ID추가 필요
+      uid: 'G9ZRvlS1QWZbylk1FAJHfEdyBRz1', //TODO : USER ID추가 필요
       // 레시피 초기 데이터 생성
       createDate: new Date(),
       likeCount: 0,

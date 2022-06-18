@@ -8,6 +8,7 @@ import {
   orderBy,
   query,
   QuerySnapshot,
+  where,
 } from 'firebase/firestore';
 import {type} from 'os';
 import {IRecipeItem} from 'types/recipe';
@@ -39,6 +40,18 @@ const getRecipeItemList = (docs: QuerySnapshot<DocumentData>) => {
   });
   return result;
 };
+export async function getFollowRecipes(uid = 'G9ZRvlS1QWZbylk1FAJHfEdyBRz1') {
+  //const q = query(citiesRef, where('country', 'in', ['USA', 'Japan']));
+  //위처럼 in을 쓰는 거로 바꾸는게 좋을거같은데
+  const q = query(
+    collection(db, 'recipe'),
+    where('uid', '==', uid),
+    limit(8), //이부분 수정하면, 게시글 개수 조절 가능
+  );
+  const querySnapshot = await getDocs(q);
+  return getRecipeItemList(querySnapshot);
+}
+
 export async function getRecentRecipes() {
   const q = query(
     collection(db, 'recipe'),
