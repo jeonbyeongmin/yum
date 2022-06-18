@@ -1,5 +1,7 @@
+import {Center, Spinner} from '@chakra-ui/react';
 import Layout from 'components/Layout';
 import MyInfo from 'components/MyInfo';
+import MySpinner from 'components/MySpinner';
 import RecipeItemList from 'components/RecipeItemList';
 import {AuthAction, useAuthUser, withAuthUser} from 'next-firebase-auth';
 
@@ -19,7 +21,7 @@ function MyPage() {
   );
 }
 
-const MyLoader = () => <div>Loading...</div>;
+const MyLoader = () => <MySpinner />;
 
 export default withAuthUser({
   whenUnauthedAfterInit: AuthAction.REDIRECT_TO_LOGIN,
