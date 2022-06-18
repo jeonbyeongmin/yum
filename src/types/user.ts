@@ -4,4 +4,5 @@ export interface IUser {
   userImg: string;
   liked: string[]; //좋아한 레시피 docId
   bookmarked: string[];
+  followes: string[];
 }
