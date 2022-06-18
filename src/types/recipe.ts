@@ -14,12 +14,15 @@ export interface IRecipeStep {
 export interface IRecipeRegist {
   cookingInfo: ICookingInfo;
   cookingImgs: string[];
-  infredients: string[];
+  infredients: number[];
   steps: IRecipeStep[];
   // TODO : 등록한 user의 데이터를 넣어야 한다.
 }
 
 export interface IRecipeInfo extends IRecipeRegist {
   // TODO : 등록한 user의 데이터를 넣어야 한다.
-  user?: string;
+  docId: string; //key
+  uId: string;
+  createDate: Date;
+  likeCount: number;
 }
