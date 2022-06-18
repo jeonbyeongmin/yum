@@ -18,7 +18,7 @@ import {getStoreItem} from 'api/store';
 import React, {useEffect, useState} from 'react';
 import {IStoreItem} from 'types/store';
 interface IIngredientSelectModal {
-  handleSelect: (item: any) => void;
+  handleSelect: (item: IStoreItem) => void;
 }
 function IngredientSelectModal({handleSelect}: IIngredientSelectModal) {
   const {isOpen, onOpen, onClose} = useDisclosure();
@@ -34,11 +34,10 @@ function IngredientSelectModal({handleSelect}: IIngredientSelectModal) {
 
   return (
     <>
-      <Button onClick={onOpen} colorScheme="orange" marginBottom={5}>
+      <Button onClick={onOpen} colorScheme="orange" marginBottom={10}>
         재료 선택
       </Button>
-
-      <Modal isOpen={isOpen} onClose={onClose}>
+      <Modal isOpen={isOpen} onClose={onClose} isCentered size={'xl'}>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>재료 선택</ModalHeader>
@@ -63,7 +62,7 @@ function IngredientSelectModal({handleSelect}: IIngredientSelectModal) {
                   cursor={'pointer'}
                 >
                   <Image src={item.img} w={16} h={16} />
-                  <Text>{item.name}</Text>
+                  <Text size="lg">{item.name}</Text>
                 </HStack>
               ))}
             </Box>

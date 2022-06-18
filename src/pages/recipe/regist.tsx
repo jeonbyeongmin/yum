@@ -9,6 +9,7 @@ import CookingContent from 'components/CookingContent';
 import ImageFileContainer from 'components/ImageFileBox';
 import {addRecipe} from 'api/recipeRegist';
 import {useRouter} from 'next/router';
+import {IStoreItem} from 'types/store';
 const initCookingInfo = {
   name: '',
   desc: '',
@@ -30,7 +31,8 @@ function Regist() {
 
   // 최적화 문제로 cookingInfo에서 images 분리
   const [cookingImages, setCookingImages] = useState<string[]>([]);
-  const [ingredients, setIngredients] = useState([1, 2]);
+  // const [ingredients, setIngredients] = useState([1, 2]);
+  const [selectIngredients, setSelectIngredients] = useState<IStoreItem[]>([]);
   const [recipeSteps, setRecipeSteps] = useState<IRecipeStep[]>(initRecipeStep);
   const router = useRouter();
   const handleTextChange = useCallback(
@@ -106,10 +108,11 @@ function Regist() {
   );
 
   const handleSubmit = () => {
+    const ingredient = selectIngredients.map(ing => ing.docId) as string[];
     const data: IRecipeRegist = {
       cookingInfo: cookingInfo,
       cookingImgs: [...cookingImages],
-      infredients: [...ingredients],
+      infredients: ingredient,
       steps: [...recipeSteps],
     };
     console.log('submit btn click : ', data);
@@ -119,6 +122,10 @@ function Regist() {
         router.push('/');
       }
     });
+  };
+  const handleIngredientSelect = (item: IStoreItem) => {
+    console.log('선택', item);
+    setSelectIngredients([...selectIngredients, item]);
   };
 
   return (
@@ -132,7 +139,10 @@ function Regist() {
           />
           <CookingInfo handleChange={handleTextChange} />
         </Box>
-        <IngredientList />
+        <IngredientList
+          handleSelect={handleIngredientSelect}
+          selectIngredients={selectIngredients}
+        />
         <RecipeStep
           steps={recipeSteps}
           handleStepChange={handleStepTextChange}
