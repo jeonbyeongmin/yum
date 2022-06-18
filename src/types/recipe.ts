@@ -16,9 +16,10 @@ export interface IRecipeRegist {
   cookingImgs: string[];
   infredients: string[];
   steps: IRecipeStep[];
-  // users :
+  // TODO : 등록한 user의 데이터를 넣어야 한다.
 }
 
 export interface IRecipeInfo extends IRecipeRegist {
+  // TODO : 등록한 user의 데이터를 넣어야 한다.
   user?: string;
 }
