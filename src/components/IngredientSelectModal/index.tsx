@@ -27,7 +27,7 @@ function IngredientSelectModal({handleSelect}: IIngredientSelectModal) {
 
   useEffect(() => {
     getStoreItem(searchText).then(res => {
-      console.log(res);
+      // console.log(res);
       setItems(res);
     });
   }, [searchText]);
@@ -57,6 +57,7 @@ function IngredientSelectModal({handleSelect}: IIngredientSelectModal) {
                   marginY={5}
                   onClick={() => {
                     handleSelect(item);
+                    setSearchText('');
                     onClose();
                   }}
                   cursor={'pointer'}
