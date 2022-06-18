@@ -1,5 +1,11 @@
 import {db} from '../firebase';
-import {addDoc, collection} from 'firebase/firestore';
+import {
+  addDoc,
+  collection,
+  DocumentData,
+  getDocs,
+  query,
+} from 'firebase/firestore';
 import {IStoreItem} from 'types/store';
 
 export async function addStoreItem(data: IStoreItem) {
@@ -12,4 +18,18 @@ export async function addStoreItem(data: IStoreItem) {
   } catch (e) {
     console.error('Error adding document: ', e);
   }
+}
+
+export async function getStoreItem(searchText) {
+  const q = query(collection(db, 'store'));
+  const querySnapshot = await getDocs(q);
+  const result: IStoreItem[] = [];
+
+  querySnapshot.forEach(doc => {
+    const data = doc.data() as IStoreItem;
+    result.push(data);
+  });
+
+  console.log(result);
+  return result;
 }
