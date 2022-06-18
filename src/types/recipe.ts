@@ -34,4 +34,6 @@ export interface IRecipeItem {
   img: string;
   uid: string;
   likeCount: number;
+  userName?: string;
+  userImg?: string;
 }
