@@ -27,7 +27,10 @@ export async function getStoreItem(searchText) {
 
   querySnapshot.forEach(doc => {
     const data = doc.data() as IStoreItem;
-    result.push(data);
+    result.push({
+      ...data,
+      docId: doc.id,
+    });
   });
 
   console.log(result);
