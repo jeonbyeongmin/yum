@@ -20,7 +20,7 @@ export async function addStoreItem(data: IStoreItem) {
   }
 }
 
-export async function getStoreItem(searchText) {
+export async function getStoreItem(searchText = '') {
   const q = query(collection(db, 'store'));
   const querySnapshot = await getDocs(q);
   const result: IStoreItem[] = [];
