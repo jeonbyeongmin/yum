@@ -7,15 +7,19 @@ import {
   VStack,
   Button,
 } from '@chakra-ui/react';
+import {addStoreItem} from 'api/store';
 import Layout from 'components/Layout';
-import React, {useCallback, useState} from 'react';
+import React, {useState} from 'react';
 import {IStoreItem} from 'types/store';
 
 // interface IStoreRegist {}
 const initStoreItem = {
   name: '',
+  desc: '',
   img: '',
   price: 0,
+  delivery: 0,
+  volume: '',
   company: '',
   category: '',
 };
@@ -39,6 +43,19 @@ function StoreRegist() {
 
   const handleSubmit = () => {
     console.log(info);
+    const dummy = {
+      name: '충주 유기농 사과 1박스',
+      desc: '충북 충주시에서 직접 수확한 유기농 사과입니다.',
+      img: 'https://images.unsplash.com/photo-1584306670957-acf935f5033c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=986&q=80',
+      price: '12000',
+      delivery: '3000',
+      volume: '약 300g*30개',
+      company: '충주사과',
+      category: '과일',
+    };
+    addStoreItem(dummy).then(res => {
+      console.log(res);
+    });
   };
   return (
     <Layout>
@@ -50,6 +67,15 @@ function StoreRegist() {
             id="name"
             placeholder=" name"
             name="name"
+            onChange={handleChange}
+          />
+        </FormControl>
+        <FormControl isRequired>
+          <FormLabel htmlFor="desc"> desc</FormLabel>
+          <Input
+            id="desc"
+            placeholder=" desc"
+            name="desc"
             onChange={handleChange}
           />
         </FormControl>
@@ -68,6 +94,24 @@ function StoreRegist() {
             id="price"
             name="price"
             placeholder="price"
+            onChange={handleChange}
+          />
+        </FormControl>
+        <FormControl isRequired>
+          <FormLabel htmlFor="delivery">delivery</FormLabel>
+          <Input
+            id="delivery"
+            name="delivery"
+            placeholder="delivery"
+            onChange={handleChange}
+          />
+        </FormControl>
+        <FormControl isRequired>
+          <FormLabel htmlFor="volume">volume</FormLabel>
+          <Input
+            id="volume"
+            name="volume"
+            placeholder="volume"
             onChange={handleChange}
           />
         </FormControl>

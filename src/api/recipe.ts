@@ -10,7 +10,6 @@ import {
   QuerySnapshot,
   where,
 } from 'firebase/firestore';
-import {type} from 'os';
 import {IRecipeItem} from 'types/recipe';
 import {db} from '../firebase';
 
