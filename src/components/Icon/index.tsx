@@ -7,6 +7,7 @@ import {
   IoBookmark,
   IoHeartOutline,
   IoHeart,
+  IoTimeOutline
 } from 'react-icons/io5';
 import {
   AiFillPlusCircle,
@@ -16,6 +17,7 @@ import {
 } from 'react-icons/ai';
 import {MdOutlineArrowForwardIos, MdOutlineArrowBackIos} from 'react-icons/md';
 import {FcGoogle} from 'react-icons/fc';
+import {BiCategory} from 'react-icons/bi';
 import styled from '@emotion/styled';
 
 interface Iicon {
@@ -51,6 +53,14 @@ export function CloseIcon({size = 20, color = '#000'}: Iicon) {
 
 export function SearchIcon({size}: Iicon) {
   return <IoSearchOutline size={size ?? 20} />;
+}
+
+export function TimeIcon() {
+  return <IoTimeOutline size={25}/>;
+}
+
+export function CategoryIcon(){
+  return <BiCategory size={25}/>;
 }
 
 export function LikeIcon({size = 25, activate = false}: Iicon) {

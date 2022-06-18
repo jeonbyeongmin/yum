@@ -11,7 +11,7 @@ import {IRecipeInfo} from 'types/recipe';
 function Detail() {
   const [info, setInfo] = useState<IRecipeInfo>();
   useEffect(() => {
-    getRecipe().then(res => {
+    getRecipe('C84U14jfbVUJwWC2Hxmw').then(res => {
       console.log('res', res);
       setInfo(res as IRecipeInfo);
     });
@@ -31,7 +31,7 @@ function Detail() {
           <IngredientCart />
         </Flex>
       ) : (
-        <></>
+        <>loading..</>
       )}
     </Layout>
   );
