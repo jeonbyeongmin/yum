@@ -48,7 +48,7 @@ export async function addRecipe(data: IRecipeRegist) {
     const docRef = await addDoc(collection(db, 'recipe'), newData);
     // console.log('Document written with ID: ', docRef.id);
     console.log('레시피 등록에 성공했습니다!', newData, docRef);
-    return docRef;
+    return {state: true, docRef};
   } catch (e) {
     console.error('Error adding document: ', e);
   }
