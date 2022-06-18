@@ -16,4 +16,9 @@ export interface IRecipeRegist {
   cookingImgs: string[];
   infredients: string[];
   steps: IRecipeStep[];
+  // users :
+}
+
+export interface IRecipeInfo extends IRecipeRegist {
+  user?: string;
 }
