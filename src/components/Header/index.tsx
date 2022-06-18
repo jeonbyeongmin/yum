@@ -1,14 +1,16 @@
 import styled from '@emotion/styled';
-import {css} from '@emotion/react';
 import React from 'react';
 import {media} from 'styles/theme';
 import SearchBar from 'components/SearchBar';
 import {CartIcon, UserIcon, SearchIcon} from 'components/Icon';
-import {Box, Button, HStack, Text} from '@chakra-ui/react';
+import {Box, Button, HStack, IconButton, Text} from '@chakra-ui/react';
 import IconBtn from 'components/IconBtn';
 import Link from 'next/link';
+import {useRouter} from 'next/router';
 
 function Header() {
+  const router = useRouter();
+
   return (
     <Wrapper>
       <HStack
@@ -17,7 +19,7 @@ function Header() {
         maxWidth="1024px"
         m={'0 auto'}
         paddingX={{base: 5, sm: 10}}
-        gap="10"
+        gap="9"
       >
         <Link href="/">
           <a>
@@ -35,34 +37,37 @@ function Header() {
         <HStack flex={1} spacing={{base: '5px', sm: '25px'}}>
           <Link href="/">
             <a>
-              <NavItem
+              <Button
+                variant="unstyled"
                 fontSize="2xl"
-                color="#a5a5a5"
-                fontWeight={'bold'}
-                current={'true'}
+                color={router.asPath === '/' ? 'black' : '#a5a5a5'}
+                fontWeight="extrabold"
                 minW={'50px'}
+                _focus={{border: 'none'}}
               >
                 레시피
-              </NavItem>
+              </Button>
             </a>
           </Link>
           <Link href="/store">
             <a>
-              <NavItem
+              <Button
+                variant="unstyled"
                 fontSize="2xl"
-                color="#a5a5a5"
+                color={router.asPath === '/store' ? 'black' : '#a5a5a5'}
                 fontWeight={'bold'}
                 minW={'50px'}
+                _focus={{border: 'none'}}
               >
                 스토어
-              </NavItem>
+              </Button>
             </a>
           </Link>
         </HStack>
         <Box display={{base: 'none', md: 'block'}}>
           <SearchBar />
         </Box>
-        <HStack flexDirection={'row'} minWidth="80px" spacing={'5px'}>
+        <HStack flexDirection={'row'} spacing={'5px'}>
           <IconBtn
             icon={<SearchIcon size={25} />}
             label={'search'}
@@ -70,12 +75,28 @@ function Header() {
           />
           <Link href="/shoppingbasket">
             <a>
-              <IconBtn icon={<CartIcon />} label={'shpping basket'} />
+              <IconButton
+                aria-label="shpping basket"
+                variant="ghost"
+                icon={<CartIcon />}
+                _focus={{border: 'none'}}
+                borderRadius="full"
+                w="16"
+                h="16"
+              />
             </a>
           </Link>
           <Link href="/mypage">
             <a>
-              <IconBtn icon={<UserIcon />} label={'mypage'} />
+              <IconButton
+                aria-label="mypage"
+                variant="ghost"
+                icon={<UserIcon />}
+                _focus={{border: 'none'}}
+                borderRadius="full"
+                w="16"
+                h="16"
+              />
             </a>
           </Link>
         </HStack>
@@ -96,20 +117,6 @@ function Header() {
   );
 }
 
-const NavItem = styled(Text)`
-  display: inline-flex;
-  font-weight: 700;
-  cursor: pointer;
-  ${props =>
-    props.current &&
-    css`
-      color: #454545;
-      &:active {
-        opacity: 0.8;
-      }
-    `}
-`;
-
 const Wrapper = styled.header`
   position: fixed;
   width: 100%;
@@ -119,6 +126,7 @@ const Wrapper = styled.header`
   background-color: #fff;
   z-index: 100;
   border-bottom: 1px solid #e0e0e0;
+
   ${media.tablet} {
     font-size: 13px;
     height: 60px;

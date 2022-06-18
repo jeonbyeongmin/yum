@@ -1,5 +1,6 @@
 import {Box, Wrap, WrapItem, Center, Button} from '@chakra-ui/react';
 import {LeftArrowIcon, RightArrowIcon} from 'components/Icon';
+import {Box, Wrap, WrapItem} from '@chakra-ui/react';
 import StoreItem from 'components/StoreItem';
 
 export interface IStoreItem {
@@ -79,11 +80,59 @@ const initData: IStoreItem[] = [
     company: '충남계촌',
     bookmarked: false,
   },
+  {
+    id: 9,
+    name: '무항생제 계란 15구',
+    img: 'https://images.unsplash.com/photo-1623428454609-8ed6a4628b66?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+    price: 3500,
+    company: '충남계촌',
+    bookmarked: false,
+  },
+  {
+    id: 10,
+    name: '충주 유기농 사과 1박스',
+    img: 'https://images.unsplash.com/photo-1584306670957-acf935f5033c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=986&q=80',
+    price: 12000,
+    company: '충주사과',
+    bookmarked: false,
+  },
+  {
+    id: 11,
+    name: '무항생제 계란 15구',
+    img: 'https://images.unsplash.com/photo-1623428454609-8ed6a4628b66?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+    price: 3500,
+    company: '충남계촌',
+    bookmarked: false,
+  },
+  {
+    id: 12,
+    name: '무항생제 계란 15구',
+    img: 'https://images.unsplash.com/photo-1623428454609-8ed6a4628b66?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+    price: 3500,
+    company: '충남계촌',
+    bookmarked: false,
+  },
+  {
+    id: 13,
+    name: '충주 유기농 사과 1박스',
+    img: 'https://images.unsplash.com/photo-1584306670957-acf935f5033c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=986&q=80',
+    price: 12000,
+    company: '충주사과',
+    bookmarked: false,
+  },
+  {
+    id: 14,
+    name: '무항생제 계란 15구',
+    img: 'https://images.unsplash.com/photo-1623428454609-8ed6a4628b66?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+    price: 3500,
+    company: '충남계촌',
+    bookmarked: false,
+  },
 ];
 
 function StoreItemList() {
   return (
-    <Box pos="relative" my={20}>
+    <Box pos="relative" my="12">
       <Wrap spacingX={7} spacingY={24}>
         {initData.map(data => (
           <WrapItem key={data.id}>
@@ -91,11 +140,6 @@ function StoreItemList() {
           </WrapItem>
         ))}
       </Wrap>
-      <Center my={20}>
-        <Button size="lg" height="45px" width="150px">
-          더 보기
-        </Button>
-      </Center>
     </Box>
   );
 }

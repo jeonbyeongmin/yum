@@ -1,4 +1,12 @@
-import {Box, Button, Center, Heading, Wrap, WrapItem} from '@chakra-ui/react';
+import {
+  Box,
+  Button,
+  Center,
+  Heading,
+  Text,
+  Wrap,
+  WrapItem,
+} from '@chakra-ui/react';
 import RecipeItem from 'components/RecipeItem';
 import {IRecipeItem} from 'types/recipe';
 
@@ -123,8 +131,8 @@ function PopularRecipeItemList({title, recipes}: IRecipeItemList) {
         ))}
       </Wrap>
       <Center my={20}>
-        <Button size="lg" height="45px" width="150px">
-          더 보기
+        <Button size="xl" paddingX="14" paddingY="6" borderRadius="xl">
+          <Text fontSize="xl">더 보기</Text>
         </Button>
       </Center>
     </Box>

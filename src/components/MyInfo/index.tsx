@@ -10,7 +10,7 @@ export interface IMyInfo {
 function MyInfo({name, email, img}: IMyInfo) {
   return (
     <Flex py={16} px={10} justifyContent="space-between">
-      <Flex alignItems={'center'}>
+      <Flex alignItems={'center'} gap="5">
         <Avatar src={img} width={'140px'} height={'140px'} />
         <Box mx={10}>
           <Text fontSize="32px" fontWeight="bold" mb={6}>
@@ -21,8 +21,14 @@ function MyInfo({name, email, img}: IMyInfo) {
           </Text>
         </Box>
       </Flex>
-      <HStack gap={12} alignItems="start">
-        <Button fontSize="16px" fontWeight="semibold" variant={'ghost'}>
+      <HStack gap={5} alignItems="end">
+        <Button
+          fontSize="16px"
+          fontWeight="semibold"
+          variant={'ghost'}
+          padding="8"
+          borderRadius="xl"
+        >
           회원 정보 수정
         </Button>
         <Button
@@ -30,6 +36,8 @@ function MyInfo({name, email, img}: IMyInfo) {
           fontWeight="semibold"
           variant={'ghost'}
           onClick={() => logout()}
+          padding="8"
+          borderRadius="xl"
         >
           로그아웃
         </Button>
@@ -38,6 +46,8 @@ function MyInfo({name, email, img}: IMyInfo) {
           fontWeight="semibold"
           color="red.500"
           variant={'ghost'}
+          padding="8"
+          borderRadius="xl"
         >
           회원 탈퇴
         </Button>

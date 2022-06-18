@@ -16,6 +16,7 @@ import * as yup from 'yup';
 import {yupResolver} from '@hookform/resolvers/yup';
 import {createUser} from 'api/auth';
 import {AuthAction, withAuthUser} from 'next-firebase-auth';
+import MySpinner from 'components/MySpinner';
 
 interface FormData {
   name: string;
@@ -209,7 +210,7 @@ function Register() {
   );
 }
 
-const MyLoader = () => <div>Loading...</div>;
+const MyLoader = () => <MySpinner />;
 
 export default withAuthUser({
   whenAuthed: AuthAction.REDIRECT_TO_APP,
