@@ -4,7 +4,7 @@ import Layout from 'components/Layout';
 import RecipeItemList from 'components/RecipeItemList';
 import PopularRecipeItemList from 'components/PopularRecipeList';
 import {getRecentRecipes} from 'api/recipe';
-import { useEffect } from 'react';
+import {useEffect} from 'react';
 
 const Home: NextPage = () => {
   useEffect(() => {
