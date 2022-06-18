@@ -17,7 +17,6 @@ import {useForm} from 'react-hook-form';
 import * as yup from 'yup';
 import {yupResolver} from '@hookform/resolvers/yup';
 import {signIn} from 'api/auth';
-import {useRouter} from 'next/router';
 import {AuthAction, withAuthUser} from 'next-firebase-auth';
 
 interface FormData {
@@ -26,8 +25,6 @@ interface FormData {
 }
 
 function Login() {
-  const router = useRouter();
-
   const schema = yup.object().shape({
     email: yup.string().email().required(),
     password: yup.string().min(7).max(10).required(),
@@ -47,7 +44,7 @@ function Login() {
       const res = await signIn(email, password);
 
       if (res.statusCode === 200) {
-        router.push('/');
+        console.log('!');
       } else {
         console.log(res.errorMessage);
       }

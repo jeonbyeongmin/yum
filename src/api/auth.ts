@@ -1,6 +1,7 @@
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signOut,
   updateProfile,
 } from 'firebase/auth';
 import {doc, setDoc} from 'firebase/firestore';
@@ -42,6 +43,18 @@ export async function signIn(email: string, password: string) {
     const res = await signInWithEmailAndPassword(auth, email, password);
     const {user} = res;
     return {statusCode: 200, user};
+  } catch (error) {
+    const err = error as FirebaseAuthError;
+    const statusCode = err.code;
+    const errorMessage = err.message;
+    return {statusCode, errorMessage};
+  }
+}
+
+export async function logout() {
+  try {
+    await signOut(auth);
+    return {statusCode: 200};
   } catch (error) {
     const err = error as FirebaseAuthError;
     const statusCode = err.code;
