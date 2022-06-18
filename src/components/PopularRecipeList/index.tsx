@@ -117,7 +117,7 @@ function PopularRecipeItemList({title, recipes}: IRecipeItemList) {
       </Heading>
       <Wrap spacingX={7} spacingY={14}>
         {recipes?.map(data => (
-          <WrapItem key={data.id}>
+          <WrapItem key={data.docId}>
             <RecipeItem data={data} />
           </WrapItem>
         ))}
