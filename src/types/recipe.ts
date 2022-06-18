@@ -22,7 +22,16 @@ export interface IRecipeRegist {
 export interface IRecipeInfo extends IRecipeRegist {
   // TODO : 등록한 user의 데이터를 넣어야 한다.
   docId: string; //key
-  uId: string;
+  uid: string;
   createDate: Date;
+  likeCount: number;
+}
+
+export interface IRecipeItem {
+  docId: string;
+  name: string;
+  desc: string;
+  img: string;
+  uid: string;
   likeCount: number;
 }
