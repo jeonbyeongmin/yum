@@ -10,7 +10,10 @@ export async function addRecipe(data: IRecipeRegist) {
   try {
     const imgPaths = [];
     for (const imgIndex in data.cookingImgs) {
-      const storageRef = ref(storage, `image/${data.name}/${imgIndex}`);
+      const storageRef = ref(
+        storage,
+        `image/${data.cookingInfo.name}/${imgIndex}`,
+      );
       const res = await uploadString(
         storageRef,
         data.cookingImgs[imgIndex],
@@ -23,7 +26,10 @@ export async function addRecipe(data: IRecipeRegist) {
     const newStep = [...data.steps];
     for (const step in data.steps) {
       if (data.steps[step].img) {
-        const storageRef = ref(storage, `image/${data.name}/step${step}`);
+        const storageRef = ref(
+          storage,
+          `image/${data.cookingInfo.name}/step${step}`,
+        );
         const res = await uploadString(
           storageRef,
           data.steps[step].img,
