@@ -35,9 +35,9 @@ export async function addRecipe(data: any) {
       cookingImgs: imgPaths,
       steps: newStep,
     };
-    console.log(newData);
     const docRef = await addDoc(collection(db, 'recipe'), newData);
     // console.log('Document written with ID: ', docRef.id);
+    console.log('레시피 등록에 성공했습니다!', newData, docRef);
     return docRef;
   } catch (e) {
     console.error('Error adding document: ', e);
