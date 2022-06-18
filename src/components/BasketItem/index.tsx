@@ -10,7 +10,7 @@ import {
 } from '@chakra-ui/react';
 import styled from '@emotion/styled';
 import {CloseIcon, MinusIcon, PlusOutLineIcon} from 'components/Icon';
-import {IProductItem} from 'pages/ShoppingBasket';
+import {IProductItem} from 'pages/shoppingbasket';
 import React from 'react';
 
 interface IBasketItem {

@@ -4,12 +4,11 @@ import React, {useCallback, useState} from 'react';
 import CookingInfo from 'components/CookingInfo';
 import IngredientList from 'components/IngredientList';
 import RecipeStep from 'components/RecipeStep';
-import Btn from 'components/Btn';
 import {ICookingInfo, IRecipeRegist, IRecipeStep} from 'types/recipe';
 import CookingContent from 'components/CookingContent';
 import ImageFileContainer from 'components/ImageFileBox';
 import {addRecipe} from 'api/recipeRegist';
-
+import {useRouter} from 'next/router';
 const initCookingInfo = {
   name: '',
   desc: '',
@@ -33,7 +32,7 @@ function Regist() {
   const [cookingImages, setCookingImages] = useState<string[]>([]);
   const [ingredients, setIngredients] = useState([1, 2]);
   const [recipeSteps, setRecipeSteps] = useState<IRecipeStep[]>(initRecipeStep);
-
+  const router = useRouter();
   const handleTextChange = useCallback(
     (
       event: React.ChangeEvent<
@@ -114,7 +113,12 @@ function Regist() {
       steps: [...recipeSteps],
     };
     console.log('submit btn click : ', data);
-    addRecipe(data);
+    addRecipe(data).then(res => {
+      if (res?.state) {
+        alert('레시피 등록에 성공하였습니다!');
+        router.push('/');
+      }
+    });
   };
 
   return (
