@@ -45,7 +45,7 @@ function Header() {
               </NavItem>
             </a>
           </Link>
-          <Link href="/Store">
+          <Link href="/store">
             <a>
               <NavItem
                 fontSize="2xl"
@@ -67,12 +67,12 @@ function Header() {
             label={'search'}
             type="mobile"
           />
-          <Link href="/ShoppingBasket">
+          <Link href="/shoppingbasket">
             <a>
               <IconBtn icon={<CartIcon />} label={'shpping basket'} />
             </a>
           </Link>
-          <Link href="/MyPage">
+          <Link href="/mypage">
             <a>
               <IconBtn icon={<UserIcon />} label={'mypage'} />
             </a>

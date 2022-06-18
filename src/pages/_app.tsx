@@ -4,6 +4,10 @@ import Head from 'next/head';
 import globalStyles from 'styles/global-styles';
 import {ChakraProvider} from '@chakra-ui/react';
 import {RecoilRoot} from 'recoil';
+import initAuth from '../initAuth';
+
+initAuth();
+
 function App({Component, pageProps}: AppProps) {
   return (
     <RecoilRoot>

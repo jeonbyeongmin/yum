@@ -16,6 +16,7 @@ import * as yup from 'yup';
 import {yupResolver} from '@hookform/resolvers/yup';
 import {createUser} from 'api/auth';
 import {useRouter} from 'next/router';
+import {AuthAction, withAuthUser} from 'next-firebase-auth';
 
 interface FormData {
   name: string;
@@ -210,4 +211,11 @@ function Register() {
   );
 }
 
-export default Register;
+const MyLoader = () => <div>Loading...</div>;
+
+export default withAuthUser({
+  whenAuthed: AuthAction.REDIRECT_TO_APP,
+  whenUnauthedBeforeInit: AuthAction.SHOW_LOADER,
+  whenUnauthedAfterInit: AuthAction.RENDER,
+  LoaderComponent: MyLoader,
+})(Register);
