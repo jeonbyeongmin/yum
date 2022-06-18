@@ -1,4 +1,15 @@
-import {collection, doc, getDoc, getDocs, query} from 'firebase/firestore';
+import {
+  collection,
+  doc,
+  DocumentData,
+  getDoc,
+  getDocs,
+  limit,
+  orderBy,
+  query,
+} from 'firebase/firestore';
+import {type} from 'os';
+import {IRecipeItem} from 'types/recipe';
 import {db} from '../firebase';
 
 export async function getRecipe(docId: any = 'F5i0HXywZtZXIxZLVisM') {
@@ -15,11 +26,20 @@ export async function getRecipe(docId: any = 'F5i0HXywZtZXIxZLVisM') {
 }
 
 export async function getRecentRecipes() {
-  const q = query(collection(db, 'recipe'));
+  const q = query(collection(db, 'recipe'), orderBy('createDate'), limit(8));
 
   const querySnapshot = await getDocs(q);
+  const result: IRecipeItem[] = [];
   querySnapshot.forEach(doc => {
-    // doc.data() is never undefined for query doc snapshots
-    console.log(doc.id, ' => ', doc.data());
+    console.log(doc.data().cookingImgs[0]);
+    result.push({
+      docId: doc.id,
+      name: doc.data().cookingInfo.name,
+      desc: doc.data().cookingInfo.desc,
+      img: doc.data().cookingImgs[0] ?? undefined,
+      likeCount: doc.data().likeCount,
+      uid: doc.data().uid, //TODO : uid 추가 필요
+    });
   });
+  return result;
 }
