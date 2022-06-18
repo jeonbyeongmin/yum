@@ -27,7 +27,7 @@ function Header() {
               fontFamily="Binggrae"
               fontSize="4xl"
               fontWeight="extrabold"
-              color="orange.500"
+              color="orange.400"
               letterSpacing="tighter"
             >
               YUM
