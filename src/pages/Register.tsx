@@ -15,7 +15,6 @@ import {useForm} from 'react-hook-form';
 import * as yup from 'yup';
 import {yupResolver} from '@hookform/resolvers/yup';
 import {createUser} from 'api/auth';
-import {useRouter} from 'next/router';
 import {AuthAction, withAuthUser} from 'next-firebase-auth';
 
 interface FormData {
@@ -26,8 +25,6 @@ interface FormData {
 }
 
 function Register() {
-  const router = useRouter();
-
   const schema = yup.object().shape({
     name: yup.string().required(),
     email: yup.string().email().required(),
@@ -52,7 +49,8 @@ function Register() {
       const res = await createUser(email, password, name);
 
       if (res.statusCode === 200) {
-        router.push('/');
+        // router.push('/');
+        console.log('회원가입');
       } else {
         console.log(res.errorMessage);
       }

@@ -12,7 +12,6 @@ const initAuth = () => {
     onLogoutRequestError: err => {
       console.error(err);
     },
-    firebaseAuthEmulatorHost: 'localhost:9099',
     firebaseAdminInitConfig: {
       credential: {
         projectId: 'yum-84499',

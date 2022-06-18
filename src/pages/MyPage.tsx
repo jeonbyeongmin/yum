@@ -8,7 +8,11 @@ function MyPage() {
 
   return (
     <Layout>
-      <MyInfo name={user.displayName} img={user.photoURL} email={user.email} />
+      <MyInfo
+        name={user.displayName}
+        img={user.photoURL ?? ''}
+        email={user.email}
+      />
       <RecipeItemList title={'북마크한 레시피'} />
       <RecipeItemList title={'내가 등록한 레시피'} />
     </Layout>
