@@ -5,7 +5,7 @@ import CookingInfo from 'components/CookingInfo';
 import IngredientList from 'components/IngredientList';
 import RecipeStep from 'components/RecipeStep';
 import Btn from 'components/Btn';
-import {ICookingInfo, IRecipeStep} from 'types/recipe';
+import {ICookingInfo, IRecipeRegist, IRecipeStep} from 'types/recipe';
 import CookingContent from 'components/CookingContent';
 import ImageFileContainer from 'components/ImageFileBox';
 import {addRecipe} from 'api/recipeRegist';
@@ -107,7 +107,7 @@ function Regist() {
   );
 
   const handleSubmit = () => {
-    const data = {
+    const data: IRecipeRegist = {
       cookingInfo: cookingInfo,
       cookingImgs: [...cookingImages],
       infredients: [...ingredients],

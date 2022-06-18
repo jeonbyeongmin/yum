@@ -11,7 +11,7 @@ import {IRecipeInfo} from 'types/recipe';
 function Detail() {
   const [info, setInfo] = useState<IRecipeInfo>();
   useEffect(() => {
-    getRecipe().then(res => {
+    getRecipe('tsBu15LhoJFVer94as9N').then(res => {
       console.log('res', res);
       setInfo(res as IRecipeInfo);
     });
