@@ -1,6 +1,6 @@
-import { Flex, Image, Box, Text, HStack, Button } from "@chakra-ui/react";
-import { BookmarkIcon, MinusIcon, PlusOutLineIcon } from "components/Icon";
-import { useState } from "react";
+import {Flex, Image, Box, Text, HStack, Button} from '@chakra-ui/react';
+import {BookmarkIcon, MinusIcon, PlusOutLineIcon} from 'components/Icon';
+import {useState} from 'react';
 
 interface IProductInfo {
   id: number;
@@ -16,13 +16,13 @@ interface IProductInfo {
 
 const productData: IProductInfo = {
   id: 1,
-  name: "충주 유기농 사과 1박스",
-  desc: "충북 충주시에서 직접 수확한 유기농 사과입니다.",
-  img: "https://images.unsplash.com/photo-1584306670957-acf935f5033c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=986&q=80",
+  name: '충주 유기농 사과 1박스',
+  desc: '충북 충주시에서 직접 수확한 유기농 사과입니다.',
+  img: 'https://images.unsplash.com/photo-1584306670957-acf935f5033c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=986&q=80',
   price: 12000,
   delivery: 3000,
-  volume: "약 300g*30개",
-  company: "충주사과",
+  volume: '약 300g*30개',
+  company: '충주사과',
   bookmarked: false,
 };
 
@@ -37,11 +37,12 @@ function ProductInfo() {
     <Flex my={20}>
       <Image
         src={productData.img}
-        width={"500px"}
-        height={"500px"}
+        width={'500px'}
+        height={'500px'}
         borderRadius={5}
-        objectFit={"cover"}
-      ></Image>
+        objectFit={'cover'}
+        alt={'image'}
+      />
       <Box px={10} width="500px">
         <Box>
           <Text fontSize="14px" color="orange.400" fontWeight="500">
@@ -51,7 +52,7 @@ function ProductInfo() {
             <Text fontSize="24px" fontWeight="500">
               {productData.name}
             </Text>
-            <Box cursor={"pointer"} onClick={bookmarkClick}>
+            <Box cursor={'pointer'} onClick={bookmarkClick}>
               <BookmarkIcon activate={bookmarked} />
             </Box>
           </Flex>
@@ -70,8 +71,8 @@ function ProductInfo() {
               {productData.price} 원
             </Text>
             <Text my={3} fontSize="16px">
-              배송비{" "}
-              {productData.delivery ? productData.delivery + " 원" : "무로"}
+              배송비{' '}
+              {productData.delivery ? productData.delivery + ' 원' : '무로'}
             </Text>
           </Box>
         </HStack>
@@ -110,7 +111,7 @@ function ProductInfo() {
               borderColor="orange"
               color="orange"
               _hover={{
-                opacity: "0.7",
+                opacity: '0.7',
               }}
             >
               장바구니
@@ -122,7 +123,7 @@ function ProductInfo() {
               backgroundColor="orange"
               color="white"
               _hover={{
-                opacity: "0.7",
+                opacity: '0.7',
               }}
             >
               주문하기
@@ -136,20 +137,18 @@ function ProductInfo() {
 
 function Counter() {
   return (
-    <HStack border={"1px solid #B9B9B9"} borderRadius={7}>
-      <Button colorScheme={"whiteAlpha"} color="#000" size="md">
+    <HStack border={'1px solid #B9B9B9'} borderRadius={7}>
+      <Button colorScheme={'whiteAlpha'} color="#000" size="md">
         <MinusIcon size={12} />
       </Button>
-      <Text fontSize={"lg"} color="#000000">
+      <Text fontSize={'lg'} color="#000000">
         1
       </Text>
-      <Button colorScheme={"whiteAlpha"} color="#000" size="md">
+      <Button colorScheme={'whiteAlpha'} color="#000" size="md">
         <PlusOutLineIcon size={12} />
       </Button>
     </HStack>
   );
 }
-
-function Btn() {}
 
 export default ProductInfo;

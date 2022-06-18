@@ -33,7 +33,7 @@ function ImageFileContainer({images, setImages}: IImageFileContainer) {
           />
         );
       })}
-      <ImageFileInputWrapper>
+      <ImageFileInputWrapper borderRadius="xl">
         <input type="file" id="fileInput" onChange={onChange} hidden />
         <label htmlFor="fileInput">
           <PlusOutLineIcon />
@@ -47,7 +47,6 @@ const ImageFileInputWrapper = styled(Box)`
   border: 1px solid #b9b9b9;
   width: 70px;
   height: 70px;
-  border-radius: 3px;
   display: inline-flex;
   align-items: center;
   border: 1px solid #b9b9b9;
