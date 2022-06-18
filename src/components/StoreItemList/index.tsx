@@ -1,5 +1,3 @@
-import {Box, Wrap, WrapItem, Center, Button} from '@chakra-ui/react';
-import {LeftArrowIcon, RightArrowIcon} from 'components/Icon';
 import {Box, Wrap, WrapItem} from '@chakra-ui/react';
 import StoreItem from 'components/StoreItem';
 
