@@ -11,3 +11,9 @@ export interface IRecipeStep {
   content: string;
   img: string;
 }
+export interface IRecipeRegist {
+  cookingInfo: ICookingInfo;
+  cookingImgs: string[];
+  infredients: string[];
+  steps: IRecipeStep[];
+}

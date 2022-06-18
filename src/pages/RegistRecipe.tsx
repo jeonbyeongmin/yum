@@ -18,20 +18,20 @@ const initCookingInfo = {
   time: '',
   category: '',
 };
-
+const initRecipeStep = [
+  {
+    step: 0,
+    content: '',
+    img: '',
+  },
+];
 function RegistRecipe() {
   const [cookingInfo, setCookingInfo] = useState<ICookingInfo>(initCookingInfo);
 
   // 최적화 문제로 cookingInfo에서 images 분리
   const [cookingImages, setCookingImages] = useState<string[]>([]);
   const [ingredients, setIngredients] = useState([1, 2]);
-  const [recipeSteps, setRecipeSteps] = useState<IRecipeStep[]>([
-    {
-      step: 0,
-      content: '',
-      img: '',
-    },
-  ]);
+  const [recipeSteps, setRecipeSteps] = useState<IRecipeStep[]>(initRecipeStep);
 
   const handleTextChange = useCallback(
     (
@@ -107,7 +107,7 @@ function RegistRecipe() {
 
   const handleSubmit = () => {
     const data = {
-      ...cookingInfo,
+      cookingInfo: cookingInfo,
       cookingImgs: [...cookingImages],
       infredients: [...ingredients],
       steps: [...recipeSteps],
