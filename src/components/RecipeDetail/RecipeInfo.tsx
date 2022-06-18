@@ -48,6 +48,7 @@ const RecipeInfo = ({children, info, imgs}: IRecipeInfo) => {
             <Text fontSize={'lg'}>{info.category}</Text>
           </HStack>
         </HStack>
+        {/* TODO : 재료 리스트 부분 */}
         <SimpleGrid
           columns={2}
           spacingY={10}
