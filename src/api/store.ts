@@ -27,12 +27,14 @@ export async function getStoreItem(searchText) {
 
   querySnapshot.forEach(doc => {
     const data = doc.data() as IStoreItem;
-    result.push({
-      ...data,
-      docId: doc.id,
-    });
+    if (data.name.includes(searchText)) {
+      result.push({
+        ...data,
+        docId: doc.id,
+      });
+    }
   });
 
-  console.log(result);
+  console.log('검색 결과', result);
   return result;
 }
