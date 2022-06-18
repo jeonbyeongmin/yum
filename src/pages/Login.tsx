@@ -18,6 +18,7 @@ import * as yup from 'yup';
 import {yupResolver} from '@hookform/resolvers/yup';
 import {signIn} from 'api/auth';
 import {useRouter} from 'next/router';
+import {AuthAction, withAuthUser} from 'next-firebase-auth';
 
 interface FormData {
   email: string;
@@ -154,7 +155,7 @@ function Login() {
           <Center height="14px">
             <Divider orientation="vertical" marginX="3" />
           </Center>
-          <Link href="/Register" passHref>
+          <Link href="/register" passHref>
             <a>
               <Text fontSize="xl">회원가입</Text>
             </a>
@@ -165,4 +166,11 @@ function Login() {
   );
 }
 
-export default Login;
+const MyLoader = () => <div>Loading...</div>;
+
+export default withAuthUser({
+  whenAuthed: AuthAction.REDIRECT_TO_APP,
+  whenUnauthedBeforeInit: AuthAction.SHOW_LOADER,
+  whenUnauthedAfterInit: AuthAction.RENDER,
+  LoaderComponent: MyLoader,
+})(Login);

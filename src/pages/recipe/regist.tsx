@@ -1,7 +1,7 @@
 import {Box, Center, Container} from '@chakra-ui/react';
 import Layout from 'components/Layout';
 import React, {useCallback, useState} from 'react';
-// import CookingInfo from 'components/CookingInfo';
+import CookingInfo from 'components/CookingInfo';
 import IngredientList from 'components/IngredientList';
 import RecipeStep from 'components/RecipeStep';
 import Btn from 'components/Btn';

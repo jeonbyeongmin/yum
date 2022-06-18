@@ -1,28 +1,22 @@
-import { Avatar, Box, Flex, Text, HStack } from "@chakra-ui/react";
+import {Avatar, Box, Flex, Text, HStack} from '@chakra-ui/react';
 
 export interface IMyInfo {
-  name: string;
-  email: string;
-  img: string;
+  name: string | null;
+  email: string | null;
+  img: string | null;
 }
 
-const userData: IMyInfo = {
-  name: "우정균",
-  email: "wjk6044@naver.com",
-  img: "",
-};
-
-function MyInfo() {
+function MyInfo({name, email, img}: IMyInfo) {
   return (
     <Flex py={16} px={10} justifyContent="space-between">
-      <Flex alignItems={"center"}>
-        <Avatar src={userData.img} width={"140px"} height={"140px"} />
+      <Flex alignItems={'center'}>
+        <Avatar src={img} width={'140px'} height={'140px'} />
         <Box mx={10}>
           <Text fontSize="32px" fontWeight="bold" mb={6}>
-            {userData.name}
+            {name}
           </Text>
           <Text fontSize="20px" color="gray.500">
-            {userData.email}
+            {email}
           </Text>
         </Box>
       </Flex>
@@ -30,7 +24,7 @@ function MyInfo() {
         <Text
           fontSize="16px"
           fontWeight="semibold"
-          _hover={{ opacity: "0.7" }}
+          _hover={{opacity: '0.7'}}
           cursor="pointer"
         >
           회원 정보 수정
@@ -38,7 +32,7 @@ function MyInfo() {
         <Text
           fontSize="16px"
           fontWeight="semibold"
-          _hover={{ opacity: "0.7" }}
+          _hover={{opacity: '0.7'}}
           cursor="pointer"
         >
           로그아웃
@@ -47,7 +41,7 @@ function MyInfo() {
           fontSize="16px"
           fontWeight="semibold"
           color="red.500"
-          _hover={{ opacity: "0.7" }}
+          _hover={{opacity: '0.7'}}
           cursor="pointer"
         >
           회원 탈퇴
