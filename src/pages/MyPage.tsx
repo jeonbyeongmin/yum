@@ -1,4 +1,3 @@
-import {Center, Spinner} from '@chakra-ui/react';
 import Layout from 'components/Layout';
 import MyInfo from 'components/MyInfo';
 import MySpinner from 'components/MySpinner';
