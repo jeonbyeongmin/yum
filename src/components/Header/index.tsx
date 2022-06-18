@@ -19,16 +19,19 @@ function Header() {
         m={'0 auto'}
         paddingX={{base: 5, sm: 10}}
         borderBottom="1px solid #e0e0e0"
+        gap="10"
       >
         <Link href="/">
           <a>
-            <Logo
-              fontSize={'4xl'}
-              fontWeight="bold"
-              w={{base: '70px', sm: 100}}
+            <Text
+              fontFamily="Binggrae"
+              fontSize="4xl"
+              fontWeight="extrabold"
+              color="orange.500"
+              letterSpacing="tighter"
             >
               YUM
-            </Logo>
+            </Text>
           </a>
         </Link>
         <HStack flex={1} spacing={{base: '5px', sm: '25px'}}>
