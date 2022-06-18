@@ -1,33 +1,33 @@
-import { Box, Image, Text, VStack, Flex } from "@chakra-ui/react";
-import { BookmarkIcon } from "components/Icon";
-import { IStoreItem } from "components/StoreItemList";
-import { useState } from "react";
+import {Box, Image, Text, VStack, Flex} from '@chakra-ui/react';
+import {BookmarkIcon} from 'components/Icon';
+import {IStoreItem} from 'components/StoreItemList';
+import {useState} from 'react';
 
 interface IStoreData {
   data: IStoreItem;
 }
-function StoreItem({ data }: IStoreData) {
+function StoreItem({data}: IStoreData) {
   const [bookmarked, setBookmarked] = useState<boolean>(data.bookmarked);
 
   function bookmarkClick() {
     setBookmarked(!bookmarked);
   }
   return (
-    <VStack width={"240px"}>
-      <Box overflow="hidden" cursor="pointer">
+    <VStack width={'240px'}>
+      <Box overflow="hidden" cursor="pointer" borderRadius="xl">
         <Image
           src={data.img}
-          width={"240px"}
-          height={"240px"}
-          borderRadius={5}
-          objectFit={"cover"}
+          width={'240px'}
+          height={'240px'}
+          objectFit={'cover'}
           transition="all 0.2s"
           _hover={{
-            transform: "scale(1.1)",
+            transform: 'scale(1.1)',
           }}
+          alt="item"
         />
       </Box>
-      <Box p={2} width={"240px"}>
+      <Box p={2} width={'240px'}>
         <Text fontSize="xl" color="gray.500">
           {data.company}
         </Text>
@@ -38,7 +38,7 @@ function StoreItem({ data }: IStoreData) {
           lineHeight="tight"
           transition="all 0.2s"
           cursor="pointer"
-          _hover={{ opacity: "0.6" }}
+          _hover={{opacity: '0.6'}}
         >
           {data.name}
         </Text>
@@ -46,7 +46,7 @@ function StoreItem({ data }: IStoreData) {
           <Text fontSize="3xl" fontWeight="bold">
             {data.price} 원
           </Text>
-          <Box cursor={"pointer"} onClick={bookmarkClick}>
+          <Box cursor={'pointer'} onClick={bookmarkClick}>
             <BookmarkIcon activate={bookmarked} />
           </Box>
         </Flex>

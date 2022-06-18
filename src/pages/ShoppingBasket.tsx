@@ -1,4 +1,4 @@
-import {Checkbox, VStack, Flex} from '@chakra-ui/react';
+import {Checkbox, VStack, Flex, Box, Text} from '@chakra-ui/react';
 import styled from '@emotion/styled';
 import BasketItem from 'components/BasketItem';
 import Layout from 'components/Layout';
@@ -45,17 +45,19 @@ const initData: IProductItem[] = [
 function ShoppingBasket() {
   return (
     <Layout>
-      <Checkbox size="lg" colorScheme="orange" defaultChecked marginX={5}>
-        모두 선택
-      </Checkbox>
-      <Container>
-        <VStack flex={1} alignItems="stretch" gap={3} margin={5}>
-          {initData.map(data => (
-            <BasketItem key={data.id} data={data} />
-          ))}
-        </VStack>
-        <ResultBox />
-      </Container>
+      <Box marginY="12">
+        <Checkbox colorScheme="orange" defaultChecked marginX={5} size="lg">
+          <Text fontSize="xl">모두 선택</Text>
+        </Checkbox>
+        <Container>
+          <VStack flex={1} alignItems="stretch" gap={5} marginY="5">
+            {initData.map(data => (
+              <BasketItem key={data.id} data={data} />
+            ))}
+          </VStack>
+          <ResultBox />
+        </Container>
+      </Box>
     </Layout>
   );
 }

@@ -1,11 +1,11 @@
 import type {NextPage} from 'next';
-// import styled from '@emotion/styled';
 import Layout from 'components/Layout';
 import RecipeItemList from 'components/RecipeItemList';
 import PopularRecipeItemList from 'components/PopularRecipeList';
 import {getRecentRecipes} from 'api/recipe';
 import {useEffect, useState} from 'react';
 import {IRecipeItem} from 'types/recipe';
+
 
 const Home: NextPage = () => {
   const [recentRecipes, setRecentRecipes] = useState<IRecipeItem[]>([]);
