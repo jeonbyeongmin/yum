@@ -5,7 +5,7 @@ import React from 'react';
 function ResultBox() {
   return (
     <VStack m={5} minW={'250px'} height="fit-content" alignItems={'stretch'}>
-      <Box border="1px solid #B9B9B9" borderTopRadius={5} borderBottom="none">
+      <Box border="1px solid #B9B9B9" borderTopRadius="xl" borderBottom="none">
         <Flex flexDirection={'column'} gap={5} p={8}>
           <HStack justifyContent={'space-between'}>
             <BigText>총 상품 금액</BigText>
@@ -27,6 +27,7 @@ function ResultBox() {
         w={'100%'}
         colorScheme="orange"
         borderTopRadius="0"
+        borderBottomRadius="xl"
         h={'50px'}
         fontSize="xl"
       >
@@ -35,9 +36,11 @@ function ResultBox() {
     </VStack>
   );
 }
+
 const SubmitBtn = styled(Button)`
   margin-top: 0px !important;
 `;
+
 const BigText = styled(Text)`
   font-size: 1.5rem;
 `;
