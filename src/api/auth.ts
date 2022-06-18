@@ -26,6 +26,15 @@ export async function createUser(
       await updateProfile(user, {displayName: name});
       await setDoc(doc(db, 'users', user.uid), {
         uid: user.uid,
+        userName: user.displayName,
+        userImg: user.photoURL,
+        email: user.email,
+        likedRecipe: [],
+        bookmarkedRecipe: [],
+        bookmarkedIngredient: [],
+        shoppingIngredient: [],
+        follower: [],
+        following: [],
       });
     }
 
