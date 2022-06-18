@@ -1,4 +1,4 @@
-import {Flex, Heading, Button} from '@chakra-ui/react';
+import {Flex, Heading, Button, Text} from '@chakra-ui/react';
 import {ChangeEvent} from 'react';
 import {IRecipeStep} from 'types/recipe';
 import RecipeStepItem from './RecipeStepItem';
@@ -19,7 +19,7 @@ export default function RecipeStep({
 }: ICookingInfoPage) {
   return (
     <Flex flexDirection={'column'} gap={10} marginY="10">
-      <Heading size="lg" marginY="5">
+      <Heading size="xl" marginTop="20" marginBottom="4">
         레시피 순서
       </Heading>
       {steps.map((stepInfo: IRecipeStep) => (
@@ -40,12 +40,12 @@ export default function RecipeStep({
         w={'50px'}
         h={'50px'}
         fontSize={'30px'}
-        bg="#FF9C09"
+        colorScheme="orange"
         color={'#fff'}
         margin=" 0 auto"
         onClick={handlePlusBtnClick}
       >
-        +
+        <Text>+</Text>
       </Button>
     </Flex>
   );

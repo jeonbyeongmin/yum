@@ -1,4 +1,4 @@
-import {Box, Center, Container} from '@chakra-ui/react';
+import {Box, Button, Center, Container, Text} from '@chakra-ui/react';
 import Layout from 'components/Layout';
 import React, {useCallback, useState} from 'react';
 import CookingInfo from 'components/CookingInfo';
@@ -128,7 +128,6 @@ function Regist() {
           />
           <CookingInfo handleChange={handleTextChange} />
         </Box>
-
         <IngredientList />
         <RecipeStep
           steps={recipeSteps}
@@ -138,7 +137,14 @@ function Regist() {
           handleStepImgDelete={handleStepImgDelete}
         />
         <Center>
-          <Btn handleClick={handleSubmit}>레시피 등록</Btn>
+          <Button
+            marginTop="20"
+            padding="9"
+            borderRadius="xl"
+            onClick={handleSubmit}
+          >
+            <Text fontSize="xl">레시피 등록</Text>
+          </Button>
         </Center>
       </Container>
     </Layout>

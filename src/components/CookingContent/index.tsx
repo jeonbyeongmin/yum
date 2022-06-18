@@ -13,28 +13,30 @@ interface ICookingContent {
 function CookingContent({handleChange}: ICookingContent) {
   return (
     <>
-      <Heading size="lg" marginY="5">
+      <Heading size="xl" marginY="8">
         요리정보
       </Heading>
       <Flex
         flexDirection={'column'}
         border="1px solid #b9b9b9"
-        borderRadius={'5px'}
+        borderRadius="xl"
         minH="200px"
       >
         <InfoInput
           placeholder="요리의 이름을 입력해주세요."
-          p={5}
+          p={8}
           name={'name'}
           onChange={handleChange}
+          _placeholder={{fontSize: 'xl'}}
         />
         <CookingDesc
           placeholder="요리에 대해 설명해주세요.."
           resize={'none'}
-          p={5}
+          p={8}
           // value{}
           name={'desc'}
           onChange={handleChange}
+          _placeholder={{fontSize: 'xl'}}
         />
       </Flex>
     </>

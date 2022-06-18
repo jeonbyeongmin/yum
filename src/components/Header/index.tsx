@@ -4,9 +4,8 @@ import React from 'react';
 import {media} from 'styles/theme';
 import SearchBar from 'components/SearchBar';
 import {CartIcon, UserIcon, SearchIcon} from 'components/Icon';
-import {Box, HStack, Text} from '@chakra-ui/react';
+import {Box, Button, HStack, Text} from '@chakra-ui/react';
 import IconBtn from 'components/IconBtn';
-import Btn from 'components/Btn';
 import Link from 'next/link';
 
 function Header() {
@@ -18,7 +17,6 @@ function Header() {
         maxWidth="1024px"
         m={'0 auto'}
         paddingX={{base: 5, sm: 10}}
-        borderBottom="1px solid #e0e0e0"
         gap="10"
       >
         <Link href="/">
@@ -27,7 +25,7 @@ function Header() {
               fontFamily="Binggrae"
               fontSize="4xl"
               fontWeight="extrabold"
-              color="orange.400"
+              color="orange.500"
               letterSpacing="tighter"
             >
               YUM
@@ -83,19 +81,20 @@ function Header() {
         </HStack>
         <Link href="/recipe/regist">
           <a>
-            <Btn>레시피 작성</Btn>
+            <Button
+              colorScheme="orange"
+              padding="7"
+              borderRadius="xl"
+              _focus={{border: 'none'}}
+            >
+              <Text fontSize="xl">레시피 작성</Text>
+            </Button>
           </a>
         </Link>
       </HStack>
     </Wrapper>
   );
 }
-
-const Logo = styled(Box)`
-  font-family: Binggrae, -apple-system, BlinkMacSystemFont, helvetica,
-    Apple SD Gothic Neo, sans-serif;
-  cursor: pointer;
-`;
 
 const NavItem = styled(Text)`
   display: inline-flex;
@@ -119,6 +118,7 @@ const Wrapper = styled.header`
   height: 80px;
   background-color: #fff;
   z-index: 100;
+  border-bottom: 1px solid #e0e0e0;
   ${media.tablet} {
     font-size: 13px;
     height: 60px;

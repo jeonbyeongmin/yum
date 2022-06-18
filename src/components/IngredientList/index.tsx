@@ -6,7 +6,7 @@ import Ingredient from 'components/Ingredient';
 export default function IngredientList() {
   return (
     <Box marginY="10">
-      <Heading size="lg" marginY="5">
+      <Heading size="xl" marginY="8">
         재료
       </Heading>
       <Flex gap={4}>

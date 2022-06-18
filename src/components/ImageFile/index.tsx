@@ -9,7 +9,7 @@ interface IImageFile {
 
 function ImageFile({imageUrl, handleDelete}: IImageFile) {
   return (
-    <ImageFileInputWrapper>
+    <ImageFileInputWrapper borderRadius="xl">
       <Image src={imageUrl} alt="Dan Abramov" w={'100%'} h={'100%'} />
       <DeleteBtn onClick={handleDelete} />
     </ImageFileInputWrapper>
@@ -26,11 +26,11 @@ const DeleteBtn = styled(CloseButton)`
   width: 18px;
   height: 18px;
 `;
+
 const ImageFileInputWrapper = styled(Box)`
   border: 1px solid #b9b9b9;
   width: 70px;
   height: 70px;
-  border-radius: 3px;
   display: inline-flex;
   align-items: center;
   border: 1px solid #b9b9b9;

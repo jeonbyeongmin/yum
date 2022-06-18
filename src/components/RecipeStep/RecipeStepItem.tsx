@@ -27,8 +27,8 @@ function RecipeStepItem({
 }: RecipeStepItem) {
   return (
     <>
-      <Heading color={'#EA900B'} size="md">
-        Step{step + 1}
+      <Heading color="orange.500" size="lg">
+        STEP {step + 1}
       </Heading>
       <Flex h="150px" flexWrap={'wrap'}>
         <Box
@@ -38,11 +38,13 @@ function RecipeStepItem({
           borderLeftRadius={5}
         >
           <Textarea
+            fontSize="xl"
+            _placeholder={{fontSize: 'xl'}}
             w={'100%'}
             h="100%"
             border={'none'}
             resize="none"
-            p={5}
+            p={8}
             value={value}
             onChange={handleStepTextChange}
           />
