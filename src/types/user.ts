@@ -2,7 +2,11 @@ export interface IUser {
   uid: string;
   userName: string;
   userImg: string;
-  liked: string[]; //좋아한 레시피 docId
-  bookmarked: string[];
-  followes: string[];
+  email: string;
+  likedRecipe: string[];
+  bookmarkedRecipe: string[];
+  bookmarkedIngredient: string[];
+  shoppingIngredient: string[];
+  follower: string[];
+  following: string[];
 }
