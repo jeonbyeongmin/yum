@@ -3,10 +3,15 @@ export interface IStoreItem {
   docId?: string;
   name: string;
   desc: string;
+
   price: number;
   delivery: number;
   volume: string;
   company: string;
   img: string;
   category?: string;
+}
+export interface IIngredientItem {
+  iname: string;
+  iamount: string;
 }

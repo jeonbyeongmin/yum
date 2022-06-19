@@ -9,13 +9,15 @@ import {getRecipe} from 'api/recipe';
 import {IRecipeInfo} from 'types/recipe';
 
 import {GetServerSideProps} from 'next';
+import {getIngredients} from 'api/store';
 
 interface IRecipeDetail {
   info: IRecipeInfo;
+  ingredients: any;
 }
 
-function RecipeDetail({info}: IRecipeDetail) {
-  console.log(info);
+function RecipeDetail({info, ingredients}: IRecipeDetail) {
+  console.log(info, ingredients);
   return (
     <Layout>
       <HStack gap={10} p={5} alignItems="flex-start">
@@ -34,7 +36,7 @@ function RecipeDetail({info}: IRecipeDetail) {
 export const getServerSideProps: GetServerSideProps = async context => {
   const {id} = context.query;
   const info = await getRecipe(id);
-
+  const ingredients = await getIngredients(info?.ingredients);
   return {
     props: {
       info: {
@@ -42,6 +44,7 @@ export const getServerSideProps: GetServerSideProps = async context => {
         cookingImgs: info?.cookingImgs,
         steps: info?.steps,
       },
+      ingredients: ingredients,
     },
   };
 };

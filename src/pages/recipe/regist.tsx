@@ -114,7 +114,7 @@ function Regist() {
     const data: IRecipeRegist = {
       cookingInfo: cookingInfo,
       cookingImgs: [...cookingImages],
-      infredients: ingredient,
+      ingredients: ingredient,
       steps: [...recipeSteps],
     };
     console.log('submit btn click : ', data);
