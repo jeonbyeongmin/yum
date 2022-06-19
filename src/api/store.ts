@@ -8,7 +8,8 @@ import {
   query,
   where,
 } from 'firebase/firestore';
-import {IStoreItem} from 'types/store';
+import {IIngredientItem, IStoreItem} from 'types/store';
+import {isGcsTfliteModelOptions} from 'firebase-admin/lib/machine-learning/machine-learning-api-client';
 
 export async function addStoreItem(data: IStoreItem) {
   try {
@@ -21,14 +22,18 @@ export async function addStoreItem(data: IStoreItem) {
     console.error('Error adding document: ', e);
   }
 }
-export async function getIngredients(docIds: string[]) {
+export async function getIngredients(docIds: string[], ingredients: any[]) {
   console.log('docIds', docIds);
+  if (docIds.length === 0) return [];
   const q = query(collection(db, 'store'), where('__name__', 'in', docIds));
   const querySnapshot = await getDocs(q);
-  const result: IStoreItem[] = [];
-
+  const result: IIngredientItem[] = [];
   querySnapshot.forEach(doc => {
-    result.push(doc.data() as IStoreItem);
+    for (const ing of ingredients) {
+      if (doc.id === ing.docId) {
+        result.push({...doc.data(), iamount: ing.iamount} as IIngredientItem);
+      }
+    }
   });
 
   return result;

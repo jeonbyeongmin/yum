@@ -4,14 +4,16 @@ import IngredientInfo from 'components/IngredientInfo';
 import {UserIcon} from 'components/Icon';
 import {ICookingInfo} from 'types/recipe';
 import {ProductImage} from 'components/ProductImage';
+import {IIngredientItem} from 'types/store';
 
 interface IRecipeInfo {
   children: ReactNode;
   info: ICookingInfo;
+  ingredients: IIngredientItem[];
   imgs: string[];
 }
 
-const RecipeInfo = ({children, info, imgs}: IRecipeInfo) => {
+const RecipeInfo = ({children, info, imgs, ingredients}: IRecipeInfo) => {
   return (
     <>
       <Box borderRadius="xl" overflow="hidden">
@@ -56,10 +58,13 @@ const RecipeInfo = ({children, info, imgs}: IRecipeInfo) => {
           p={'20px 10%'}
           justifyContent={'space-between'}
         >
-          <IngredientInfo name="식빵" content="2조각" />
-          <IngredientInfo name="체다치즈" content="4개" />
-          <IngredientInfo name="달걀" content="3개" />
-          <IngredientInfo name="식빵" content="2조각" />
+          {ingredients.map(ing => (
+            <IngredientInfo
+              key={ing.iname}
+              name={ing.iname}
+              content={ing.iamount}
+            />
+          ))}
         </SimpleGrid>
       </Box>
     </>

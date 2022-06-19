@@ -7,27 +7,31 @@ import WriterInfo from 'components/RecipeDetail/WriterInfo';
 import React from 'react';
 import {getRecipe} from 'api/recipe';
 import {IRecipeInfo} from 'types/recipe';
-
 import {GetServerSideProps} from 'next';
 import {getIngredients} from 'api/store';
+import {IIngredientItem} from 'types/store';
 
 interface IRecipeDetail {
   info: IRecipeInfo;
-  ingredients: any;
+  ingredients: IIngredientItem[];
 }
 
 function RecipeDetail({info, ingredients}: IRecipeDetail) {
-  console.log(info, ingredients);
+  console.log(ingredients);
   return (
     <Layout>
       <HStack gap={10} p={5} alignItems="flex-start">
         <VStack flex={1} alignItems=" flex-start">
-          <RecipeInfo info={info.cookingInfo} imgs={info.cookingImgs}>
+          <RecipeInfo
+            info={info.cookingInfo}
+            imgs={info.cookingImgs}
+            ingredients={ingredients}
+          >
             <WriterInfo />
           </RecipeInfo>
           <RecipeDetailStep steps={info.steps} />
         </VStack>
-        <IngredientCart />
+        <IngredientCart info={ingredients} />
       </HStack>
     </Layout>
   );
@@ -36,7 +40,8 @@ function RecipeDetail({info, ingredients}: IRecipeDetail) {
 export const getServerSideProps: GetServerSideProps = async context => {
   const {id} = context.query;
   const info = await getRecipe(id);
-  const ingredients = await getIngredients(info?.ingredients);
+  const iDocId = info?.ingredients.map(ing => ing.docId);
+  const ingredients = await getIngredients(iDocId, info?.ingredients);
   return {
     props: {
       info: {
