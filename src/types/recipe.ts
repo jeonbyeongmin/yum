@@ -11,10 +11,17 @@ export interface IRecipeStep {
   content: string;
   img: string;
 }
+
+export interface IRecipeIngredientItem {
+  docId: string;
+  iamount: string;
+  iname: string;
+}
+
 export interface IRecipeRegist {
   cookingInfo: ICookingInfo;
   cookingImgs: string[];
-  ingredients: string[];
+  ingredients: IRecipeIngredientItem[];
   steps: IRecipeStep[];
   // TODO : 등록한 user의 데이터를 넣어야 한다.
 }
