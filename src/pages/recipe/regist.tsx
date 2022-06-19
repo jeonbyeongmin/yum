@@ -9,7 +9,7 @@ import CookingContent from 'components/CookingContent';
 import ImageFileContainer from 'components/ImageFileBox';
 import {addRecipe} from 'api/recipeRegist';
 import {useRouter} from 'next/router';
-import {IStoreItem} from 'types/store';
+import {IIngredientItem, IStoreItem} from 'types/store';
 
 const initCookingInfo = {
   name: '',
@@ -34,7 +34,9 @@ function Regist() {
   // 최적화 문제로 cookingInfo에서 images 분리
   const [cookingImages, setCookingImages] = useState<string[]>([]);
   // const [ingredients, setIngredients] = useState([1, 2]);
-  const [selectIngredients, setSelectIngredients] = useState<IStoreItem[]>([]);
+  const [selectIngredients, setSelectIngredients] = useState<IIngredientItem[]>(
+    [],
+  );
   const [recipeSteps, setRecipeSteps] = useState<IRecipeStep[]>(initRecipeStep);
   const router = useRouter();
   const handleTextChange = useCallback(
@@ -125,9 +127,10 @@ function Regist() {
       }
     });
   };
-  const handleIngredientSelect = (item: IStoreItem) => {
-    console.log('선택', item);
-    setSelectIngredients([...selectIngredients, item]);
+
+  const handleIngredientSelect = (item: IStoreItem, amount: string) => {
+    console.log('선택', [...selectIngredients, {...item, iamount: amount}]);
+    setSelectIngredients([...selectIngredients, {...item, iamount: amount}]);
   };
 
   return (

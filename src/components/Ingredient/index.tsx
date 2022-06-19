@@ -9,6 +9,7 @@ type IIngredient = {
 };
 
 const Ingredient = ({name, amount, img}: IIngredient) => {
+  console.log({name, amount, img});
   return (
     <Flex
       flexDirection={'column'}
