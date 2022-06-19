@@ -2,8 +2,11 @@ import {Heading, Box, Input, Checkbox, HStack, VStack} from '@chakra-ui/react';
 import Btn from 'components/Btn';
 import IngredientInfo from 'components/IngredientInfo';
 import React from 'react';
-
-const IngredientCart = () => {
+import {IIngredientItem} from 'types/store';
+interface IngredientCart {
+  info: IIngredientItem[];
+}
+const IngredientCart = ({info}: IngredientCart) => {
   return (
     <VStack
       w={'300px'}
@@ -18,27 +21,17 @@ const IngredientCart = () => {
     >
       <Heading fontSize={'2xl'}>재료</Heading>
       <VStack spacing={5}>
-        <Checkbox size="lg" spacing={8} colorScheme={'orange'} defaultChecked>
-          <IngredientInfo
-            img="https://img-cf.kurly.com/shop/data/goodsview/20210927/gv30000229395_1.jpg"
-            name="식빵"
-            content="2조각"
-          />
-        </Checkbox>
-        <Checkbox size="lg" spacing={8} colorScheme={'orange'} defaultChecked>
-          <IngredientInfo
-            img="https://img-cf.kurly.com/shop/data/goodsview/20210927/gv30000229395_1.jpg"
-            name="식빵"
-            content="2조각"
-          />
-        </Checkbox>
-        <Checkbox size="lg" spacing={8} colorScheme={'orange'} defaultChecked>
-          <IngredientInfo
-            img="https://img-cf.kurly.com/shop/data/goodsview/20210927/gv30000229395_1.jpg"
-            name="식빵"
-            content="2조각"
-          />
-        </Checkbox>
+        {info.map(i => (
+          <Checkbox
+            key={i.iname}
+            size="lg"
+            spacing={8}
+            colorScheme={'orange'}
+            defaultChecked
+          >
+            <IngredientInfo img={i.img} name={i.iname} content={i.iamount} />
+          </Checkbox>
+        ))}
       </VStack>
       <HStack position={'absolute'} bottom={5} width={'calc(100% - 4rem)'}>
         <Btn theme="orange--outline" w={'50%'}>
