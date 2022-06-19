@@ -13,7 +13,7 @@ import {
 import {IRecipeItem} from 'types/recipe';
 import {db} from '../firebase';
 
-export async function getRecipe(docId: any = 'F5i0HXywZtZXIxZLVisM') {
+export async function getRecipe(docId: string) {
   const docRef = doc(db, 'recipe', docId);
   const docSnap = await getDoc(docRef);
 

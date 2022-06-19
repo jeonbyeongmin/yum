@@ -6,6 +6,7 @@ import {
   getDoc,
   getDocs,
   query,
+  where,
 } from 'firebase/firestore';
 import {IStoreItem} from 'types/store';
 
@@ -20,7 +21,18 @@ export async function addStoreItem(data: IStoreItem) {
     console.error('Error adding document: ', e);
   }
 }
+export async function getIngredients(docIds: string[]) {
+  console.log('docIds', docIds);
+  const q = query(collection(db, 'store'), where('__name__', 'in', docIds));
+  const querySnapshot = await getDocs(q);
+  const result: IStoreItem[] = [];
 
+  querySnapshot.forEach(doc => {
+    result.push(doc.data() as IStoreItem);
+  });
+
+  return result;
+}
 export async function getStoreItems(searchText = '') {
   const q = query(collection(db, 'store'));
   const querySnapshot = await getDocs(q);
