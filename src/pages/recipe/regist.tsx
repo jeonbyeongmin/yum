@@ -4,7 +4,12 @@ import React, {useCallback, useState} from 'react';
 import CookingInfo from 'components/CookingInfo';
 import IngredientList from 'components/IngredientList';
 import RecipeStep from 'components/RecipeStep';
-import {ICookingInfo, IRecipeRegist, IRecipeStep} from 'types/recipe';
+import {
+  ICookingInfo,
+  IRecipeIngredientItem,
+  IRecipeRegist,
+  IRecipeStep,
+} from 'types/recipe';
 import CookingContent from 'components/CookingContent';
 import ImageFileContainer from 'components/ImageFileBox';
 import {addRecipe} from 'api/recipeRegist';
@@ -112,7 +117,14 @@ function Regist() {
   );
 
   const handleSubmit = () => {
-    const ingredient = selectIngredients.map(ing => ing.docId) as string[];
+    const ingredient = selectIngredients.map(ing => {
+      return {
+        docId: ing.docId,
+        iamount: ing.iamount,
+        iname: ing.iname,
+      };
+    }) as IRecipeIngredientItem[];
+    console.log(ingredient);
     const data: IRecipeRegist = {
       cookingInfo: cookingInfo,
       cookingImgs: [...cookingImages],
