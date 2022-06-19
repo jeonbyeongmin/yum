@@ -1,15 +1,17 @@
-import {Box, Image, Text, VStack, Flex, Avatar} from '@chakra-ui/react';
+import {Box, Text, VStack, Flex, Avatar, chakra} from '@chakra-ui/react';
 import {BookmarkIcon, LikeIcon} from 'components/Icon';
-import {IRecipeItem} from 'components/RecipeItemList';
+import NextImage from 'next/image';
 import {useState} from 'react';
+import {RecipeData} from 'types/recipe';
 
 interface IRecipeData {
-  data: IRecipeItem;
+  data: RecipeData;
 }
+
 function RecipeItem({data}: IRecipeData) {
-  const [liked, setLiked] = useState<boolean>(data.liked);
+  const [liked, setLiked] = useState<boolean>(data.isLiked);
   const [likeCount, setLikeCount] = useState<number>(data.likeCount);
-  const [bookmarked, setBookmarked] = useState<boolean>(data.bookmarked);
+  const [bookmarked, setBookmarked] = useState<boolean>(data.isBookmarked);
 
   const likeClick = () => {
     setLiked(!liked);
@@ -23,7 +25,7 @@ function RecipeItem({data}: IRecipeData) {
   return (
     <VStack>
       <Box overflow="hidden" cursor="pointer" borderRadius="xl">
-        <Image
+        <ProductImage
           src={data.img}
           width={'240px'}
           height={'240px'}
@@ -60,7 +62,7 @@ function RecipeItem({data}: IRecipeData) {
         >
           {data.name}
         </Text>
-        <Text mt="5" color="gray.500" fontSize="xl" minH="25px">
+        <Text mt="5" color="gray.500" noOfLines={2} fontSize="xl" minH="25px">
           {data.desc}
         </Text>
 
@@ -74,5 +76,10 @@ function RecipeItem({data}: IRecipeData) {
     </VStack>
   );
 }
+
+const ProductImage = chakra(NextImage, {
+  baseStyle: {maxH: 120, maxW: 120},
+  shouldForwardProp: prop => ['width', 'height', 'src', 'alt'].includes(prop),
+});
 
 export default RecipeItem;

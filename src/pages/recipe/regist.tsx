@@ -10,6 +10,7 @@ import ImageFileContainer from 'components/ImageFileBox';
 import {addRecipe} from 'api/recipeRegist';
 import {useRouter} from 'next/router';
 import {IStoreItem} from 'types/store';
+
 const initCookingInfo = {
   name: '',
   desc: '',
@@ -18,6 +19,7 @@ const initCookingInfo = {
   time: '',
   category: '',
 };
+
 const initRecipeStep = [
   {
     step: 0,

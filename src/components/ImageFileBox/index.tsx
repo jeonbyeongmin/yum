@@ -33,7 +33,7 @@ function ImageFileContainer({images, setImages}: IImageFileContainer) {
           />
         );
       })}
-      <ImageFileInputWrapper borderRadius="xl">
+      <ImageFileInputWrapper borderRadius="xl" shadow="base">
         <input type="file" id="fileInput" onChange={onChange} hidden />
         <label htmlFor="fileInput">
           <PlusOutLineIcon />

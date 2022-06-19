@@ -37,3 +37,8 @@ export interface IRecipeItem {
   userName?: string;
   userImg?: string;
 }
+
+export interface RecipeData extends IRecipeItem {
+  isLiked: boolean;
+  isBookmarked: boolean;
+}

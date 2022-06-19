@@ -6,6 +6,7 @@ import {
   Image,
   Text,
   IconButton,
+  CloseButton,
 } from '@chakra-ui/react';
 import {getCommaFormatting} from 'common/utils/getCommaFormatting';
 import Counter from 'components/Counter';
@@ -55,12 +56,7 @@ function BasketItem({data}: IBasketItem) {
       >
         {getCommaFormatting(data.price + '')}원
       </Text>
-      <IconButton
-        aria-label="close"
-        icon={<CloseIcon />}
-        variant="ghost"
-        _focus={{border: 'none'}}
-      />
+      <CloseButton _focus={{border: 'none'}} />
     </HStack>
   );
 }

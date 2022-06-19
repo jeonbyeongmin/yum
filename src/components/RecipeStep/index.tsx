@@ -1,4 +1,5 @@
-import {Flex, Heading, Button, Text} from '@chakra-ui/react';
+import {Flex, Heading, IconButton, Center} from '@chakra-ui/react';
+import {PlusIcon} from 'components/Icon';
 import {ChangeEvent} from 'react';
 import {IRecipeStep} from 'types/recipe';
 import RecipeStepItem from './RecipeStepItem';
@@ -35,18 +36,19 @@ export default function RecipeStep({
           handleImgDelete={handleStepImgDelete}
         />
       ))}
-      <Button
-        borderRadius={'50%'}
-        w={'50px'}
-        h={'50px'}
-        fontSize={'30px'}
-        colorScheme="orange"
-        color={'#fff'}
-        margin=" 0 auto"
-        onClick={handlePlusBtnClick}
-      >
-        <Text>+</Text>
-      </Button>
+
+      <Center>
+        <IconButton
+          size="lg"
+          variant="solid"
+          colorScheme="orange"
+          aria-label="Call Sage"
+          fontSize="3xl"
+          icon={<PlusIcon />}
+          onClick={handlePlusBtnClick}
+          _focus={{border: 'none'}}
+        />
+      </Center>
     </Flex>
   );
 }

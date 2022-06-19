@@ -35,7 +35,8 @@ function RecipeStepItem({
           flex={1}
           border="1px solid #b9b9b9"
           borderRight={'none'}
-          borderLeftRadius={5}
+          borderLeftRadius="xl"
+          shadow="base"
         >
           <Textarea
             fontSize="xl"
@@ -49,7 +50,12 @@ function RecipeStepItem({
             onChange={handleStepTextChange}
           />
         </Box>
-        <Box width={'200px'} border="1px solid #b9b9b9" borderRightRadius={5}>
+        <Box
+          width={'200px'}
+          border="1px solid #b9b9b9"
+          borderRightRadius="xl"
+          shadow="base"
+        >
           {img ? (
             <Box position={'relative'} flex={1} height="100%">
               <Image src={img} alt="img" w={'100%'} h={'100%'} />

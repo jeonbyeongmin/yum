@@ -16,6 +16,7 @@ import {
 } from 'react-icons/ai';
 import {MdOutlineArrowForwardIos, MdOutlineArrowBackIos} from 'react-icons/md';
 import {FcGoogle} from 'react-icons/fc';
+import {HiPlus} from 'react-icons/hi';
 import styled from '@emotion/styled';
 
 interface Iicon {
@@ -36,9 +37,6 @@ export function UserIcon() {
   return <IoPersonOutline size={25} />;
 }
 
-export function PlusIcon() {
-  return <AiFillPlusCircle size={50} />;
-}
 export function PlusOutLineIcon({size = 30, color = '#000'}: Iicon) {
   return <AiOutlinePlus size={size} color={color} />;
 }
@@ -91,6 +89,10 @@ export function LeftArrowIcon({size = 25}: Iicon) {
       <MdOutlineArrowBackIos size={size} />
     </ArrowCircle>
   );
+}
+
+export function PlusIcon({size = 25}: Iicon) {
+  return <HiPlus size={size} />;
 }
 
 const ArrowCircle = styled.div`

@@ -1,7 +1,6 @@
 import {Box, Heading, Flex} from '@chakra-ui/react';
 import Ingredient from 'components/Ingredient';
 import IngredientSelectModal from 'components/IngredientSelectModal';
-import {useState} from 'react';
 import {IStoreItem} from 'types/store';
 interface IIngredientList {
   handleSelect: (item: IStoreItem) => void;
@@ -16,7 +15,6 @@ export default function IngredientList({
       <Heading size="xl" marginY="8">
         재료
       </Heading>
-      <IngredientSelectModal handleSelect={handleSelect} />
 
       <Flex gap={4}>
         {selectIngredients?.map((item: IStoreItem) => (
@@ -27,6 +25,8 @@ export default function IngredientList({
             img={item.img}
           />
         ))}
+
+        <IngredientSelectModal handleSelect={handleSelect} />
       </Flex>
     </Box>
   );

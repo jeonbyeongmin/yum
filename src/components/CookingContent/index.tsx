@@ -21,6 +21,7 @@ function CookingContent({handleChange}: ICookingContent) {
         border="1px solid #b9b9b9"
         borderRadius="xl"
         minH="200px"
+        shadow="base"
       >
         <InfoInput
           placeholder="요리의 이름을 입력해주세요."
@@ -33,7 +34,6 @@ function CookingContent({handleChange}: ICookingContent) {
           placeholder="요리에 대해 설명해주세요.."
           resize={'none'}
           p={8}
-          // value{}
           name={'desc'}
           onChange={handleChange}
           _placeholder={{fontSize: 'xl'}}
