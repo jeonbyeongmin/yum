@@ -15,7 +15,7 @@ import {
   Text,
 } from '@chakra-ui/react';
 import styled from '@emotion/styled';
-import {getStoreItem} from 'api/store';
+import {getStoreItems} from 'api/store';
 import {PlusOutLineIcon} from 'components/Icon';
 import React, {useEffect, useState} from 'react';
 import {IStoreItem} from 'types/store';
@@ -28,7 +28,7 @@ function IngredientSelectModal({handleSelect}: IIngredientSelectModal) {
   const [items, setItems] = useState<IStoreItem[]>([]);
 
   useEffect(() => {
-    getStoreItem(searchText).then(res => {
+    getStoreItems(searchText).then(res => {
       setItems(res);
     });
   }, [searchText]);

@@ -3,6 +3,7 @@ import RecipeItemList from 'components/RecipeItemList';
 import PopularRecipeItemList from 'components/PopularRecipeList';
 import {getFollowRecipes, getLikedRecipes, getRecentRecipes} from 'api/recipe';
 import {RecipeData} from 'types/recipe';
+import {GetServerSideProps} from 'next';
 
 interface IHome {
   data: {
@@ -25,7 +26,7 @@ function Home({data}: IHome) {
   );
 }
 
-export async function getServerSideProps() {
+export const getServerSideProps: GetServerSideProps = async () => {
   const follow = await getFollowRecipes();
   const recent = await getRecentRecipes();
   const liked = await getLikedRecipes();
@@ -35,6 +36,6 @@ export async function getServerSideProps() {
       data: {follow, recent, liked},
     },
   };
-}
+};
 
 export default Home;

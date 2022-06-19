@@ -1,6 +1,6 @@
-import {Box, Text, VStack, Flex, Avatar, chakra} from '@chakra-ui/react';
+import {Box, Text, VStack, Flex, Avatar} from '@chakra-ui/react';
 import {BookmarkIcon, LikeIcon} from 'components/Icon';
-import NextImage from 'next/image';
+import {ProductImage} from 'components/ProductImage';
 import {useState} from 'react';
 import {RecipeData} from 'types/recipe';
 
@@ -76,10 +76,5 @@ function RecipeItem({data}: IRecipeData) {
     </VStack>
   );
 }
-
-const ProductImage = chakra(NextImage, {
-  baseStyle: {maxH: 120, maxW: 120},
-  shouldForwardProp: prop => ['width', 'height', 'src', 'alt'].includes(prop),
-});
 
 export default RecipeItem;

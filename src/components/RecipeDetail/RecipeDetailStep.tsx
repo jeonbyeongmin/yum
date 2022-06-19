@@ -7,10 +7,10 @@ interface IRecipeDetailStep {
 }
 function RecipeDetailStep({steps}: IRecipeDetailStep) {
   return (
-    <>
+    <VStack gap="10" alignItems="flex-start">
       <Heading>레시피</Heading>
-      <VStack gap={10} paddingY={10}>
-        {steps.map((step, i) => (
+      <VStack gap={10}>
+        {steps.map(step => (
           <StepItem
             key={step.step}
             step={step.step}
@@ -19,7 +19,7 @@ function RecipeDetailStep({steps}: IRecipeDetailStep) {
           />
         ))}
       </VStack>
-    </>
+    </VStack>
   );
 }
 

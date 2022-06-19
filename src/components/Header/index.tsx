@@ -3,7 +3,7 @@ import React from 'react';
 import {media} from 'styles/theme';
 import SearchBar from 'components/SearchBar';
 import {CartIcon, UserIcon, SearchIcon} from 'components/Icon';
-import {Box, Button, HStack, IconButton, Text} from '@chakra-ui/react';
+import {Badge, Box, Button, HStack, IconButton, Text} from '@chakra-ui/react';
 import IconBtn from 'components/IconBtn';
 import Link from 'next/link';
 import {useRouter} from 'next/router';
