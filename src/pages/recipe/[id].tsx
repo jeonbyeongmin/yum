@@ -1,4 +1,10 @@
-import {HStack, VStack} from '@chakra-ui/react';
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  HStack,
+  VStack,
+} from '@chakra-ui/react';
 import Layout from 'components/Layout';
 import IngredientCart from 'components/RecipeDetail/IngredientCart';
 import RecipeDetailStep from 'components/RecipeDetail/RecipeDetailStep';
@@ -17,7 +23,6 @@ interface IRecipeDetail {
 }
 
 function RecipeDetail({info, ingredients}: IRecipeDetail) {
-  console.log(ingredients);
   return (
     <Layout>
       <HStack gap={10} p={5} alignItems="flex-start">

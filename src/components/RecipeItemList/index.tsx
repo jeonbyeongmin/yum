@@ -32,7 +32,8 @@ function RecipeItemList({title, recipes}: IRecipeItemList) {
   }, [margin]);
 
   useEffect(() => {
-    current > recipes.length / 4 ? setIsLast(true) : setIsLast(false);
+    current > recipes?.length / 4 ? setIsLast(true) : setIsLast(false);
+    if (!recipes) setIsLast(true);
   }, [current, recipes]);
 
   useEffect(() => {
