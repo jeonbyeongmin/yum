@@ -59,6 +59,7 @@ function RecipeItem({data}: IRecipeData) {
           transition="all 0.2s"
           cursor="pointer"
           _hover={{opacity: '0.6'}}
+          noOfLines={1}
         >
           {data.name}
         </Text>
