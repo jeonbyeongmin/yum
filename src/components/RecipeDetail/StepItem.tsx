@@ -1,4 +1,5 @@
-import {Box, HStack, Image, Text} from '@chakra-ui/react';
+import {Box, HStack, Text} from '@chakra-ui/react';
+import {ProductImage} from 'components/ProductImage';
 import React from 'react';
 
 interface StepItem {
@@ -7,20 +8,27 @@ interface StepItem {
   desc: string;
 }
 
-const StepItem = ({step, img, desc}: Props) => {
+function StepItem({step, img, desc}: StepItem) {
   return (
-    <HStack alignItems={'flex-start'} gap={5}>
-      <Image src={img} w="300px" alt="이미지가 없습니다" />
+    <HStack alignItems={'flex-start'} gap={8}>
+      <ProductImage
+        src={img}
+        width={300}
+        height={250}
+        objectFit="cover"
+        alt="이미지가 없습니다"
+        borderRadius="xl"
+      />
       <Box>
-        <Text fontSize={'2xl'} fontWeight="bold" color={'#EA900B'}>
-          step {step + 1}
+        <Text fontSize="3xl" fontWeight="bold" color="orange.500">
+          STEP {step + 1}
         </Text>
-        <Text fontSize={'lg'} marginY={5}>
+        <Text fontSize="2xl" marginY={5} lineHeight="1.5">
           {desc}
         </Text>
       </Box>
     </HStack>
   );
-};
+}
 
 export default StepItem;

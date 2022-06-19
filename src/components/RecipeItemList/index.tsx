@@ -1,6 +1,7 @@
 import {Box, Flex, Heading, HStack} from '@chakra-ui/react';
 import {LeftArrowIcon, RightArrowIcon} from 'components/Icon';
 import RecipeItem from 'components/RecipeItem';
+import Link from 'next/link';
 import {RecipeData} from 'types/recipe';
 
 interface IRecipeItemList {
@@ -16,7 +17,11 @@ function RecipeItemList({title, recipes}: IRecipeItemList) {
       </Heading>
       <HStack gap={5}>
         {recipes?.map(data => (
-          <RecipeItem key={data.docId} data={data} />
+          <Link href={`/recipe/${data.docId}`} key={data.docId}>
+            <a>
+              <RecipeItem key={data.docId} data={data} />
+            </a>
+          </Link>
         ))}
       </HStack>
       <Flex>
