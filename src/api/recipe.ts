@@ -14,7 +14,6 @@ import {IRecipeItem} from 'types/recipe';
 import {db} from '../firebase';
 
 export async function getRecipe(docId: any = 'F5i0HXywZtZXIxZLVisM') {
-  console.log(docId);
   const docRef = doc(db, 'recipe', docId);
   const docSnap = await getDoc(docRef);
 

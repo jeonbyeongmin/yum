@@ -2,7 +2,8 @@ import {db} from '../firebase';
 import {
   addDoc,
   collection,
-  DocumentData,
+  doc,
+  getDoc,
   getDocs,
   query,
 } from 'firebase/firestore';
@@ -20,7 +21,7 @@ export async function addStoreItem(data: IStoreItem) {
   }
 }
 
-export async function getStoreItem(searchText = '') {
+export async function getStoreItems(searchText = '') {
   const q = query(collection(db, 'store'));
   const querySnapshot = await getDocs(q);
   const result: IStoreItem[] = [];
@@ -37,4 +38,15 @@ export async function getStoreItem(searchText = '') {
 
   console.log('검색 결과', result);
   return result;
+}
+
+export async function getStoreItem(docId: any) {
+  const docRef = doc(db, 'store', docId);
+  const docSnap = await getDoc(docRef);
+
+  if (docSnap.exists()) {
+    return docSnap.data();
+  } else {
+    console.log('No such document!');
+  }
 }

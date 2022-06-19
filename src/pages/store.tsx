@@ -1,4 +1,4 @@
-import {getStoreItem} from 'api/store';
+import {getStoreItems} from 'api/store';
 import Layout from 'components/Layout';
 import StoreItemList from 'components/StoreItemList';
 import {GetServerSideProps} from 'next';
@@ -18,7 +18,7 @@ function Store({items}: IStore) {
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const items = await getStoreItem();
+  const items = await getStoreItems();
 
   return {
     props: {

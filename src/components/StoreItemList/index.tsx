@@ -1,5 +1,6 @@
-import {Box, Wrap, WrapItem} from '@chakra-ui/react';
+import {Box, Wrap} from '@chakra-ui/react';
 import StoreItem from 'components/StoreItem';
+import Link from 'next/link';
 import {IStoreItem} from 'types/store';
 
 interface IStoreItemList {
@@ -11,9 +12,11 @@ function StoreItemList({items}: IStoreItemList) {
     <Box pos="relative" my="12">
       <Wrap spacingX={7} spacingY={24}>
         {items.map(item => (
-          <WrapItem key={item.docId}>
-            <StoreItem data={item} />
-          </WrapItem>
+          <Link href={`/store/${item.docId}`} key={item.docId}>
+            <a>
+              <StoreItem data={item} />
+            </a>
+          </Link>
         ))}
       </Wrap>
     </Box>
