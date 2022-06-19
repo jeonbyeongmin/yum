@@ -1,10 +1,4 @@
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  HStack,
-  VStack,
-} from '@chakra-ui/react';
+import {HStack, VStack} from '@chakra-ui/react';
 import Layout from 'components/Layout';
 import IngredientCart from 'components/RecipeDetail/IngredientCart';
 import RecipeDetailStep from 'components/RecipeDetail/RecipeDetailStep';

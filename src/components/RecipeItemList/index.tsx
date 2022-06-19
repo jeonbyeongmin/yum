@@ -1,7 +1,7 @@
 import {Box, Flex, Heading, HStack, IconButton} from '@chakra-ui/react';
 import {LeftArrowIcon, RightArrowIcon} from 'components/Icon';
 import RecipeItem from 'components/RecipeItem';
-import Link from 'next/link';
+import {useRouter} from 'next/router';
 import {useEffect, useState} from 'react';
 import {RecipeData} from 'types/recipe';
 
@@ -40,6 +40,8 @@ function RecipeItemList({title, recipes}: IRecipeItemList) {
     isLast ? setRightHidden(true) : setRightHidden(false);
   }, [isLast]);
 
+  const router = useRouter();
+
   return (
     <Box pos="relative" mb={20}>
       <Heading size="xl" marginY="10" fontWeight="black">
@@ -53,11 +55,11 @@ function RecipeItemList({title, recipes}: IRecipeItemList) {
           transition="ease 0.5s"
         >
           {recipes?.map(data => (
-            <Link href={`/recipe/${data.docId}`} key={data.docId}>
-              <a>
-                <RecipeItem key={data.docId} data={data} />
-              </a>
-            </Link>
+            <RecipeItem
+              key={data.docId}
+              data={data}
+              handleRouter={() => router.push(`/recipe/${data.docId}`)}
+            />
           ))}
         </HStack>
       </Box>

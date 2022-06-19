@@ -6,9 +6,10 @@ import {RecipeData} from 'types/recipe';
 
 interface IRecipeData {
   data: RecipeData;
+  handleRouter: () => void;
 }
 
-function RecipeItem({data}: IRecipeData) {
+function RecipeItem({data, handleRouter}: IRecipeData) {
   const [liked, setLiked] = useState<boolean>(data.isLiked);
   const [likeCount, setLikeCount] = useState<number>(data.likeCount);
   const [bookmarked, setBookmarked] = useState<boolean>(data.isBookmarked);
@@ -24,7 +25,12 @@ function RecipeItem({data}: IRecipeData) {
 
   return (
     <VStack>
-      <Box overflow="hidden" cursor="pointer" borderRadius="xl">
+      <Box
+        overflow="hidden"
+        cursor="pointer"
+        borderRadius="xl"
+        onClick={handleRouter}
+      >
         <ProductImage
           src={data.img}
           width={'240px'}
@@ -60,6 +66,7 @@ function RecipeItem({data}: IRecipeData) {
           cursor="pointer"
           _hover={{opacity: '0.6'}}
           noOfLines={1}
+          onClick={handleRouter}
         >
           {data.name}
         </Text>
