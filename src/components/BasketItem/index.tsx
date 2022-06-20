@@ -16,10 +16,15 @@ import {IBasketItem} from 'types/store';
 
 interface IBasketItemComponent {
   data: IBasketItem;
-  handleCountClick: any;
+  handleCountClick: (item: IBasketItem, operation: string) => void;
+  handleItemDeleteBtnClick: (docId: string) => void;
 }
 
-function BasketItem({data, handleCountClick}: IBasketItemComponent) {
+function BasketItem({
+  data,
+  handleCountClick,
+  handleItemDeleteBtnClick,
+}: IBasketItemComponent) {
   return (
     <HStack
       alignItems={'center'}
@@ -61,7 +66,10 @@ function BasketItem({data, handleCountClick}: IBasketItemComponent) {
       >
         {getCommaFormatting(data.price + '')}원
       </Text>
-      <CloseButton _focus={{border: 'none'}} />
+      <CloseButton
+        _focus={{border: 'none'}}
+        onClick={() => handleItemDeleteBtnClick(data.docId)}
+      />
     </HStack>
   );
 }
