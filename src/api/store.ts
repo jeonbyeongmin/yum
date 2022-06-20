@@ -31,7 +31,11 @@ export async function getIngredients(docIds: string[], ingredients: any[]) {
   querySnapshot.forEach(doc => {
     for (const ing of ingredients) {
       if (doc.id === ing.docId) {
-        result.push({...doc.data(), iamount: ing.iamount} as IIngredientItem);
+        result.push({
+          ...doc.data(),
+          iamount: ing.iamount,
+          docId: doc.id,
+        } as IIngredientItem);
       }
     }
   });
