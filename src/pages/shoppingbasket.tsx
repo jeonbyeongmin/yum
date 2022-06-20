@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import BasketItem from 'components/BasketItem';
 import Layout from 'components/Layout';
 import ResultBox from 'components/ResultBox';
+import {Item} from 'framer-motion/types/components/Reorder/Item';
 import React, {useEffect, useState} from 'react';
 import {useRecoilState} from 'recoil';
 import {shoppingBasketState} from 'recoil/shoppingBasket';
@@ -11,20 +12,26 @@ import {IBasketItem, IMoneyBox} from 'types/store';
 
 function ShoppingBasket() {
   const [items, setItems] = useRecoilState<IBasketItem[]>(shoppingBasketState);
+  const [selectItemIds, setSelectItemIds] = useState<string[]>(
+    items.map(it => it.docId),
+  );
   const [money, setMoney] = useState<IMoneyBox>({
     totalMoney: 0,
     totalDelivery: 0,
     estimateMoney: 0,
   });
-  console.log('shopping list', items);
   useEffect(() => {
     const calculateMoney = () => {
       let totalMoney = 0;
       let totalDelivery = 0;
-
+      console.log('selectItemIds', selectItemIds);
       items.forEach(it => {
-        totalMoney += +it.price * +it.count;
-        totalDelivery += +it.delivery;
+        if (selectItemIds.includes(it.docId)) {
+          totalMoney += +it.price * +it.count;
+          totalDelivery += +it.delivery;
+        } else {
+          console.log('없음!', it);
+        }
       });
 
       setMoney({
@@ -35,7 +42,7 @@ function ShoppingBasket() {
     };
 
     calculateMoney();
-  }, [items]);
+  }, [items, selectItemIds]);
 
   const handleCountClick = (item: IBasketItem, operation: string) => {
     const newItems = items.map(it => {
@@ -63,6 +70,21 @@ function ShoppingBasket() {
     setItems(newItems);
   };
 
+  const handleCheckChange = (id: string) => {
+    // const newSelect = [...select];
+    console.log('check ');
+
+    if (selectItemIds.includes(id)) {
+      console.log(
+        'check false',
+        selectItemIds.filter(se => se !== id),
+      );
+      setSelectItemIds(selectItemIds.filter(se => se !== id));
+    } else {
+      console.log('check true', [...selectItemIds, id]);
+      setSelectItemIds([...selectItemIds, id]);
+    }
+  };
   return (
     <Layout>
       <Box marginY="12">
@@ -77,6 +99,7 @@ function ShoppingBasket() {
                 data={data}
                 handleCountClick={handleCountClick}
                 handleItemDeleteBtnClick={handleItemDeleteBtnClick}
+                handleCheckChange={handleCheckChange}
               />
             ))}
           </VStack>
