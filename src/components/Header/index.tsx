@@ -7,10 +7,12 @@ import {Badge, Box, Button, HStack, IconButton, Text} from '@chakra-ui/react';
 import IconBtn from 'components/IconBtn';
 import Link from 'next/link';
 import {useRouter} from 'next/router';
+import {shoppingBasketState} from 'recoil/shoppingBasket';
+import {useRecoilValue} from 'recoil';
 
 function Header() {
   const router = useRouter();
-
+  const basketState = useRecoilValue(shoppingBasketState);
   return (
     <Wrapper>
       <HStack
@@ -73,19 +75,23 @@ function Header() {
             label={'search'}
             type="mobile"
           />
-          <Link href="/shoppingbasket">
-            <a>
-              <IconButton
-                aria-label="shpping basket"
-                variant="ghost"
-                icon={<CartIcon />}
-                _focus={{border: 'none'}}
-                borderRadius="full"
-                w="16"
-                h="16"
-              />
-            </a>
-          </Link>
+          <BasketLinkBox>
+            <Link href="/shoppingbasket">
+              <a>
+                <IconButton
+                  aria-label="shpping basket"
+                  variant="ghost"
+                  icon={<CartIcon />}
+                  _focus={{border: 'none'}}
+                  borderRadius="full"
+                  w="16"
+                  h="16"
+                />
+                <BasketCnt>{basketState.length}</BasketCnt>
+              </a>
+            </Link>
+          </BasketLinkBox>
+
           <Link href="/mypage">
             <a>
               <IconButton
@@ -132,5 +138,20 @@ const Wrapper = styled.header`
     height: 60px;
   }
 `;
-
+const BasketLinkBox = styled(Box)`
+  position: relative;
+`;
+const BasketCnt = styled(Text)`
+  position: absolute;
+  top: 2px;
+  right: 0;
+  background-color: #dd6b20;
+  width: 15px;
+  height: 15px;
+  line-height: 15px;
+  text-align: center;
+  color: #fff;
+  border-radius: 50%;
+  font-size: 10px;
+`;
 export default Header;
