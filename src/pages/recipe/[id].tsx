@@ -17,6 +17,7 @@ interface IRecipeDetail {
 }
 
 function RecipeDetail({info, ingredients}: IRecipeDetail) {
+  console.log(ingredients);
   return (
     <Layout>
       <HStack gap={10} p={5} alignItems="flex-start" width={'fit-content'}>

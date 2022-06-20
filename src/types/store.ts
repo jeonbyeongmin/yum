@@ -13,5 +13,6 @@ export interface IStoreItem {
 }
 export interface IIngredientItem extends IStoreItem {
   // iname: string;
+  docId: string;
   iamount: string;
 }

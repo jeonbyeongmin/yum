@@ -17,16 +17,30 @@ interface IngredientCart {
   info: IIngredientItem[];
 }
 const IngredientCart = ({info}: IngredientCart) => {
-  const [select, setSelect] = useState(new Array(4).fill(true));
-  const [shoppingBasket, setShoppingBasket] =
-    useRecoilState(shoppingBasketState);
+  const [select, setSelect] = useState<string[]>(info.map(io => io.docId));
+  // const [shoppingBasket, setShoppingBasket] =
+  //   useRecoilState(shoppingBasketState);
+  const setShoppingBasket = useSetRecoilState(shoppingBasketState);
+
   const handleShoppingBtnClick = () => {
-    console.log(shoppingBasket, select);
-    setShoppingBasket(shoppingBasket);
+    const selectList: IIngredientItem[] = [];
+    info.forEach(ing => {
+      if (ing.docId && select.includes(ing.docId)) {
+        selectList.push(ing);
+      }
+    });
+    setShoppingBasket(selectList);
+    // console.log(selectList, select);
   };
-  const handleCheckChange = (index: number) => {
-    // console.log(v);
-    // setSelect()
+  const handleCheckChange = (id: string) => {
+    const newSelect = [...select];
+    if (newSelect.includes(id)) {
+      console.log('re', newSelect);
+      setSelect(newSelect.filter(se => se !== id));
+    } else {
+      newSelect.push(id);
+      setSelect(newSelect);
+    }
   };
   return (
     <VStack
@@ -49,12 +63,12 @@ const IngredientCart = ({info}: IngredientCart) => {
         <VStack spacing={5}>
           {info.map((i, index) => (
             <Checkbox
-              key={i.iname + i.iamount}
+              key={i.docId}
               size="lg"
               spacing={8}
               // colorScheme={'orange'}
               defaultChecked
-              onChange={() => handleCheckChange(index)}
+              onChange={() => handleCheckChange(i.docId)}
             >
               <IngredientInfo img={i.img} name={i.iname} content={i.iamount} />
             </Checkbox>
