@@ -19,6 +19,7 @@ interface IBasketItemComponent {
   handleCountClick: (item: IBasketItem, operation: string) => void;
   handleItemDeleteBtnClick: (docId: string) => void;
   handleCheckChange: (docId: string) => void;
+  selectItemIds: string[];
 }
 
 function BasketItem({
@@ -26,6 +27,7 @@ function BasketItem({
   handleCountClick,
   handleItemDeleteBtnClick,
   handleCheckChange,
+  selectItemIds,
 }: IBasketItemComponent) {
   return (
     <HStack
@@ -41,7 +43,8 @@ function BasketItem({
         <Checkbox
           size="lg"
           colorScheme="orange"
-          defaultChecked
+          // defaultChecked
+          isChecked={selectItemIds.includes(data.docId)}
           onChange={() => handleCheckChange(data.docId)}
         />
         <Image
