@@ -1,5 +1,4 @@
-import {HStack, Avatar, Box, Text} from '@chakra-ui/react';
-import Btn from 'components/Btn';
+import {HStack, Avatar, Box, Text, Button} from '@chakra-ui/react';
 
 function WriterInfo() {
   return (
@@ -14,7 +13,9 @@ function WriterInfo() {
         </Text>
         <Text fontSize={'lg'}>피그마피그마피그마피그마피그마피그마피그마</Text>
       </Box>
-      <Btn>팔로우</Btn>
+      <Button colorScheme={'orange'} fontSize="xl" size="lg">
+        팔로우
+      </Button>
     </HStack>
   );
 }
