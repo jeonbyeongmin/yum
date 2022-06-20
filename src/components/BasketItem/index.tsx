@@ -12,12 +12,14 @@ import {getCommaFormatting} from 'common/utils/getCommaFormatting';
 import Counter from 'components/Counter';
 import {CloseIcon} from 'components/Icon';
 import {IProductItem} from 'pages/shoppingbasket';
+import {IBasketItem} from 'types/store';
 
-interface IBasketItem {
-  data: IProductItem;
+interface IBasketItemComponent {
+  data: IBasketItem;
+  handleCountClick: any;
 }
 
-function BasketItem({data}: IBasketItem) {
+function BasketItem({data, handleCountClick}: IBasketItemComponent) {
   return (
     <HStack
       alignItems={'center'}
@@ -31,7 +33,7 @@ function BasketItem({data}: IBasketItem) {
       <HStack gap="6">
         <Checkbox size="lg" colorScheme="orange" defaultChecked />
         <Image
-          src="https://www.korea.kr/newsWeb/resources/temp/images/000052/%EC%82%AC%EA%B3%BC_%EB%B3%B8%EB%AC%B8.jpg"
+          src={data.img}
           width="120px"
           height="100px"
           objectFit={'cover'}
@@ -47,7 +49,10 @@ function BasketItem({data}: IBasketItem) {
           </Text>
         </VStack>
       </HStack>
-      <Counter />
+      <Counter
+        cnt={data.count}
+        handleClick={(operation: string) => handleCountClick(data, operation)}
+      />
       <Text
         fontSize={'2xl'}
         fontWeight="700"

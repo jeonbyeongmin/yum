@@ -12,7 +12,7 @@ function IngredientInfo({name, content, img}: IIngredientInfo) {
       <Text fontSize={'xl'} minWidth={'60px'}>
         {name}
       </Text>
-      <Text fontSize={'xl'}>{content}</Text>
+      {/* <Text fontSize={'xl'}>{content}</Text> */}
     </HStack>
   );
 }

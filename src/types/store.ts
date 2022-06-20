@@ -16,3 +16,15 @@ export interface IIngredientItem extends IStoreItem {
   docId: string;
   iamount: string;
 }
+export interface IBasketItem extends IStoreItem {
+  docId: string;
+  count: number;
+}
+export interface IProductItem {
+  // id: number;
+  // name: string;
+  delivery: number | undefined;
+  count: number;
+  checked: boolean;
+  // price: number;
+}
