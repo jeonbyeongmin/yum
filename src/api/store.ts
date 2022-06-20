@@ -9,7 +9,6 @@ import {
   where,
 } from 'firebase/firestore';
 import {IIngredientItem, IStoreItem} from 'types/store';
-import {isGcsTfliteModelOptions} from 'firebase-admin/lib/machine-learning/machine-learning-api-client';
 
 export async function addStoreItem(data: IStoreItem) {
   try {
@@ -39,7 +38,6 @@ export async function getIngredients(docIds: string[], ingredients: any[]) {
       }
     }
   });
-
   return result;
 }
 export async function getStoreItems(searchText = '') {

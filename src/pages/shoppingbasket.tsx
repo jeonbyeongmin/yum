@@ -1,16 +1,20 @@
 import {Checkbox, VStack, Flex, Box, Text} from '@chakra-ui/react';
 import styled from '@emotion/styled';
+import {getUserBasketItem} from 'api/basket';
 import BasketItem from 'components/BasketItem';
 import Layout from 'components/Layout';
 import ResultBox from 'components/ResultBox';
 import {Item} from 'framer-motion/types/components/Reorder/Item';
+import {GetServerSideProps} from 'next';
 import React, {useEffect, useState} from 'react';
 import {useRecoilState} from 'recoil';
 import {shoppingBasketState} from 'recoil/shoppingBasket';
 import {media} from 'styles/theme';
 import {IBasketItem, IMoneyBox} from 'types/store';
-
-function ShoppingBasket() {
+interface IShoppingBasket {
+  info: any[];
+}
+function ShoppingBasket({info}) {
   const [items, setItems] = useRecoilState<IBasketItem[]>(shoppingBasketState);
   const [selectItemIds, setSelectItemIds] = useState<string[]>(
     items.map(it => it.docId),
@@ -22,6 +26,10 @@ function ShoppingBasket() {
   });
 
   useEffect(() => {
+    setItems(info);
+  }, []);
+
+  useEffect(() => {
     const calculateMoney = () => {
       let totalMoney = 0;
       let totalDelivery = 0;
@@ -31,7 +39,7 @@ function ShoppingBasket() {
           totalMoney += +it.price * +it.count;
           totalDelivery += +it.delivery;
         } else {
-          console.log('없음!', it);
+          // console.log('없음!', it);
         }
       });
 
@@ -54,10 +62,13 @@ function ShoppingBasket() {
             count: +it.count + 1,
           };
         } else {
-          return {
-            ...it,
-            count: +it.count - 1,
-          };
+          if (+it.count > 1) {
+            return {
+              ...it,
+              count: +it.count - 1,
+            };
+          }
+          return it;
         }
       } else {
         return it;
@@ -86,6 +97,7 @@ function ShoppingBasket() {
       setSelectItemIds([]);
     }
   };
+
   return (
     <Layout>
       <Box marginY="12">
@@ -124,5 +136,15 @@ const Container = styled(Flex)`
     flex-direction: column;
   }
 `;
+export const getServerSideProps: GetServerSideProps = async context => {
+  const {id} = context.query;
+  const info = await getUserBasketItem('OE0xsuZVT7hY5NaWUWVAyt0I8xU2');
+
+  return {
+    props: {
+      info: info,
+    },
+  };
+};
 
 export default ShoppingBasket;
