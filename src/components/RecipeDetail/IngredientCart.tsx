@@ -6,6 +6,7 @@ import {
   HStack,
   VStack,
   CheckboxGroup,
+  Button,
 } from '@chakra-ui/react';
 import Btn from 'components/Btn';
 import IngredientInfo from 'components/IngredientInfo';
@@ -14,8 +15,9 @@ import {useRecoilState, useSetRecoilState} from 'recoil';
 import {IBasketItem, IIngredientItem} from 'types/store';
 import {shoppingBasketState} from 'recoil/shoppingBasket';
 import router from 'next/router';
+import IngredientCartItem from './IngredientCartItem';
 interface IIngredientCart {
-  info: IBasketItem[];
+  info: IIngredientItem[];
 }
 const IngredientCart = ({info}: IIngredientCart) => {
   const [select, setSelect] = useState<string[]>(info.map(io => io.docId));
@@ -47,7 +49,7 @@ const IngredientCart = ({info}: IIngredientCart) => {
   };
   return (
     <VStack
-      w={'250px'}
+      w={'300px'}
       border="1px solid #D6D6D6"
       borderRadius={5}
       height={'fit-content'}
@@ -55,34 +57,49 @@ const IngredientCart = ({info}: IIngredientCart) => {
       alignItems="flex-start"
       p={8}
       paddingBottom="100px"
-      position={'relative'}
+      position={'fixed'}
     >
       <Heading fontSize={'2xl'}>재료</Heading>
-      <CheckboxGroup
-        colorScheme="orange"
-        // defaultValue={select}
-        // onChange={handleChange}
-      >
-        <VStack spacing={5}>
+      <CheckboxGroup colorScheme="orange">
+        <VStack spacing={5} alignItems="flex-start">
           {info.map((i, index) => (
             <Checkbox
               key={i.docId}
               size="lg"
               spacing={8}
-              // colorScheme={'orange'}
               defaultChecked
               onChange={() => handleCheckChange(i.docId)}
             >
-              <IngredientInfo img={i.img} name={i.name} content={i.iamount} />
+              <IngredientCartItem
+                img={i.img}
+                name={i.name}
+                content={i.iamount}
+              />
             </Checkbox>
           ))}
         </VStack>
       </CheckboxGroup>
       <HStack position={'absolute'} bottom={5} width={'calc(100% - 4rem)'}>
-        <Btn w={'100%'} handleClick={handleShoppingBtnClick}>
+        <Button
+          colorScheme="orange"
+          variant="outline"
+          height={'40px'}
+          width={'50%'}
+          fontSize="xl"
+          onClick={handleShoppingBtnClick}
+          borderRadius="xl"
+        >
           장바구니
-        </Btn>
-        {/* <Btn w={'50%'} onC>구매하기</Btn> */}
+        </Button>
+        <Button
+          colorScheme={'orange'}
+          height={'40px'}
+          width="50%"
+          borderRadius="xl"
+          fontSize="xl"
+        >
+          구매하기
+        </Button>
       </HStack>
     </VStack>
   );

@@ -1,4 +1,4 @@
-import {HStack, VStack} from '@chakra-ui/react';
+import {Box, Flex, HStack, VStack} from '@chakra-ui/react';
 import Layout from 'components/Layout';
 import IngredientCart from 'components/RecipeDetail/IngredientCart';
 import RecipeDetailStep from 'components/RecipeDetail/RecipeDetailStep';
@@ -20,8 +20,8 @@ function RecipeDetail({info, ingredients}: IRecipeDetail) {
   console.log(ingredients);
   return (
     <Layout>
-      <HStack gap={10} p={5} alignItems="flex-start" width={'fit-content'}>
-        <VStack flex={1} alignItems=" flex-start">
+      <Flex gap={10} p={5} w="70%">
+        <VStack flex={1} alignItems=" flex-start" gap={10}>
           <RecipeInfo
             info={info.cookingInfo}
             imgs={info.cookingImgs}
@@ -29,10 +29,14 @@ function RecipeDetail({info, ingredients}: IRecipeDetail) {
           >
             <WriterInfo />
           </RecipeInfo>
-          <RecipeDetailStep steps={info.steps} />
+          <Box py={10}>
+            <RecipeDetailStep steps={info.steps} />
+          </Box>
         </VStack>
-        <IngredientCart info={ingredients} />
-      </HStack>
+        <Box>
+          <IngredientCart info={ingredients} />{' '}
+        </Box>
+      </Flex>
     </Layout>
   );
 }
