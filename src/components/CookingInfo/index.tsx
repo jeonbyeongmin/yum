@@ -69,9 +69,18 @@ export default function CookingInfo({handleChange}: ICookingInfo) {
           name={'category'}
           onChange={handleChange}
         >
-          <option value="option1">Option 1</option>
-          <option value="option2">Option 2</option>
-          <option value="option3">Option 3</option>
+          <option value="option1">간편 요리</option>
+          <option value="option2">찌개류</option>
+          <option value="option3">디저트</option>
+          <option value="option3">면/만두</option>
+          <option value="option3">밥/죽/떡</option>
+          <option value="option3">퓨전</option>
+          <option value="option3">양식</option>
+          <option value="option3">샐러드</option>
+          <option value="option3">스프</option>
+          <option value="option3">빵</option>
+          <option value="option3">과자</option>
+          <option value="option3">기타</option>
         </Select>
       </Flex>
     </Flex>
