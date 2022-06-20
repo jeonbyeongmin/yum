@@ -20,11 +20,12 @@ function ShoppingBasket() {
     totalDelivery: 0,
     estimateMoney: 0,
   });
+
   useEffect(() => {
     const calculateMoney = () => {
       let totalMoney = 0;
       let totalDelivery = 0;
-      console.log('selectItemIds', selectItemIds);
+
       items.forEach(it => {
         if (selectItemIds.includes(it.docId)) {
           totalMoney += +it.price * +it.count;
@@ -71,24 +72,30 @@ function ShoppingBasket() {
   };
 
   const handleCheckChange = (id: string) => {
-    // const newSelect = [...select];
-    console.log('check ');
-
     if (selectItemIds.includes(id)) {
-      console.log(
-        'check false',
-        selectItemIds.filter(se => se !== id),
-      );
       setSelectItemIds(selectItemIds.filter(se => se !== id));
     } else {
-      console.log('check true', [...selectItemIds, id]);
       setSelectItemIds([...selectItemIds, id]);
+    }
+  };
+
+  const handleAllCheckChange = (checked: boolean) => {
+    if (checked) {
+      setSelectItemIds(items.map(it => it.docId));
+    } else {
+      setSelectItemIds([]);
     }
   };
   return (
     <Layout>
       <Box marginY="12">
-        <Checkbox colorScheme="orange" defaultChecked marginX={5} size="lg">
+        <Checkbox
+          colorScheme="orange"
+          defaultChecked
+          marginX={5}
+          size="lg"
+          onChange={e => handleAllCheckChange(e.target.checked)}
+        >
           <Text fontSize="xl">모두 선택</Text>
         </Checkbox>
         <Container>
@@ -100,6 +107,7 @@ function ShoppingBasket() {
                 handleCountClick={handleCountClick}
                 handleItemDeleteBtnClick={handleItemDeleteBtnClick}
                 handleCheckChange={handleCheckChange}
+                selectItemIds={selectItemIds}
               />
             ))}
           </VStack>
