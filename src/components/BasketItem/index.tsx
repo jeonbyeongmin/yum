@@ -18,12 +18,14 @@ interface IBasketItemComponent {
   data: IBasketItem;
   handleCountClick: (item: IBasketItem, operation: string) => void;
   handleItemDeleteBtnClick: (docId: string) => void;
+  handleCheckChange: (docId: string) => void;
 }
 
 function BasketItem({
   data,
   handleCountClick,
   handleItemDeleteBtnClick,
+  handleCheckChange,
 }: IBasketItemComponent) {
   return (
     <HStack
@@ -36,7 +38,12 @@ function BasketItem({
       flexWrap="nowrap"
     >
       <HStack gap="6">
-        <Checkbox size="lg" colorScheme="orange" defaultChecked />
+        <Checkbox
+          size="lg"
+          colorScheme="orange"
+          defaultChecked
+          onChange={() => handleCheckChange(data.docId)}
+        />
         <Image
           src={data.img}
           width="120px"
