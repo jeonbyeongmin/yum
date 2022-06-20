@@ -28,3 +28,9 @@ export interface IProductItem {
   checked: boolean;
   // price: number;
 }
+
+export interface IMoneyBox {
+  totalMoney: number;
+  totalDelivery: number;
+  estimateMoney: number;
+}
