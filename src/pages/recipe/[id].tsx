@@ -17,7 +17,6 @@ interface IRecipeDetail {
 }
 
 function RecipeDetail({info, ingredients}: IRecipeDetail) {
-  console.log(ingredients);
   return (
     <Layout>
       <Flex gap={10} p={5} w="70%">

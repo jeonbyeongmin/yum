@@ -16,24 +16,35 @@ import {IBasketItem, IIngredientItem} from 'types/store';
 import {shoppingBasketState} from 'recoil/shoppingBasket';
 import router from 'next/router';
 import IngredientCartItem from './IngredientCartItem';
+import {addBasket} from 'api/user';
 interface IIngredientCart {
   info: IIngredientItem[];
 }
 const IngredientCart = ({info}: IIngredientCart) => {
   const [select, setSelect] = useState<string[]>(info.map(io => io.docId));
-  // const [shoppingBasket, setShoppingBasket] =
-  //   useRecoilState(shoppingBasketState);
-  const setShoppingBasket =
-    useSetRecoilState<IBasketItem[]>(shoppingBasketState);
+  const [shoppingBasket, setShoppingBasket] =
+    useRecoilState<IBasketItem[]>(shoppingBasketState);
 
   const handleShoppingBtnClick = () => {
     const selectList: IBasketItem[] = [];
+    const existIds = shoppingBasket.map(sp => sp.docId);
     info.forEach(ing => {
-      if (ing.docId && select.includes(ing.docId)) {
+      if (
+        ing.docId &&
+        select.includes(ing.docId) &&
+        !existIds.includes(ing.docId)
+      ) {
         selectList.push({...ing, count: 1}); //TODO : 이 count는 어떻게 초기화 하는게 좋을까요...
       }
     });
-    setShoppingBasket(selectList);
+
+    const setList = [...shoppingBasket, ...selectList];
+    setShoppingBasket(setList);
+    addBasket(
+      //user 더미 데이터
+      'OE0xsuZVT7hY5NaWUWVAyt0I8xU2',
+      setList.map(li => li.docId),
+    );
     router.push('/shoppingbasket');
     // console.log(selectList, select);
   };
