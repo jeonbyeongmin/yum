@@ -19,7 +19,7 @@ interface IRecipeDetail {
 function RecipeDetail({info, ingredients}: IRecipeDetail) {
   return (
     <Layout>
-      <HStack gap={10} p={5} alignItems="flex-start">
+      <HStack gap={10} p={5} alignItems="flex-start" width={'fit-content'}>
         <VStack flex={1} alignItems=" flex-start">
           <RecipeInfo
             info={info.cookingInfo}
