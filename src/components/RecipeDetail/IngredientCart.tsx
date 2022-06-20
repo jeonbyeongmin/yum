@@ -11,25 +11,28 @@ import Btn from 'components/Btn';
 import IngredientInfo from 'components/IngredientInfo';
 import React, {useState} from 'react';
 import {useRecoilState, useSetRecoilState} from 'recoil';
-import {IIngredientItem} from 'types/store';
+import {IBasketItem, IIngredientItem} from 'types/store';
 import {shoppingBasketState} from 'recoil/shoppingBasket';
-interface IngredientCart {
-  info: IIngredientItem[];
+import router from 'next/router';
+interface IIngredientCart {
+  info: IBasketItem[];
 }
-const IngredientCart = ({info}: IngredientCart) => {
+const IngredientCart = ({info}: IIngredientCart) => {
   const [select, setSelect] = useState<string[]>(info.map(io => io.docId));
   // const [shoppingBasket, setShoppingBasket] =
   //   useRecoilState(shoppingBasketState);
-  const setShoppingBasket = useSetRecoilState(shoppingBasketState);
+  const setShoppingBasket =
+    useSetRecoilState<IBasketItem[]>(shoppingBasketState);
 
   const handleShoppingBtnClick = () => {
-    const selectList: IIngredientItem[] = [];
+    const selectList: IBasketItem[] = [];
     info.forEach(ing => {
       if (ing.docId && select.includes(ing.docId)) {
-        selectList.push(ing);
+        selectList.push({...ing, count: 1}); //TODO : 이 count는 어떻게 초기화 하는게 좋을까요...
       }
     });
     setShoppingBasket(selectList);
+    router.push('/shoppingbasket');
     // console.log(selectList, select);
   };
   const handleCheckChange = (id: string) => {
@@ -70,7 +73,7 @@ const IngredientCart = ({info}: IngredientCart) => {
               defaultChecked
               onChange={() => handleCheckChange(i.docId)}
             >
-              <IngredientInfo img={i.img} name={i.iname} content={i.iamount} />
+              <IngredientInfo img={i.img} name={i.name} content={i.iamount} />
             </Checkbox>
           ))}
         </VStack>

@@ -4,45 +4,36 @@ import BasketItem from 'components/BasketItem';
 import Layout from 'components/Layout';
 import ResultBox from 'components/ResultBox';
 import React from 'react';
+import {useRecoilState} from 'recoil';
+import {shoppingBasketState} from 'recoil/shoppingBasket';
 import {media} from 'styles/theme';
-
-export interface IProductItem {
-  id: number;
-  name: string;
-  delivery: number | undefined;
-  count: number;
-  checked: boolean;
-  price: number;
-}
-
-const initData: IProductItem[] = [
-  {
-    id: 1,
-    name: ' 충주 유기농 사과 10개입',
-    delivery: undefined,
-    count: 1,
-    checked: false,
-    price: 5000,
-  },
-  {
-    id: 2,
-    name: ' 충주 유기농 사과 10개입',
-    delivery: undefined,
-    count: 1,
-    checked: false,
-    price: 5000,
-  },
-  {
-    id: 3,
-    name: ' 충주 유기농 사과 10개입',
-    delivery: undefined,
-    count: 1,
-    checked: false,
-    price: 5000,
-  },
-];
+import {IBasketItem} from 'types/store';
 
 function ShoppingBasket() {
+  const [items, setItems] = useRecoilState<IBasketItem[]>(shoppingBasketState);
+  console.log('shopping list', items);
+
+  const handleCountClick = (item: IBasketItem, operation: string) => {
+    const newItems = items.map(it => {
+      if (it.docId === item.docId) {
+        if (operation === 'plus') {
+          return {
+            ...it,
+            count: +it.count + 1,
+          };
+        } else {
+          return {
+            ...it,
+            count: +it.count - 1,
+          };
+        }
+      } else {
+        return it;
+      }
+    });
+    setItems(newItems);
+    console.log(newItems);
+  };
   return (
     <Layout>
       <Box marginY="12">
@@ -51,8 +42,12 @@ function ShoppingBasket() {
         </Checkbox>
         <Container>
           <VStack flex={1} alignItems="stretch" gap={5} marginY="5">
-            {initData.map(data => (
-              <BasketItem key={data.id} data={data} />
+            {items.map(data => (
+              <BasketItem
+                key={data.docId}
+                data={data}
+                handleCountClick={handleCountClick}
+              />
             ))}
           </VStack>
           <ResultBox />

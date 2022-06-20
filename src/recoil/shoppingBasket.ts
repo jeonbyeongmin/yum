@@ -1,7 +1,7 @@
 import {atom} from 'recoil';
-import {IIngredientItem} from 'types/store';
+import {IBasketItem} from 'types/store';
 
-export const shoppingBasketState = atom<IIngredientItem[]>({
+export const shoppingBasketState = atom<IBasketItem[]>({
   key: 'shoppingBasketState',
   default: [],
 });
