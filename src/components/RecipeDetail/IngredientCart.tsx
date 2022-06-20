@@ -1,4 +1,4 @@
-import {Heading, Box, Input, Checkbox, HStack, VStack} from '@chakra-ui/react';
+import {Heading, Button, Checkbox, HStack, VStack} from '@chakra-ui/react';
 import Btn from 'components/Btn';
 import IngredientInfo from 'components/IngredientInfo';
 import React from 'react';
@@ -14,9 +14,9 @@ const IngredientCart = () => {
       alignItems="flex-start"
       p={8}
       paddingBottom="100px"
-      position={'relative'}
+      position={'fixed'}
     >
-      <Heading fontSize={'2xl'}>재료</Heading>
+      <Heading fontSize={'2xl'} mb={5}>재료</Heading>
       <VStack spacing={5}>
         <Checkbox size="lg" spacing={8} colorScheme={'orange'} defaultChecked>
           <IngredientInfo
@@ -41,10 +41,10 @@ const IngredientCart = () => {
         </Checkbox>
       </VStack>
       <HStack position={'absolute'} bottom={5} width={'calc(100% - 4rem)'}>
-        <Btn theme="orange--outline" w={'50%'}>
+        <Button colorScheme='orange' variant='outline' height={"40px"} width={"50%"} fontSize="xl">
           장바구니
-        </Btn>
-        <Btn w={'50%'}>구매하기</Btn>
+        </Button>
+        <Button colorScheme={"orange"} height={"40px"} width="50%" fontSize="xl">구매하기</Button>
       </HStack>
     </VStack>
   );

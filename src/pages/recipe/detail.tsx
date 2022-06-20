@@ -1,4 +1,4 @@
-import {Flex, VStack} from '@chakra-ui/react';
+import {Flex, VStack, Box} from '@chakra-ui/react';
 import Layout from 'components/Layout';
 import IngredientCart from 'components/RecipeDetail/IngredientCart';
 import RecipeDetailStep from 'components/RecipeDetail/RecipeDetailStep';
@@ -11,7 +11,7 @@ import {IRecipeInfo} from 'types/recipe';
 function Detail() {
   const [info, setInfo] = useState<IRecipeInfo>();
   useEffect(() => {
-    getRecipe('C84U14jfbVUJwWC2Hxmw').then(res => {
+    getRecipe('2eMseC0vGnYc4sExbNBX').then(res => {
       console.log('res', res);
       setInfo(res as IRecipeInfo);
     });
@@ -20,15 +20,19 @@ function Detail() {
   return (
     <Layout>
       {info ? (
-        <Flex gap={10} p={5}>
+        <Flex gap={10} p={5} w="70%">
           <VStack flex={1} alignItems=" flex-start" gap={10}>
             <RecipeInfo info={info.cookingInfo} imgs={info.cookingImgs}>
               <WriterInfo />
             </RecipeInfo>
-            <RecipeDetailStep steps={info.steps} />
+            <Box py={10}>
+              <RecipeDetailStep steps={info.steps} />
+            </Box>
           </VStack>
           {/* TODO 재료 부분과 같이, 장바구니 부분 */}
-          <IngredientCart />
+          <Box>
+            <IngredientCart />
+          </Box>
         </Flex>
       ) : (
         <>loading..</>

@@ -12,10 +12,10 @@ const StepItem = ({step, img, desc}: Props) => {
     <HStack alignItems={'flex-start'} gap={5}>
       <Image src={img} w="300px" alt="이미지가 없습니다" />
       <Box>
-        <Text fontSize={'2xl'} fontWeight="bold" color={'#EA900B'}>
+        <Text fontSize={'2xl'} fontWeight="bold" color="#dd6b1f">
           step {step + 1}
         </Text>
-        <Text fontSize={'lg'} marginY={5}>
+        <Text fontSize={'2xl'} marginY={5}>
           {desc}
         </Text>
       </Box>
