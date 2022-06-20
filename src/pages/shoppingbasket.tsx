@@ -137,9 +137,9 @@ const Container = styled(Flex)`
   }
 `;
 export const getServerSideProps: GetServerSideProps = async context => {
-  const {id} = context.query;
-  const info = await getUserBasketItem('OE0xsuZVT7hY5NaWUWVAyt0I8xU2');
-
+  // const {id} = context.query;
+  const info = await getUserBasketItem('ej9fEU5m8qS34zmyxqTGXjMrPX63');
+  // console.log(info);
   return {
     props: {
       info: info,

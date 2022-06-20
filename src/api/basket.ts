@@ -28,6 +28,7 @@ export async function getUserBasketItem(uid: string) {
   if (docSnap.exists()) {
     const items = docSnap.data().shoppingIngredient;
     const q = query(collection(db, 'store'), where('__name__', 'in', items));
+    console.log(docSnap.data().shoppingIngredient);
     const querySnapshot = await getDocs(q);
     const result: IBasketItem[] = [];
     querySnapshot.forEach(doc => {
@@ -39,6 +40,7 @@ export async function getUserBasketItem(uid: string) {
       });
     });
     return result;
+    // return [];
   } else {
     console.log('No such document!');
   }

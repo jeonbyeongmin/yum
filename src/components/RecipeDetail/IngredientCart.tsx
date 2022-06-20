@@ -42,11 +42,12 @@ const IngredientCart = ({info}: IIngredientCart) => {
     setShoppingBasket(setList);
     addBasket(
       //user 더미 데이터
-      'OE0xsuZVT7hY5NaWUWVAyt0I8xU2',
+      'ej9fEU5m8qS34zmyxqTGXjMrPX63',
       setList.map(li => li.docId),
     );
+    console.log(selectList, select);
+
     router.push('/shoppingbasket');
-    // console.log(selectList, select);
   };
   const handleCheckChange = (id: string) => {
     const newSelect = [...select];
