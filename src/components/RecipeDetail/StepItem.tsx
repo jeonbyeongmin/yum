@@ -9,7 +9,7 @@ interface StepItem {
 
 const StepItem = ({step, img, desc}: Props) => {
   return (
-    <HStack alignItems={'flex-start'} gap={5}>
+    <HStack alignItems={'flex-start'} gap={5} w="100%">
       <Image src={img} w="300px" alt="이미지가 없습니다" />
       <Box>
         <Text fontSize={'2xl'} fontWeight="bold" color="#dd6b1f">
